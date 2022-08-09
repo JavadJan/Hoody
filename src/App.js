@@ -1,5 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { GlobalProvider } from './Context/GlobalState';
+
 import { Nav } from './Components/Navbar/Nav';
 import { Home } from './Components/Pages/Home';
 import { About } from './Components/Pages/About';
@@ -11,7 +13,7 @@ import { Footer } from './Components/Footer/Footer';
 
 function App() {
   return (
-    <div>
+    <GlobalProvider>
       <Router>
         <Nav />
         <Routes>
@@ -23,7 +25,7 @@ function App() {
         </Routes>
         <Footer/>
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 
