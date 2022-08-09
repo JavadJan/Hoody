@@ -1,0 +1,16 @@
+footer{
+    height: 7rem;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(28, 27, 27, 0.62);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    padding: 2rem;
+    Link{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+}

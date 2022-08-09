@@ -1,0 +1,24 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+  background-color: rgba(28, 27, 27, 0.62);
+  padding: 0 10px;
+}
+nav h3 {
+  color: white;
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+nav ul Link {
+  text-decoration: none;
+}
+nav ul li {
+  color: white;
+  list-style: none;
+  text-decoration: none;
+  font-size: 18px;
+}/*# sourceMappingURL=Nav.css.map */
