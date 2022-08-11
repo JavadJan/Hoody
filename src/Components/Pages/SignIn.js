@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import login from '../../assets/login.png'
-import "../css/style.css";
+import "./css/style.css";
 
 export const SignIn = () => {
   const nameRef = useRef(null)
