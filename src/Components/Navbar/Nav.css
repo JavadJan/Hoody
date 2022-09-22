@@ -1,26 +1,32 @@
-nav {
+#header {
+  background: transparent;
+  margin: 0 auto;
+  width: 80%;
+}
+#header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3.5rem;
-  background-color: rgba(28, 27, 27, 0.62);
+  height: 4rem;
   padding: 0 10px;
+  position: relative;
 }
-nav h3 {
+#header nav h3 {
   color: white;
 }
-nav ul {
+#header nav ul {
   display: flex;
   gap: 1rem;
 }
-nav ul Link {
-  text-decoration: none;
-}
-nav ul li {
-  color: white;
+#header nav ul li {
   list-style: none;
   text-decoration: none;
   font-size: 18px;
+}
+#header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 *,
@@ -90,13 +96,12 @@ nav ul li {
   padding-inline: 15px;
   align-items: center;
   text-decoration: none;
-  color: white;
   font-weight: 300;
   font-size: 20px;
   padding: 12px;
   text-transform: uppercase;
   transition: 0.2s all ease-in;
-  cursor: default;
+  cursor: pointer;
   display: block;
 }
 

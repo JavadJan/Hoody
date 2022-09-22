@@ -1,78 +1,81 @@
-.signup-page {
+.container_signup {
+  position: relative;
+}
+.container_signup .signup-page {
   display: grid;
   grid-template-columns: 40% 60%;
   width: 80%;
   margin: 0 auto;
   position: relative;
   margin-top: 1rem;
-  display: grid;
   gap: 3rem;
-  height: 75vh;
+  height: 65vh;
+  margin-top: 4rem;
 }
-.signup-page .box-img img {
-  left: 15%;
+.container_signup .signup-page .box-img {
+  background: transparent;
+}
+.container_signup .signup-page .box-img img {
   width: 100%;
   height: 95%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   z-index: 1;
 }
-.signup-page .signup-box {
-  width: 100%;
-  position: relative;
+.container_signup .signup-page .signup-box {
+  width: 80%;
   margin: 0 auto;
-  top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   height: 450px;
-  box-shadow: 0px 0px 10px 0px black;
+  box-shadow: 6px 6px 10px 18px rgba(232, 223, 223, 0.154);
 }
-.signup-page .signup-box .btnGroup {
+.container_signup .signup-page .signup-box .btnGroup {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.signup-page .signup-box .btnGroup .facebook, .signup-page .signup-box .btnGroup .google {
+.container_signup .signup-page .signup-box .btnGroup .facebook, .container_signup .signup-page .signup-box .btnGroup .google {
   border: none;
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
-.signup-page .signup-box .btnGroup .facebook {
+.container_signup .signup-page .signup-box .btnGroup .facebook {
   color: rgb(24, 24, 220);
   font-size: 20px;
 }
-.signup-page .signup-box .btnGroup .google {
+.container_signup .signup-page .signup-box .btnGroup .google {
   color: crimson;
   font-size: 20px;
 }
-.signup-page .signup-box form {
+.container_signup .signup-page .signup-box form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 50%;
+  width: 70%;
   padding: 10px;
 }
-.signup-page .signup-box form .input {
+.container_signup .signup-page .signup-box form .input {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.signup-page .signup-box form .input input {
+.container_signup .signup-page .signup-box form .input input {
   height: 2rem;
   box-shadow: 2px 2px 4px inset rgba(234, 230, 230, 0.194);
   border: none;
-  background: rgb(4, 122, 43);
+  background: #fbf7f5;
   border-radius: 5px;
   color: white;
   padding-left: 10px;
   outline: none;
 }
-.signup-page .signup-box form .btn {
+.container_signup .signup-page .signup-box form .btn {
   width: 60px;
   height: 30px;
   background: rgb(4, 122, 43);

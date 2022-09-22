@@ -1,16 +1,24 @@
 footer {
-  height: 8.5rem;
-  position: fixed;
+  height: 8rem;
   bottom: 0;
-  background-color: rgba(28, 27, 27, 0.62);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  width: 80%;
+  margin: 0 auto;
   padding: 2rem;
 }
-footer Link {
-  text-decoration: none;
+footer ul {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 0;
 }
-footer li {
-  list-style: none;
+footer ul li {
+  list-style-type: none;
+  margin: 2px;
+}
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16;
 }/*# sourceMappingURL=Footer.css.map */
