@@ -1,5 +1,5 @@
-import React,{useState,useRef} from 'react'
-import {Link ,NavLink} from 'react-router-dom'
+import React, { useState, useRef } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import './Nav.css'
 export const Nav = () => {
 
@@ -34,7 +34,8 @@ export const Nav = () => {
 
 
   return (
-    <nav className={color ? "nav-links-scroll" : "nav-links"}>
+    <div id='header'>
+      <nav className={color ? "nav-links-scroll" : "nav-links"}>
         <div className="iconPart">
           <div className="circle"></div>
 
@@ -59,12 +60,12 @@ export const Nav = () => {
 
           </li>
           <li>
-            <Link to="/SignIn"
+            <Link to="/SignUp"
               spy={true}
               smooth={true}
               offset={-100}
               duration={500}>
-              Sign In
+              Sign Up
             </Link>
           </li>
 
@@ -88,5 +89,7 @@ export const Nav = () => {
         </div>
 
       </nav>
+    </div>
+
   )
 }

@@ -1,12 +1,15 @@
-
+#header{
+    background: transparent;
+    margin: 0 auto;
+    width: 80%;
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3.5rem;
-    background-color: rgba(28, 27, 27, 0.62);
-    
+    height: 4rem;
     padding: 0 10px;
+    position: relative;
+
     h3{
         color: white;
     }
@@ -14,18 +17,19 @@ nav {
         display: flex;
         gap: 1rem;
 
-        Link{
-            text-decoration: none;
-        }
         li{
-            color: white;
             list-style: none;
             text-decoration: none;
             font-size: 18px;
+            a{
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
         }
     }
 }
-
+}
 
 *,
 *::before,
@@ -102,15 +106,14 @@ nav {
     padding-inline: 15px;
     align-items: center;
     text-decoration: none;
-    color:white;
     font-weight: 300;
     font-size: 20px;
     padding: 12px;
     text-transform: uppercase;
     transition: .2s all ease-in;
-    cursor:default;
+    cursor:pointer;
     
- display: block;
+    display: block;
     
 
 }
