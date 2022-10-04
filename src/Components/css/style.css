@@ -71,7 +71,7 @@
   border: none;
   background: #fbf7f5;
   border-radius: 5px;
-  color: white;
+  color: black;
   padding-left: 10px;
   outline: none;
 }
@@ -81,4 +81,5 @@
   background: rgb(4, 122, 43);
   border: none;
   color: white;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

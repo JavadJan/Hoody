@@ -42,39 +42,29 @@ export const Nav = () => {
         </div>
         <ul className='navList' ref={headerRef}>
           <li>
-            <Link activeClass="active"
+            <Link className="active"
               to="/home"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}>
+            >
               Home
             </Link>
           </li>
-          <li>
-            <Link to="/about"
-              spy={true}
+          {/* spy={true}
               smooth={true}
               offset={-100}
-              duration={500}>About</Link>
+              duration={500} */}
+          <li>
+            <Link to="/about"
+            >About</Link>
 
           </li>
           <li>
-            <Link to="/SignUp"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}>
+            <Link to="/SignUp">
               Sign Up
             </Link>
           </li>
 
           <li>
-            <Link to="/contact"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}> Contact</Link>
+            <Link to="/contact"> Contact</Link>
 
           </li>
           <li>

@@ -12,10 +12,10 @@ export const Footer = () => {
                 <li><Link to="/SignIn">Sign in</Link></li>
             </ul>
             <ul>
-                <li><Link to="/Contact"><i class="fa-brands fa-google"></i></Link></li>
-                <li><Link to="/About"><i class="fa-brands fa-facebook-f"></i></Link></li>
-                <li><Link to="/Login"><i class="fa-brands fa-instagram"></i></Link></li>
-                <li><Link to="/SignIn"><i class="fa-brands fa-linkedin"></i></Link></li>
+                <li><Link to="/Contact"><i className="fa-brands fa-google"></i></Link></li>
+                <li><Link to="/About"><i className="fa-brands fa-facebook-f"></i></Link></li>
+                <li><Link to="/Login"><i className="fa-brands fa-instagram"></i></Link></li>
+                <li><Link to="/SignIn"><i className="fa-brands fa-linkedin"></i></Link></li>
             </ul>
         </footer>
     )
