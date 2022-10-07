@@ -1,3 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg1:#266453;
+  --color-btn2:#06FFD2;
+  --color-danger:#fa4753;
+  --color-success:#058240;
+  --colo-bg-gray:#EDEDED;
+  --color-warning:#fbb854;
+  --color-white:#ffffff;
+  --color-black:#101010;
+  --transmit-all: all 400ms ease;
+  --container-sm:80%;
+  --container-md:90%;
+  --container-lg:94%;
+  --font-family:"Josefin Sans", sans-serif;
+  --font-weight:300;
+  --font-size:16px;
+}
+
+body {
+  background: var(--color-bg1);
+}
+
 .container_signup {
   position: relative;
 }
