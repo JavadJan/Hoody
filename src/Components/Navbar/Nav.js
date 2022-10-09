@@ -1,28 +1,20 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Nav.css'
+
+
 export const Nav = () => {
 
-  const headerRef = useRef()
 
-  let menuOpen = false;
+  const[showMenu,setShow]=useState(false);
 
-  const menuBurgerOPen = (e) => {
-    var btn = e.target;
-    if (!menuOpen) {
-      headerRef.current.style.transform =
-        "translateX(0)";
-      btn.classList.add("open");
-      menuOpen = true;
-    } else {
-      headerRef.current.style.transform =
-        "translateX(100%)";
-      btn.classList.remove("open");
-      menuOpen = false;
-    }
+  const handleMenu=()=>{
+    setShow(!showMenu)
   }
 
-  const [color, setColor] = useState(false);
+
+
+  // const [color, setColor] = useState(false);
   // const changeColor = () => {
   //   if (window.scrollY >= 90) {
   //     setColor(true);
@@ -34,39 +26,48 @@ export const Nav = () => {
 
 
   return (
-    <div id='header'>
-      <nav className={color ? "nav-links-scroll" : "nav-links"}>
-        <div className="logo">
-          <div className="circle"></div>
-        </div>
-        <ul className='navList' ref={headerRef}>
-          <li>
-            <Link className="active" to="/home">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/SignUp">Sign Up</Link>
-          </li>
+    <header>
+      <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
+        <Link to="/" className="logo">
+          HOody </Link>
+        <nav className='List' >
+         
+            <NavLink   to="/" exact="true"
+                activeClassName="active"
+                onClick={()=>{     //when click button hide the menu
+                  setShow(false)
+                }}
+                > 
+                  Home</NavLink>
+          
+            <NavLink to="/about" 
+            activeClassName="active"
+            onClick={()=>{
+              setShow(false)
+            }}
+            >About</NavLink>
+         
+          
+            <NavLink to="/contact" 
+            activeClassName="active"
+            onClick={()=>{
+              setShow(false)
+            }}
+            > Contact</NavLink>
 
-          <li>
-            <Link to="/contact"> Contact</Link>
-
-          </li>
-          <li>
-            <NavLink to="/Login" className="subscribe">Login</NavLink>
-          </li>
-        </ul>
-        <div
+         
+            <NavLink to="/Login" className="subscribe">Subscribe</NavLink>
+        
+        </nav>
+        <button
           className="menu-burger"
-          onClick={menuBurgerOPen}
+          onClick={handleMenu}
         >
-          <div className="menu-btn-burger"></div>
-        </div>
+          <span className="menu-btn-burger"></span>
+        </button>
 
-      </nav>
-    </div>
+      </div>
+    </header>
 
   )
 }
