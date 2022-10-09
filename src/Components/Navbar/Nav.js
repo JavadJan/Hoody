@@ -29,7 +29,7 @@ export const Nav = () => {
     <header>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <Link to="/" className="logo">
-          HOody </Link>
+          HOoDY </Link>
         <nav className='List' >
          
             <NavLink   to="/" exact="true"
@@ -38,7 +38,8 @@ export const Nav = () => {
                 onClick={()=>{     //when click button hide the menu
                   setShow(false)
                 }}
-                > 
+                end        //when click on other button the home will not be active
+                >  
                   Home</NavLink>
           
             <NavLink to="/about" 
@@ -67,7 +68,7 @@ export const Nav = () => {
             > Contact</NavLink>
 
          
-            <NavLink to="/Login" 
+            <NavLink to="/SignUp" 
             className="subscribe item-list5">Subscribe</NavLink>
         
         </nav>

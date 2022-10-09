@@ -76,10 +76,10 @@ header{
         //     transform: scaleX(1);
         // }
         &:hover{
-            color:var(--color-light-green);
+            color:var(--color-bg1);
         }
         &.active{
-            color:var(--color-light-green);
+            color:var(--color-bg1);
         }
 
        }
