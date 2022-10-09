@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 :root{
     --color-bg1:#266453;
     --color-btn2:#06FFD2;
@@ -13,18 +14,31 @@
     --color-warning:#fbb854;
     --color-white:#ffffff;
     --color-black:#101010;
+
+    /* Palette colors  */
+    --color-dark-green:#264653;
+    --color-light-green:#2a9d8f;
+    --color-font-yellow:#e9c464;
+    --color-font-orange1:#f4a261;
+    --color-font-orange2:#e76f51;
+    
+
     --transmit-all: all 400ms ease;
 
     --container-sm:80%;
     --container-md:90%;
     --container-lg:94%;
 
+
+    --font-header:'Montserrat', sans-serif;
     --font-family:'Josefin Sans', sans-serif;
+
     --font-weight:300;
     --font-size:16px;
+
 }
 body{
-    background: var(--color-bg1);
+    background: var(--color-white);
 }
 
 
