@@ -1,7 +1,14 @@
+
+#footer{
+    position: fixed;
+    bottom: 2rem;
+    width: 100%;
+
+    border: 2px solid greenyellow;
+}
 footer{
+    border: 2px solid red;
     height: 8rem;
-    // position: relative;
-    bottom: 0;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     width: 80%;

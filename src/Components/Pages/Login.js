@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../css/Login.css";
 import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
@@ -18,6 +18,8 @@ export function Login() {
     <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
         <div className="signin-signup">
+
+          
           <form action="#" className="sign-in-form">
             <h2 className="title">Sign in</h2>
             <div className="input-field">
@@ -45,6 +47,8 @@ export function Login() {
               </a>
             </div>
           </form>
+
+
           <form action="#" className="sign-up-form">
             <h2 className="title">Sign up</h2>
             <div className="input-field">
