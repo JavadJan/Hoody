@@ -1,28 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../css/Login.css";
 import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
-import { useEffect } from "react";
 
 export function Login() {
-  const sign_in_btn = document.querySelector("#sign-in-btn");
-  const sign_up_btn = document.querySelector("#sign-up-btn");
-  const container = document.querySelector(".container");
-
-
-  // useEffect(() => {
-    
-  //   sign_up_btn.addEventListener("click", () => {
-  //     container.classList.add("sign-up-mode");
-  //   });
-
-  //   sign_in_btn.addEventListener("click", () => {
-  //     container.classList.remove("sign-up-mode");
-  //   });
-  // },[])
+  const [signUpMode, setSignUpMode] = useState (false)
+   
+  const signUpButton = () => {
+    setSignUpMode(true)
+  };
+  const signInButton = () => {
+    setSignUpMode(false)
+ };
+ let toggleClassCheck = signUpMode ? ' sign-up-mode': '';
 
   return (
-    <div className="container">
+    <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
@@ -94,7 +87,7 @@ export function Login() {
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
               ex ratione. Aliquid!
             </p>
-            <button className="btn transparent" id="sign-up-btn">
+            <button onClick={signUpButton} className="btn transparent" id="sign-up-btn">
               Sign up
             </button>
           </div>
@@ -107,7 +100,7 @@ export function Login() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
               laboriosam ad deleniti.
             </p>
-            <button className="btn transparent" id="sign-in-btn">
+            <button onClick={signInButton} className="btn transparent" id="sign-in-btn">
               Sign in
             </button>
           </div>
