@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -13,22 +14,24 @@
   --color-warning:#fbb854;
   --color-white:#ffffff;
   --color-black:#101010;
+  /* Palette colors  */
+  --color-dark-green:#264653;
+  --color-light-green:#2a9d8f;
+  --color-font-yellow:#e9c464;
+  --color-font-orange1:#f4a261;
+  --color-font-orange2:#e76f51;
   --transmit-all: all 400ms ease;
   --container-sm:80%;
   --container-md:90%;
   --container-lg:94%;
+  --font-header:"Montserrat", sans-serif;
   --font-family:"Josefin Sans", sans-serif;
   --font-weight:300;
   --font-size:16px;
 }
 
 body {
-                 /* just an example */
-  background: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background: var(--color-white);
 }
 
 .container_signup {

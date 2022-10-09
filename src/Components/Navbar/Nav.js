@@ -9,6 +9,7 @@ export const Nav = () => {
   const[showMenu,setShow]=useState(false);
 
   const handleMenu=()=>{
+    console.log('clicked')
     setShow(!showMenu)
   }
 
@@ -33,6 +34,7 @@ export const Nav = () => {
         <nav className='List' >
          
             <NavLink   to="/" exact="true"
+            className='item-list1'
                 activeClassName="active"
                 onClick={()=>{     //when click button hide the menu
                   setShow(false)
@@ -41,14 +43,24 @@ export const Nav = () => {
                   Home</NavLink>
           
             <NavLink to="/about" 
+            className='item-list2'
             activeClassName="active"
             onClick={()=>{
               setShow(false)
             }}
             >About</NavLink>
+
+          <NavLink to="/service" 
+          className='item-list3'
+            activeClassName="active"
+            onClick={()=>{
+              setShow(false)
+            }}
+            >Service</NavLink>
          
           
             <NavLink to="/contact" 
+            className='item-list4'
             activeClassName="active"
             onClick={()=>{
               setShow(false)
@@ -56,7 +68,8 @@ export const Nav = () => {
             > Contact</NavLink>
 
          
-            <NavLink to="/Login" className="subscribe">Subscribe</NavLink>
+            <NavLink to="/Login" 
+            className="subscribe item-list5">Subscribe</NavLink>
         
         </nav>
         <button
