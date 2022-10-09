@@ -1,5 +1,6 @@
 
-#Description:
+# Description:
+
 In our application everyone will be able to sell and donation, and in the feature will get the best price of items in local area. 
 Every user will have a dashboard that can find each other with map, and chat with each other in order to take and give their items. And will be have a explore page to find second-hand items, and also they can post own second-hand items to sell with a price or free donate to NGO. 
 By these actions we expected to reduce consumptions, pollutions make culture in society to use Second-hand items. With this solution everyone every time will sell or donate their second-hand at proper time that is still reusable. 
@@ -9,11 +10,11 @@ Javad Khavari  from Afghanistan
 Mansure Khedir from Atopy
 Sirine Soudi from Tunisia
 
-#Technology 
+# Technology 
 1.	HTML, CSS
 2.	React js 
 3.	Firebase
-#Demo
+# Demo
 Live demo
 
 
