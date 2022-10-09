@@ -1,7 +1,7 @@
 #header{
     background: transparent;
     margin: 0 auto;
-    width: 80%;
+    width:100%;
 nav {
     display: flex;
     justify-content: space-between;
@@ -79,14 +79,17 @@ nav {
 }
 
 
-.iconPart{
+.logo{
     display:flex;
     align-items: center;
     justify-content: center;
 }
-
+nav {
+    width: 94%;
+    
+}
 .navList{
-  
+    border:2px solid green;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,19 +247,19 @@ a.active{
 
     }
     .navList{
-        display:flex;
+        display:none; 
         flex-direction: column;
         line-height: 3em;
         padding: 25px;
         background:radial-gradient(circle,#1a1a1a,#1b1a1a);
         /* border-top-left-radius: 50%; 
         border-bottom-left-radius: 50%; */
-        width: 50%;
+        width: 55%;
         position: absolute;
         right: 0px;
         top:0px;
         transition: .6s ease;
-        transform: translateX(100%);
+        transform: translateX(120%);
       
         padding-top: 45px;
        

@@ -36,31 +36,18 @@ export const Nav = () => {
   return (
     <div id='header'>
       <nav className={color ? "nav-links-scroll" : "nav-links"}>
-        <div className="iconPart">
+        <div className="logo">
           <div className="circle"></div>
-
         </div>
         <ul className='navList' ref={headerRef}>
           <li>
-            <Link className="active"
-              to="/home"
-            >
-              Home
-            </Link>
-          </li>
-          {/* spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500} */}
-          <li>
-            <Link to="/about"
-            >About</Link>
-
+            <Link className="active" to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/SignUp">
-              Sign Up
-            </Link>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/SignUp">Sign Up</Link>
           </li>
 
           <li>
