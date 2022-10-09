@@ -4,6 +4,7 @@
   box-sizing: border-box;
   outline: 0;
   text-decoration: none;
+  list-style: none;
 }
 
 footer {
@@ -11,12 +12,14 @@ footer {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 34vh;
+  max-height: 100%;
   width: 100%;
   position: relative;
   bottom: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 35px;
+  padding-top: 2rem;
   place-items: center;
 }
 footer .footer1 {
@@ -33,17 +36,69 @@ footer .footer1::before {
   width: 100%;
   height: 100%;
   border-radius: 57% 43% 68% 32%/100% 0% 100% 0%;
-  background: rgba(255, 255, 255, 0.432);
+  background: rgba(8, 72, 8, 0.432);
   z-index: -1;
 }
 footer .footer2 {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  align-self: start;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 footer .footer2 a {
   color: var(--colo-bg-gray);
+  transition: 300ms all ease-in;
 }
 footer .footer2 a:hover {
+  color: var(--color-bg1);
+}
+footer .footer3 {
+  color: var(--colo-bg-gray);
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 1.1rem;
+  font-weight: 300;
+}
+footer .footer4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: 1.2rem;
+  color: white;
+  align-self: start;
+}
+footer .footer4 .social-network {
+  display: flex;
+  gap: 1.2rem;
+}
+footer .footer4 .social-network a {
+  color: var(--colo-bg-gray);
+  font-size: 20px;
+  padding: 12px;
+  border: 3px solid var(--colo-bg-gray);
+  border-radius: 100px;
+  display: flex;
+  transition: 300ms all ease-in;
+}
+footer .footer4 .social-network a:hover {
+  transform: scale(1.08);
+  color: var(--color-bg1);
+  border-color: var(--color-bg1);
+}
+footer .footer-copyRight {
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  color: white;
+  margin: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.641);
+  width: 100%;
+}
+footer h3 {
   color: var(--color-bg1);
 }/*# sourceMappingURL=Footer.css.map */
