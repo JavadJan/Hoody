@@ -27,35 +27,41 @@ export function Login() {
   let toggleClassCheck = signUpMode ? ' sign-up-mode' : '';
 
   //handle sign up
-  const handleSignup = async () => {
-
+  const handleSignup = async (event) => {
+    event.preventDefault()
     //does username exist?
     const userExist = await DoesUserExist(username)
 
+    console.log("userExist: ", userExist , auth)
     //use auth state and add to with email
-    if (username.length === 0) {
+    if (userExist.length === 0) {
       try {
         const createdResult = await createUserWithEmailAndPassword(auth, email, password)
           .catch((err) => {
             setError(err)
           })
+          console.log('added user with email and pass!', createdResult)
         // after created the display name of user will update with user name
         await updateProfile(createdResult.user, {
           displayName: username
         })
         //add to firestore
         addDoc(collection(db, 'users'), {
-          userId: createdResult.user.uid,
+          userId: createdResult.user.UID,
           username: username.toLowerCase(),
           email: email.toLowerCase(),
           password: password
         })
+        console.log('sign up done!')
       } catch (error) {
         setUsername('')
         setEmail('')
         setPassword('')
-        setError('already username Exist!')
+        setError('unsuccessful to register! ')
       }
+    }
+    else{
+      setError('username already exist!')
     }
     //go to login mode
   }
