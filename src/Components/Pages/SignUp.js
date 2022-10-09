@@ -47,7 +47,6 @@ export const SignUp = () => {
           username: username.toLowerCase(),
           password: pass,
           emailAddress: email.toLowerCase(),
-
         })
 
         //after register the user will taken to Login page

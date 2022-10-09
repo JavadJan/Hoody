@@ -5,7 +5,6 @@ import './Nav.css'
 
 export const Nav = () => {
 
-
   const[showMenu,setShow]=useState(false);
 
   const handleMenu=()=>{
