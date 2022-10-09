@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
-import { userContext } from "../../Context/userContext";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
+import { useContext } from "react";
 
 export function Login() {
   const [signUpMode, setSignUpMode] = useState(false)
 
-  const { db, auth } = userContext(DbContext)
+  const { db, auth } = useContext(DbContext)
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
