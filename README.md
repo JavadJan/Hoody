@@ -1,5 +1,20 @@
 
+#Description:
+In our application everyone will be able to sell and donation, and in the feature will get the best price of items in local area. 
+Every user will have a dashboard that can find each other with map, and chat with each other in order to take and give their items. And will be have a explore page to find second-hand items, and also they can post own second-hand items to sell with a price or free donate to NGO. 
+By these actions we expected to reduce consumptions, pollutions make culture in society to use Second-hand items. With this solution everyone every time will sell or donate their second-hand at proper time that is still reusable. 
+E.g. when children have toys that do not use anymore will donate to others children at proper time, the means of proper time: some time we have something that we do not use it but due to non-existence solution to sell it or donate, we postpone it to other time to find someone, and eventually maybe we should throw away without using. 
+# Team: 
+Javad Khavari  from Afghanistan
+Mansure Khedir from Atopy
+Sirine Soudi from Tunisia
 
+#Technology 
+1.	HTML, CSS
+2.	React js 
+3.	Firebase
+#Demo
+Live demo
 
 
 
