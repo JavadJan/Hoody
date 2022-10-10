@@ -28,26 +28,26 @@ export function Login() {
 
   //handle sign up
   const handleSignup = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     //does username exist?
     const userExist = await DoesUserExist(username)
 
-    console.log("userExist: ", userExist , auth)
     //use auth state and add to with email
     if (userExist.length === 0) {
+      console.log("userExist: ",{username , email , password}, userExist , auth)
       try {
         const createdResult = await createUserWithEmailAndPassword(auth, email, password)
           .catch((err) => {
             setError(err)
           })
-          console.log('added user with email and pass!', createdResult)
+          console.log('added user with email and pass!', createdResult.user.uid)
         // after created the display name of user will update with user name
         await updateProfile(createdResult.user, {
           displayName: username
         })
         //add to firestore
         addDoc(collection(db, 'users'), {
-          userId: createdResult.user.UID,
+          userId: createdResult.user.uid,
           username: username.toLowerCase(),
           email: email.toLowerCase(),
           password: password
@@ -117,7 +117,7 @@ export function Login() {
 
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input value={password} onChange={(target) => { setPassword(target.value) }} type="password" placeholder="Password" />
+              <input value={password} onChange={({target}) => { setPassword(target.value) }} type="password" placeholder="Password" />
             </div>
 
             <button type="submit" className="btn">Sign up</button>
