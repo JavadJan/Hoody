@@ -13,8 +13,9 @@ import { Dashboard } from './Components/Pages/Dashboard';
 
 function App() {
   const {user} = UserListener()
+  console.log('user:' , user)
   return (
-    <userContext.Provider value={user}>
+    <userContext.Provider value={{user}}>
         <Router>
           <Nav />
           <Routes>
@@ -23,7 +24,7 @@ function App() {
             <Route path='/Contact' element={<Contact />} />
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Login' element={<Login />} />
-            <Route path={`/Dashboard/username`} element={<Dashboard />} value={user} />
+            <Route path={`/Dashboard/username`} element={<Dashboard  user={user}/>} />
           </Routes>
           <Footer />
         </Router>

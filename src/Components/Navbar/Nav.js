@@ -34,7 +34,7 @@ export const Nav = () => {
          
             <NavLink   to="/" exact="true"
             className='item-list1'
-                activeClassName="active"
+                activeclassname="active"
                 onClick={()=>{     //when click button hide the menu
                   setShow(false)
                 }}
@@ -44,7 +44,7 @@ export const Nav = () => {
           
             <NavLink to="/about" 
             className='item-list2'
-            activeClassName="active"
+            activeclassname="active"
             onClick={()=>{
               setShow(false)
             }}
@@ -52,7 +52,7 @@ export const Nav = () => {
 
           <NavLink to="/service" 
           className='item-list3'
-            activeClassName="active"
+            activeclassname="active"
             onClick={()=>{
               setShow(false)
             }}
@@ -61,7 +61,7 @@ export const Nav = () => {
           
             <NavLink to="/contact" 
             className='item-list4'
-            activeClassName="active"
+            activeclassname="active"
             onClick={()=>{
               setShow(false)
             }}

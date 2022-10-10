@@ -4,20 +4,24 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider , signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { userContext } from "../../Context/userContext";
 
 export function Login() {
-  const [signUpMode, setSignUpMode] = useState(false)
   const navigate = useNavigate()
+  const [signUpMode, setSignUpMode] = useState(false)
   const { db, auth } = useContext(DbContext)
+  const { user } = useContext(userContext)
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
+
 
   const signUpButton = () => {
     setSignUpMode(true)
@@ -35,13 +39,13 @@ export function Login() {
 
     //use auth state and add to with email
     if (userExist.length === 0) {
-      console.log("userExist: ",{username , email , password}, userExist , auth)
+      console.log("userExist: ", { username, email, password }, userExist, auth)
       try {
         const createdResult = await createUserWithEmailAndPassword(auth, email, password)
           .catch((err) => {
             setError(err)
           })
-          console.log('added user with email and pass!', createdResult.user.uid)
+        console.log('added user with email and pass!', createdResult.user.uid)
         // after created the display name of user will update with user name
         await updateProfile(createdResult.user, {
           displayName: username
@@ -62,23 +66,33 @@ export function Login() {
         setError('unsuccessful to register! ')
       }
     }
-    else{
+    else {
       setError('username already exist!')
     }
     //go to login mode
   }
 
-  //handle google sign in
+  //handle google sign up
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
-}
+    console.log('provider : ', user)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+  }
+
+  //handle facebook sign up
+  //handle tweeter sign up
+  //handle linkedin sign up
   return (
     <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
         <div className="signin-signup">
 
-            {error && <p className="error">{error}</p>}
+          {error && <p className="error">{error}</p>}
           {/* to login mode form */}
           <form action="#" className="sign-in-form">
             <h2 className="title">Sign in</h2>
@@ -124,7 +138,7 @@ export function Login() {
 
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input value={password} onChange={({target}) => { setPassword(target.value) }} type="password" placeholder="Password" />
+              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" />
             </div>
 
             <button type="submit" className="btn">Sign up</button>
