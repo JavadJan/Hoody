@@ -9,6 +9,7 @@ import { SignUp } from './Components/Pages/SignUp';
 import { Login } from './Components/Pages/Login';
 import { Footer } from './Components/Footer/Footer';
 import {UserListener} from './hook/userListener'
+import { Dashboard } from './Components/Pages/Dashboard';
 
 function App() {
   const {user} = UserListener()
@@ -22,6 +23,7 @@ function App() {
             <Route path='/Contact' element={<Contact />} />
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Login' element={<Login />} />
+            <Route path={`/Dashboard/username`} element={<Dashboard />} value={user} />
           </Routes>
           <Footer />
         </Router>

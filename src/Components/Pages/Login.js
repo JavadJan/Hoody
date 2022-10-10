@@ -4,13 +4,14 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider , signInWithPopup } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
+import {useNavigate} from 'react-router-dom'
 
 export function Login() {
   const [signUpMode, setSignUpMode] = useState(false)
-
+  const navigate = useNavigate()
   const { db, auth } = useContext(DbContext)
 
   const [username, setUsername] = useState('')
@@ -53,6 +54,7 @@ export function Login() {
           password: password
         })
         console.log('sign up done!')
+        navigate('./Login')
       } catch (error) {
         setUsername('')
         setEmail('')
@@ -66,6 +68,11 @@ export function Login() {
     //go to login mode
   }
 
+  //handle google sign in
+  const handleGoogleSignUp = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider)
+}
   return (
     <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
@@ -86,7 +93,7 @@ export function Login() {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon">
+              <a href="#" className="social-icon" >
                 <i className="fab fa-google"></i>
               </a>
               <a href="#" className="social-icon">
@@ -124,7 +131,7 @@ export function Login() {
 
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon">
+              <a href="#" className="social-icon" onClick={handleGoogleSignUp}>
                 <i className="fab fa-google"></i>
               </a>
               <a href="#" className="social-icon">
