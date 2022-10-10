@@ -8,5 +8,26 @@
 }
 
 body{
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0000004c; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:black; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:rgb(1, 23, 1); 
 }

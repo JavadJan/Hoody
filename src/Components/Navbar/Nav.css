@@ -14,7 +14,7 @@ header {
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: absolute;
-  top: 3%;
+  top: 1%;
   width: 100%;
   z-index: 9999;
 }
@@ -53,10 +53,10 @@ header {
   transition: 400ms all ease;
 }
 .navbar .List a:hover {
-  color: var(--color-light-green);
+  color: var(--color-bg1);
 }
 .navbar .List a.active {
-  color: var(--color-light-green);
+  color: var(--color-bg1);
 }
 .navbar .List .subscribe {
   border: 1px solid var(--colo-bg-gray);
