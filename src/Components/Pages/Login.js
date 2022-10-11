@@ -4,10 +4,10 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from "../../Context/userContext";
 
 export function Login() {
@@ -73,6 +73,7 @@ export function Login() {
   }
 
   //handle google sign up
+
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
@@ -84,9 +85,41 @@ export function Login() {
     })
   }
 
+
   //handle facebook sign up
+  const hanldeFacebookSignUp = async () => {
+    const provider = new FacebookAuthProvider()
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
+  }
   //handle tweeter sign up
+  const handleTwitterSignUp = async () => {
+    const provider = new TwitterAuthProvider()
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
+  }
   //handle linkedin sign up
+  const handleAppleSignUp = async () => {
+    const provider = new OAuthProvider('apple.com')
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
+  }
+
   return (
     <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
@@ -107,18 +140,18 @@ export function Login() {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon" >
+              <Link href="#" className="social-icon" >
                 <i className="fab fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </Link>
             </div>
           </form>
 
@@ -145,18 +178,18 @@ export function Login() {
 
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon" onClick={handleGoogleSignUp}>
+              <Link href="#" className="social-icon" onClick={handleGoogleSignUp}>
                 <i className="fab fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={hanldeFacebookSignUp}>
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
                 <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </Link>
             </div>
           </form>
         </div>
