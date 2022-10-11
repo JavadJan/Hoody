@@ -9,7 +9,11 @@
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.377);
+  background-color: rgba(181, 180, 180, 0.504);
+}
+
+.header {
+  background-color: rgba(181, 180, 180, 0.504);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: absolute;

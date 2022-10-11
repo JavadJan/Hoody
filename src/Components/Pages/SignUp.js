@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useState } from 'react';
 import login from '../../assets/login1.png'
 import "../css/style.css";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { DoesUserExist } from '../../DB/DoesUserExist';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useContext } from 'react';
@@ -18,6 +18,11 @@ export const SignUp = () => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
   const [error, setError] = useState('')
+
+  const location = useLocation();
+  console.log('hash', location.hash);
+  console.log('pathname', location.pathname);
+  console.log('search', location.search);
 
   const handleSignUp = async (event) => {
     event.preventDefault()

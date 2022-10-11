@@ -39,7 +39,7 @@ export const Footer = () => {
             <li><a href=""><ImPinterest2></ImPinterest2></a></li>
             </ul>
           </div>
-            <div class="footer-copyRight">
+            <div className="footer-copyRight">
             <small>Copyright © 2012 -{new Date().getFullYear()} all right reserved <span>HOODY</span></small>
             </div>
         </footer>

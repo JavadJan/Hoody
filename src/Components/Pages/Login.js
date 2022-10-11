@@ -4,19 +4,24 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
+import { Link, useNavigate } from 'react-router-dom'
+import { userContext } from "../../Context/userContext";
 
 export function Login() {
+  const navigate = useNavigate()
   const [signUpMode, setSignUpMode] = useState(false)
-
   const { db, auth } = useContext(DbContext)
+  const { user } = useContext(userContext)
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
+
 
   const signUpButton = () => {
     setSignUpMode(true)
@@ -28,31 +33,32 @@ export function Login() {
 
   //handle sign up
   const handleSignup = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     //does username exist?
     const userExist = await DoesUserExist(username)
 
-    console.log("userExist: ", userExist , auth)
     //use auth state and add to with email
     if (userExist.length === 0) {
+      console.log("userExist: ", { username, email, password }, userExist, auth)
       try {
         const createdResult = await createUserWithEmailAndPassword(auth, email, password)
           .catch((err) => {
             setError(err)
           })
-          console.log('added user with email and pass!', createdResult)
+        console.log('added user with email and pass!', createdResult.user.uid)
         // after created the display name of user will update with user name
         await updateProfile(createdResult.user, {
           displayName: username
         })
         //add to firestore
         addDoc(collection(db, 'users'), {
-          userId: createdResult.user.UID,
+          userId: createdResult.user.uid,
           username: username.toLowerCase(),
           email: email.toLowerCase(),
           password: password
         })
         console.log('sign up done!')
+        navigate('./Login')
       } catch (error) {
         setUsername('')
         setEmail('')
@@ -60,10 +66,58 @@ export function Login() {
         setError('unsuccessful to register! ')
       }
     }
-    else{
+    else {
       setError('username already exist!')
     }
     //go to login mode
+  }
+
+  //handle google sign up
+
+  const handleGoogleSignUp = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider)
+    console.log('provider : ', user)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+  }
+
+
+  //handle facebook sign up
+  const hanldeFacebookSignUp = async () => {
+    const provider = new FacebookAuthProvider()
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
+  }
+  //handle tweeter sign up
+  const handleTwitterSignUp = async () => {
+    const provider = new TwitterAuthProvider()
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
+  }
+  //handle linkedin sign up
+  const handleAppleSignUp = async () => {
+    const provider = new OAuthProvider('apple.com')
+    await signInWithPopup(auth, provider)
+    await addDoc(collection(db, 'users'), {
+      userId: user.uid,
+      username: user.displayName,
+      email: user.email
+    })
+
   }
 
   return (
@@ -71,7 +125,7 @@ export function Login() {
       <div className="forms-container">
         <div className="signin-signup">
 
-            {error && <p className="error">{error}</p>}
+          {error && <p className="error">{error}</p>}
           {/* to login mode form */}
           <form action="#" className="sign-in-form">
             <h2 className="title">Sign in</h2>
@@ -86,18 +140,18 @@ export function Login() {
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon">
+              <Link href="#" className="social-icon" >
                 <i className="fab fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon">
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </Link>
             </div>
           </form>
 
@@ -117,25 +171,25 @@ export function Login() {
 
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input value={password} onChange={(target) => { setPassword(target.value) }} type="password" placeholder="Password" />
+              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" />
             </div>
 
             <button type="submit" className="btn">Sign up</button>
 
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
-              <a href="#" className="social-icon">
+              <Link href="#" className="social-icon" onClick={handleGoogleSignUp}>
                 <i className="fab fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={hanldeFacebookSignUp}>
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
                 <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
+              </Link>
+              <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </Link>
             </div>
           </form>
         </div>
