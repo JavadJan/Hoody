@@ -10,9 +10,9 @@ By these actions we expected to reduce consumptions, pollutions make culture in 
 E.g. when children have toys that do not use anymore will donate to others children at proper time, the means of proper time: some time we have something that we do not use it but due to non-existence solution to sell it or donate, we postpone it to other time to find someone, and eventually maybe we should throw away without using. 
 
 # Team: 
-Javad Khavari  from Afghanistan
-Mansure Khedir from Atopy
-Sirine Soudi from Tunisia
+1. Javad Khavari  from Afghanistan
+2. Mansure Khedir from Atopy
+3. Sirine Soudi from Tunisia
 
 # Technology 
 1.	HTML, CSS
