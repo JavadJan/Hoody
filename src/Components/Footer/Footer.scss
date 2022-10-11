@@ -8,11 +8,13 @@
 }
 
 footer{
-    // background:linear-gradient(var(--color-bg1),rgb(11, 2, 2)),url('../../assets/pattern-back.png');
-    background: rgb(0, 1, 0);
+    background:linear-gradient(rgba(237, 237, 237, 0.047),rgba(255, 255, 255, 0.214)),url('../../assets/footer-pattern.png');
+    //  background-color: rgba(255, 255, 255, 0.507);
+    // border-radius: 45px;
+    // backdrop-filter: blur(8px);
     background-repeat: no-repeat;
     background-position:center center;
-    background-size: cover;
+    background-size: 110%;
     // height:40vh;
     max-height: 100%;
     width: 100%;
@@ -23,13 +25,14 @@ footer{
     grid-template-rows: 1fr 35px;
     padding-top:2rem;
     place-items: center;
+    
     .footer1{
         position: relative;
         display: block;
         z-index: 0;
         font-size: 2rem;
         font-weight: 600;
-        color: var(--colo-bg-gray);
+        color: black;
      
         &::before{
             content: '';
@@ -53,7 +56,7 @@ footer{
         margin-bottom: 1rem;
      
         a{
-        color: var(--colo-bg-gray);
+            color: black;
         transition: 300ms all ease-in;
         &:hover{
             color: var(--color-bg1);
@@ -61,7 +64,7 @@ footer{
       }  
     }
     .footer3{
-        color: var(--colo-bg-gray);
+        color:black;
         display: flex;
         flex-direction: column;
       align-self: start;
@@ -85,10 +88,10 @@ footer{
         gap: 1.2rem;
    
          a{
-        color: var(--colo-bg-gray);
+            color: black;
         font-size:20px;
         padding: 12px;
-        border: 3px solid var(--colo-bg-gray);
+        border: 3px solid black;
         border-radius: 100px;
         display: flex;
         transition: 300ms all ease-in;
@@ -105,7 +108,7 @@ footer{
    .footer-copyRight{
     grid-row: 2/3;
     grid-column: 1/-1;
-    color:white;
+    color: black;
     margin: auto;
     display: flex;
     align-items: flex-end;

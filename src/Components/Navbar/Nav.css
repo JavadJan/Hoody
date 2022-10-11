@@ -9,14 +9,13 @@
 }
 
 header {
-  background-color: rgba(14, 14, 14, 0.507);
-  border-radius: 45px;
+  background-color: rgba(0, 0, 0, 0.377);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: absolute;
-  top: 1%;
   width: 100%;
   z-index: 9999;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.275);
 }
 
 .navbar {
@@ -51,6 +50,29 @@ header {
   font-weight: 400;
   font-size: var(--font-size);
   transition: 400ms all ease;
+  z-index: 0;
+  font-weight: 500;
+}
+.navbar .List a::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 5%;
+  border-radius: 2px;
+  background-color: white;
+  z-index: 1;
+  bottom: -110%;
+  left: 20%;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+.navbar .List a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+  width: 100%;
+  left: 0;
 }
 .navbar .List a:hover {
   color: var(--color-bg1);
@@ -71,6 +93,11 @@ header {
   outline-offset: 3px;
   -webkit-animation: pulse 1s infinite;
           animation: pulse 1s infinite;
+}
+.navbar .List .subscribe::before {
+  content: "";
+  width: 0;
+  height: 0;
 }
 
 .menu-burger {
