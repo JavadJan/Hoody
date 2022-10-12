@@ -12,6 +12,8 @@
 
 header{
   background-color: rgba(181, 180, 180, 0.522);
+  
+  // background-color: #266453;
    
 }
 .header-scroll{
@@ -25,8 +27,7 @@ header{
   //flipInX
  }
 .header{
-  background-color: rgba(181, 180, 180, 0.522);
-  
+    background-color: rgba(181, 180, 180, 0.522);
     backdrop-filter: blur(8px);
     position: fixed;
     // top: 1%;
@@ -63,7 +64,7 @@ header{
         justify-content: center;
         gap: 2.1rem;
        a{
-       color: var(--colo-bg-gray);
+        color: var(--colo-bg-gray);
         text-transform: uppercase;
         font-weight: 400;
         display: block;
