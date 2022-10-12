@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import './Nav.css'
 
@@ -13,25 +14,36 @@ export const Nav = () => {
   }
 
 
+  const [color, setColor] = useState(false);
 
-  // const [color, setColor] = useState(false);
-  // const changeColor = () => {
-  //   if (window.scrollY >= 90) {
-  //     setColor(true);
-  //   } else {
-  //     setColor(false);
-  //   }
-  // };
-  // window.addEventListener("scroll", changeColor);
+
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setColor(true);
+     
+    } else{
+      setColor(false);
+    }
+  };
+  window.addEventListener("scroll", changeColor);
+
+// useEffect(()=>{
+// if(window.innerWidth<=800){
+//  setColor(false)
+// }
+
+// },[])
+
   const handleStyle = {
     backgroundColor: "transparent"
   }
+
   const location = useLocation()
 
   console.log(location.pathname)
-  
+
   return (
-    <header className={`${location.pathname === './login' ? 'header-no-bg' : 'header'}`}>
+    <header className={`${location.pathname === './SignUp ' ? 'header-no-bg' : 'header'}` && color ? "header-scroll" : "header"}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <Link to="/" className="logo">
           HOoDY </Link>
