@@ -71,12 +71,12 @@ export function Login() {
     }
     //go to login mode
   }
-
+  
   //handle google sign up
-
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
+
     console.log('provider : ', user)
     await addDoc(collection(db, 'users'), {
       userId: user.uid,

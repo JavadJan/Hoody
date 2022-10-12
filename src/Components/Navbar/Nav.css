@@ -8,10 +8,6 @@
   text-decoration: none;
 }
 
-header {
-  background-color: rgba(181, 180, 180, 0.522);
-}
-
 .header-scroll {
   background-color: rgba(12, 12, 12, 0.722);
   -webkit-backdrop-filter: blur(8px);
@@ -33,6 +29,10 @@ header {
   z-index: 9999;
   border-bottom: 1px solid rgba(244, 244, 244, 0.275);
   transition: 400ms all linear;
+}
+
+.header.forLogin {
+  background-color: var(--color-bg1);
 }
 
 .navbar {

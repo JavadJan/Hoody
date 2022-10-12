@@ -134,7 +134,8 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: #ab8262;
+  /* background-color: #ab8262; */
+  background-color: var(--color-bg1);
   border: none;
   outline: none;
   height: 49px;
@@ -148,7 +149,8 @@ form.sign-in-form {
 }
 
 .btn:hover {
-  background-color: #ab8262;
+  /* background-color: #ab8262; */
+  background-color: var(--color-btn2);
 }
 .panels-container {
   position: absolute;
@@ -163,8 +165,8 @@ form.sign-in-form {
 .container:before {
   content: "";
   position: absolute;
-  height: 2000px;
-  width: 2000px;
+  height: 4000px;
+  width: 3000px;
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
@@ -290,6 +292,7 @@ form.sign-in-form {
   .panels-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
+    
   }
 
   .panel {
@@ -306,6 +309,8 @@ form.sign-in-form {
 
   .left-panel {
     grid-row: 1 / 2;
+    position: relative;
+    top: 3rem;
   }
 
   .image {
@@ -339,8 +344,8 @@ form.sign-in-form {
     width: 1500px;
     height: 1500px;
     transform: translateX(-50%);
-    left: 30%;
-    bottom: 68%;
+    left: 50%;
+    bottom: 60%;
     right: initial;
     top: initial;
     transition: 2s ease-in-out;
@@ -371,6 +376,11 @@ form.sign-in-form {
     top: 5%;
     transform: translate(-50%, 0);
   }
+  .sign-up-form{
+    position: relative;
+    top: 2rem;
+  }
+
 }
 
 @media (max-width: 570px) {
@@ -384,12 +394,17 @@ form.sign-in-form {
   .panel .content {
     padding: 0.5rem 1rem;
   }
+  .left-panel{
+    position: relative;
+    top:3rem;
+  }
   .container {
     padding: 1.5rem;
+    position: relative;
   }
 
   .container:before {
-    bottom: 72%;
+    bottom: 67%;
     left: 50%;
   }
 

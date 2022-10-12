@@ -20,19 +20,19 @@ export const Nav = () => {
   const changeColor = () => {
     if (window.scrollY >= 90) {
       setColor(true);
-     
-    } else{
+
+    } else {
       setColor(false);
     }
   };
   window.addEventListener("scroll", changeColor);
 
-// useEffect(()=>{
-// if(window.innerWidth<=800){
-//  setColor(false)
-// }
+  // useEffect(()=>{
+  // if(window.innerWidth<=800){
+  //  setColor(false)
+  // }
 
-// },[])
+  // },[])
 
   const handleStyle = {
     backgroundColor: "transparent"
@@ -40,10 +40,10 @@ export const Nav = () => {
 
   const location = useLocation()
 
-  console.log(location.pathname)
+  console.log(location.pathname === '/Login' ? console.log('login page' ): console.log('home page'))
 
   return (
-    <header className={`${location.pathname === './SignUp ' ? 'header-no-bg' : 'header'}` && color ? "header-scroll" : "header"}>
+    <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <Link to="/" className="logo">
           HOoDY </Link>

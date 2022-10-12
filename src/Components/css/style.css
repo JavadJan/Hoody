@@ -7,7 +7,7 @@
 
 :root {
   --color-bg1:#266453;
-  --color-btn2:#06FFD2;
+  --color-btn2:#008fff;
   --color-danger:#fa4753;
   --color-success:#058240;
   --colo-bg-gray:#EDEDED;
@@ -79,7 +79,7 @@ body {
   border-radius: 50%;
 }
 .container_signup .signup-page .signup-box .btnGroup .facebook {
-  color: rgb(0, 94, 255);
+  color: rgb(0, 123, 255);
   font-size: 20px;
 }
 .container_signup .signup-page .signup-box .btnGroup .google {
