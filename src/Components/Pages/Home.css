@@ -54,24 +54,24 @@
     transition: 300ms all ease-in;
 }
 .join{
-    background-color: var(--color-bg1);
+    background-color: var(--color-light-green);
     color:var(--colo-bg-gray);
     border: none;
    
 }
 .join:hover{
     background-color:rgba(255, 255, 255, 0.825);
-    color: var(--color-bg1);
+    color:var(--color-light-green);
 }
 .donate{
-    color: var(--color-bg1);
+    color: var(--colo-bg-gray);
     background: transparent;
-    border:1px solid  var(--color-bg1);
+    border:1px solid  var(--colo-bg-gray);
 
 }
 .donate:hover{
-    border: 1px solid var(--colo-bg-gray);
-    color: var(--colo-bg-gray);
+    border: 1px solid var(--color-light-green);
+    color: var(--color-light-green);
 }
 @media screen and (max-width:1024px){
   

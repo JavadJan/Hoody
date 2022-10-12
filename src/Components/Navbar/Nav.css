@@ -32,7 +32,8 @@
 }
 
 .header.forLogin {
-  background-color: var(--color-bg1);
+  background-color: rgba(0, 0, 0, 0.912);
+  position: relative;
 }
 
 .navbar {
@@ -92,7 +93,7 @@
   left: 0;
 }
 .navbar .List a:hover {
-  color: var(--color-bg1);
+  color: var(--color-light-green);
 }
 .navbar .List a.active {
   color: var(--color-dark-green);
@@ -116,6 +117,9 @@
   width: 0;
   height: 0;
 }
+.navbar .List .subscribe.active {
+  background-color: var(--colo-bg-gray);
+}
 
 .menu-burger {
   display: none;
@@ -126,7 +130,8 @@
     position: absolute;
     display: inline;
     right: 4%;
-    background-color: rgba(5, 5, 5, 0.947);
+    background-color: rgba(0, 0, 0, 0.912);
+    box-shadow: 1px 1px 22px rgba(21, 19, 19, 0.564);
     text-align: center;
     padding: 1rem 3.3rem;
     top: 4rem;
@@ -218,5 +223,12 @@
   .open .item-list4 {
     -webkit-animation: fadeInRight 0.7s ease-in;
             animation: fadeInRight 0.7s ease-in;
+  }
+}
+@media screen and (max-width: 475px) {
+  .navbar .List {
+    right: 0%;
+    top: 3.5rem;
+    width: 100%;
   }
 }/*# sourceMappingURL=Nav.css.map */
