@@ -2,9 +2,9 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { userContext } from './Context/userContext';
 import { Nav } from './Components/Navbar/Nav';
-import { Home } from './Components/Pages/Home';
-import { About } from './Components/Pages/About';
-import { Contact } from './Components/Pages/Contact';
+import { Home } from './Components/Pages/Home/Home';
+import { About } from './Components/Pages/About/About';
+import { Contact } from './Components/Pages/Contact/Contact';
 import { SignUp } from './Components/Pages/SignUp';
 import { Login } from './Components/Pages/Login';
 import { Footer } from './Components/Footer/Footer';

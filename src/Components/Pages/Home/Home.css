@@ -73,6 +73,8 @@
     border: 1px solid var(--color-light-green);
     color: var(--color-light-green);
 }
+
+
 @media screen and (max-width:1024px){
   
     .video{  

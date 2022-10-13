@@ -1,8 +1,11 @@
 import React from 'react'
-import video from '../../assets/back-video.mp4'
+import video from '../../../assets/back-video.mp4'
+import  {About}  from '../About/About'
 import './Home.css'
 export const Home = () => {
   return (
+
+    <>
     <div className='home'>
       <div className="background-video">
         <video autoPlay mute="true" loop className='video'>
@@ -28,5 +31,8 @@ export const Home = () => {
 
     
     </div>
+
+    <About/>
+    </>
   )
 }
