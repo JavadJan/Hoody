@@ -93,3 +93,56 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+## Installation 
+<h3>Download dependencies:</h3>
+
+##
+
+With npm:
+
+<h5>install react dom and react router dom</h5>
+
+
+```bash
+npm install react-router-dom
+```
+
+```bash
+npm install react-dom
+```
+
+<h5>For using sass</h5>
+
+```bash
+npm install sass
+```
+
+
+<h5>Add <a href="https://animate.style/" target="_blank">animate</a> css</h5>
+
+
+```bash
+npm install animate.css --save
+
+```
+
+<h5>Add <a href="https://www.emailjs.com/" target="_blank">email js </a>for contact send form</h5>
+
+
+```bash
+npm install emailjs-com
+
+```
+
+<h5>Install react icons </h5>
+
+
+```bash
+npm install react-icons
+```
+
