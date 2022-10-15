@@ -8,15 +8,32 @@
   text-decoration: none;
 }
 
-header {
-  background-color: rgba(14, 14, 14, 0.507);
-  border-radius: 45px;
+.header-scroll {
+  background-color: rgba(12, 12, 12, 0.722);
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
-  position: absolute;
-  top: 1%;
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+  transition: 400ms all linear;
+  -webkit-animation: slideInDown 1s forwards ease-in;
+          animation: slideInDown 1s forwards ease-in;
+}
+
+.header {
+  background-color: rgba(181, 180, 180, 0.522);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  position: fixed;
   width: 100%;
   z-index: 9999;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.275);
+  transition: 400ms all linear;
+}
+
+.header.forLogin {
+  background-color: rgba(0, 0, 0, 0.912);
+  position: relative;
 }
 
 .navbar {
@@ -51,15 +68,38 @@ header {
   font-weight: 400;
   font-size: var(--font-size);
   transition: 400ms all ease;
+  z-index: 0;
+  font-weight: 500;
+}
+.navbar .List a::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 5%;
+  border-radius: 2px;
+  background-color: white;
+  z-index: 1;
+  bottom: -110%;
+  left: 20%;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+.navbar .List a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+  width: 100%;
+  left: 0;
 }
 .navbar .List a:hover {
-  color: var(--color-bg1);
+  color: var(--color-light-green);
 }
 .navbar .List a.active {
-  color: var(--color-bg1);
+  color: var(--color-dark-green);
 }
 .navbar .List .subscribe {
-  border: 1px solid var(--colo-bg-gray);
+  border: 1px solid rgba(255, 255, 255, 0.481);
   border-radius: 35px;
   padding: 10px;
   transition: 400ms all ease;
@@ -67,10 +107,18 @@ header {
 .navbar .List .subscribe:hover {
   background-color: rgba(255, 255, 255, 0.711);
   color: grey;
-  outline: 1px solid var(--colo-bg-gray);
+  outline: 1px solid rgba(255, 255, 255, 0.481);
   outline-offset: 3px;
-  -webkit-animation: pulse 1s infinite;
-          animation: pulse 1s infinite;
+  -webkit-animation: pulse 1s infinite forwards;
+          animation: pulse 1s infinite forwards;
+}
+.navbar .List .subscribe::before {
+  content: "";
+  width: 0;
+  height: 0;
+}
+.navbar .List .subscribe.active {
+  background-color: var(--colo-bg-gray);
 }
 
 .menu-burger {
@@ -81,25 +129,29 @@ header {
   .navbar .List {
     position: absolute;
     display: inline;
-    right: 5%;
-    background-color: rgba(0, 0, 0, 0.51);
-    border-radius: 45px;
+    right: 4%;
+    background-color: rgba(0, 0, 0, 0.912);
+    box-shadow: 1px 1px 22px rgba(21, 19, 19, 0.564);
     text-align: center;
     padding: 1rem 3.3rem;
     top: 4rem;
     visibility: hidden;
     transition: 400ms ease-in;
-    -webkit-animation: fadeOutRight 0.3s ease forwards;
-            animation: fadeOutRight 0.3s ease forwards;
+    -webkit-animation: flipOutX 0.3s ease forwards;
+            animation: flipOutX 0.3s ease forwards;
   }
   .navbar .List a {
     padding-inline: 3rem;
     margin-block: 2.5rem;
   }
+  .navbar .List a::before {
+    width: 0;
+    height: 0;
+  }
   .open .List {
     visibility: visible;
-    -webkit-animation: fadeInRight 0.3s ease forwards;
-            animation: fadeInRight 0.3s ease forwards;
+    -webkit-animation: flipInX 1s ease forwards;
+            animation: flipInX 1s ease forwards;
   }
   .menu-burger {
     display: block;
@@ -172,8 +224,11 @@ header {
     -webkit-animation: fadeInRight 0.7s ease-in;
             animation: fadeInRight 0.7s ease-in;
   }
-  .open .item-list5 {
-    -webkit-animation: fadeInRight 0.8s ease-in;
-            animation: fadeInRight 0.8s ease-in;
+}
+@media screen and (max-width: 475px) {
+  .navbar .List {
+    right: 0%;
+    top: 3.5rem;
+    width: 100%;
   }
 }/*# sourceMappingURL=Nav.css.map */

@@ -7,7 +7,7 @@
 
 :root {
   --color-bg1:#266453;
-  --color-btn2:#06FFD2;
+  --color-btn2:#008fff;
   --color-danger:#fa4753;
   --color-success:#058240;
   --colo-bg-gray:#EDEDED;
@@ -16,10 +16,10 @@
   --color-black:#101010;
   /* Palette colors  */
   --color-dark-green:#264653;
-  --color-light-green:#2a9d8f;
+  --color-light-green:#28877f;
   --color-font-yellow:#e9c464;
   --color-font-orange1:#f4a261;
-  --color-font-orange2:#e76f51;
+  --color-font-orange2:#ff642f;
   --transmit-all: all 400ms ease;
   --container-sm:80%;
   --container-md:90%;
@@ -34,19 +34,15 @@ body {
   background: var(--color-white);
 }
 
-.container_signup {
-  position: relative;
-}
 .container_signup .signup-page {
   display: grid;
   grid-template-columns: 40% 60%;
   width: 80%;
   margin: 0 auto;
   position: relative;
-  margin-top: 1rem;
   gap: 3rem;
   height: 65vh;
-  margin-top: 4rem;
+  top: 6rem;
 }
 .container_signup .signup-page .box-img {
   background: transparent;
@@ -65,9 +61,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   height: 450px;
   box-shadow: 6px 6px 10px 18px rgba(232, 223, 223, 0.154);
+  padding-top: 10px;
 }
 .container_signup .signup-page .signup-box .btnGroup {
   display: flex;
@@ -82,24 +79,25 @@ body {
   border-radius: 50%;
 }
 .container_signup .signup-page .signup-box .btnGroup .facebook {
-  color: rgb(24, 24, 220);
+  color: rgb(0, 123, 255);
   font-size: 20px;
 }
 .container_signup .signup-page .signup-box .btnGroup .google {
-  color: crimson;
+  color: var(--color-danger);
   font-size: 20px;
 }
 .container_signup .signup-page .signup-box form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 70%;
+  width: 100%;
   padding: 10px;
 }
 .container_signup .signup-page .signup-box form .input {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 60%;
 }
 .container_signup .signup-page .signup-box form .input input {
   height: 2rem;
@@ -112,10 +110,10 @@ body {
   outline: none;
 }
 .container_signup .signup-page .signup-box form .btn {
-  width: 60px;
-  height: 30px;
-  background: rgb(4, 122, 43);
+  height: 35px;
+  background: var(--color-bg1);
   border: none;
   color: white;
   cursor: pointer;
+  font-family: var(--font-family);
 }/*# sourceMappingURL=style.css.map */

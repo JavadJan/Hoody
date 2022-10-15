@@ -1,14 +1,18 @@
 
 # Description:
 
-In our application everyone will be able to sell and donation, and in the feature will get the best price of items in local area. 
-Every user will have a dashboard that can find each other with map, and chat with each other in order to take and give their items. And will be have a explore page to find second-hand items, and also they can post own second-hand items to sell with a price or free donate to NGO. 
-By these actions we expected to reduce consumptions, pollutions make culture in society to use Second-hand items. With this solution everyone every time will sell or donate their second-hand at proper time that is still reusable. 
+In our application everyone will be able to sell and donation second-hand items, and in the feature we want to add a recommend system part that recommend the best price of items which exist in the local market at that moment. 
+
+Every user will have a dashboard that can find each other with map, and chat with each other in order to recieve or send their items. And will be have a explore page to find second-hand items, and also they can post thier own second-hand items to sell with a price or free donate to NGO. 
+
+By these actions we expected to reduce consumptions, pollutions, make culture in society to use Second-hand items. With this solution everyone every time will sell or donate their second-hand items at proper time that is still reusable. 
+
 E.g. when children have toys that do not use anymore will donate to others children at proper time, the means of proper time: some time we have something that we do not use it but due to non-existence solution to sell it or donate, we postpone it to other time to find someone, and eventually maybe we should throw away without using. 
+
 # Team: 
-Javad Khavari  from Afghanistan
-Mansure Khedir from Atopy
-Sirine Soudi from Tunisia
+1. Javad Khavari  from Afghanistan
+2. Mansure Khedir from Atopy
+3. Sirine Soudi from Tunisia
 
 # Technology 
 1.	HTML, CSS
@@ -89,3 +93,56 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+## Installation 
+<h3>Download dependencies:</h3>
+
+##
+
+With npm:
+
+<h5>install react dom and react router dom</h5>
+
+
+```bash
+npm install react-router-dom
+```
+
+```bash
+npm install react-dom
+```
+
+<h5>For using sass</h5>
+
+```bash
+npm install sass
+```
+
+
+<h5>Add <a href="https://animate.style/" target="_blank">animate</a> css</h5>
+
+
+```bash
+npm install animate.css --save
+
+```
+
+<h5>Add <a href="https://www.emailjs.com/" target="_blank">email js </a>for contact send form</h5>
+
+
+```bash
+npm install emailjs-com
+
+```
+
+<h5>Install react icons </h5>
+
+
+```bash
+npm install react-icons
+```
+

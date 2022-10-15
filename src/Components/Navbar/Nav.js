@@ -1,76 +1,97 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import './Nav.css'
 
 
 export const Nav = () => {
 
-  const[showMenu,setShow]=useState(false);
+  const [showMenu, setShow] = useState(false);
 
-  const handleMenu=()=>{
+  const handleMenu = () => {
     console.log('clicked')
     setShow(!showMenu)
   }
 
 
+  const [color, setColor] = useState(false);
 
-  // const [color, setColor] = useState(false);
-  // const changeColor = () => {
-  //   if (window.scrollY >= 90) {
-  //     setColor(true);
-  //   } else {
-  //     setColor(false);
-  //   }
-  // };
-  // window.addEventListener("scroll", changeColor);
 
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setColor(true);
+
+    } else {
+      setColor(false);
+    }
+  };
+  window.addEventListener("scroll", changeColor);
+
+  // useEffect(()=>{
+  // if(window.innerWidth<=800){
+  //  setColor(false)
+  // }
+
+  // },[])
+
+  const handleStyle = {
+    backgroundColor: "transparent"
+  }
+
+  const location = useLocation()
+
+  console.log(location.pathname === '/Login' ? console.log('login page' ): console.log('home page'))
 
   return (
-    <header>
+    <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <Link to="/" className="logo">
           HOoDY </Link>
         <nav className='List' >
-         
-            <NavLink   to="/" exact="true"
+
+          <NavLink to="/" exact="true"
             className='item-list1'
-                activeClassName="active"
-                onClick={()=>{     //when click button hide the menu
-                  setShow(false)
-                }}
-                end        //when click on other button the home will not be active
-                >  
-                  Home</NavLink>
-          
-            <NavLink to="/about" 
+            activeclassname="active"
+            onClick={() => {     //when click button hide the menu
+              setShow(false)
+            }}
+            end        //when click on other button the home will not be active
+          >
+            Home</NavLink>
+
+          <NavLink to="/about"
             className='item-list2'
-            activeClassName="active"
-            onClick={()=>{
+            activeclassname="active"
+            onClick={() => {
               setShow(false)
             }}
-            >About</NavLink>
+          >About</NavLink>
 
-          <NavLink to="/service" 
-          className='item-list3'
-            activeClassName="active"
-            onClick={()=>{
+          <NavLink to="/service"
+            className='item-list3'
+            activeclassname="active"
+            onClick={() => {
               setShow(false)
             }}
-            >Service</NavLink>
-         
-          
-            <NavLink to="/contact" 
+          >Service</NavLink>
+
+
+          <NavLink to="/contact"
             className='item-list4'
-            activeClassName="active"
-            onClick={()=>{
+            activeclassname="active"
+            onClick={() => {
               setShow(false)
             }}
-            > Contact</NavLink>
+          > Contact</NavLink>
 
-         
-            <NavLink to="/SignUp" 
-            className="subscribe item-list5">Subscribe</NavLink>
-        
+
+          <NavLink to="/Login"
+            className="subscribe item-list5"
+            onClick={() => {
+              setShow(false)
+            }}
+            >Subscribe</NavLink>
+
         </nav>
         <button
           className="menu-burger"
