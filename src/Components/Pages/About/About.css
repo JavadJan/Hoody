@@ -12,11 +12,18 @@
 .about-main{
     display: flex;
     flex-direction: column;
+    
+    background-color: var(--color-bg1);
 }
 
 .about-sections1{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    /* margin-top: 9rem ;
+    border: 2px solid red; */
+    margin: 7rem auto;
+    width: var(--container-md);
+
 }
 
 .section-left{

@@ -43,26 +43,25 @@ class UserProfile extends React.Component {
             <div className="menu-container">
               <div className="sub-menu">
                 <div className="icon-container">
-                  <i class="fa-regular fa-user"></i>
+                  <i className="fa-regular fa-user"></i>
                 </div>
                 <div className="icon-container">
-                  <i class="fa-regular fa-bell"></i>
+                  <i className="fa-regular fa-bell"></i>
                 </div>
                 <div className="icon-container">
-                  <i class="fa-regular fa-comment-dots"></i>
+                  <i className="fa-regular fa-comment-dots"></i>
                 </div>
                 <div className="icon-container">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </div>
                 <div className="icon-container">
                   <i
-                    class="fa-regular fa-plus"
+                    className="fa-regular fa-plus pint_mock_icon_container add_pin"
                     onClick={() => this.setState({ show_modal: true })}
-                    className="pint_mock_icon_container add_pin"
                   ></i>
                 </div>
                 <div className="icon-container">
-                  <i class="fa-regular fa-question"></i>
+                  <i className="fa-regular fa-question"></i>
                 </div>
               </div>
             </div>
@@ -71,7 +70,7 @@ class UserProfile extends React.Component {
                 <div className="search-box">
                   <input type="text" placeholder="Search..." />
                   <label htmlFor="" className="icon">
-                    <i class="fas fa-search"></i>
+                    <i className="fas fa-search"></i>
                   </label>
                 </div>
               </div>
