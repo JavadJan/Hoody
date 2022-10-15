@@ -12,7 +12,8 @@ class UserProfile extends React.Component {
     //         this.classList.add('active');
     //     }
     //     allIcon.forEach(e=> e.addEventListener('click', setMenuActive))
-    // },[])
+    // },[]);
+    
     constructor(props) {
       super(props);
   
