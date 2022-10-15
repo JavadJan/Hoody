@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import './Pin.js';
-import './Model.js';
 import './UserProfile.css';
+import Pin from './Pin.js';
+import Model from './Model.js';
 
 class UserProfile extends React.Component {
     // useEffect(()=>{
