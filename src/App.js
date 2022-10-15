@@ -13,8 +13,9 @@ import UserProfile from './Components/UserAccount/UserProfile'
 
 function App() {
   const {user} = UserListener()
+  console.log('user: ' , user)
   return (
-    <userContext.Provider value={user}>
+    <userContext.Provider value={{user}}>
         <Router>
           <Nav />
           <Routes>

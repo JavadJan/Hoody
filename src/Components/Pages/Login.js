@@ -4,7 +4,7 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider, signInWithRedirect, signInWithCredential } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
@@ -64,7 +64,7 @@ export function Login() {
         setEmail('')
         setPassword('')
         setError('unsuccessful to register! ')
-      
+
       }
     }
     else {
@@ -72,7 +72,7 @@ export function Login() {
     }
     //go to login mode
   }
-  
+
   //handle google sign up
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
@@ -86,12 +86,32 @@ export function Login() {
     })
   }
 
-
   //handle facebook sign up
   const handleFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
-    
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        console.log(accessToken)
+
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(errorMessage)
+        // ...
+      });
+
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
