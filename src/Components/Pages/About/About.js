@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useRef} from 'react'
 import './About.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CountUp from 'react-countup';
@@ -8,9 +8,51 @@ import pattern from '../../../assets/about-pattern.png'
 import { GrInstagram, GrTwitter } from 'react-icons/gr'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+
 import { founders } from './founders';
 
+
+gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
+
+
+
 export const About = () => {
+
+  const slideIn = (elem,delay,duration)=>{
+    gsap.fromTo(
+    elem,
+    {
+      opacity:0,
+      y:200,
+    },{
+      opacity:1,
+      y:0,
+      ease:"power2.out",
+      delay:delay || .4,
+      duration:duration || .6,
+      scrollTrigger:{
+        trigger:elem,
+        start:"top center",
+        end:"bottom center"
+
+      }
+    }
+  )
+  }
+
+  useEffect(()=>{
+   slideIn(".about-sections1",".1",".8")
+
+  },[])
+  useEffect(()=>{
+    slideIn(".about-sections2","0",".5")
+ 
+   },[])
+  
   return (
     <div className='about-main contain'>
       <div className="about-sections1">
@@ -21,7 +63,7 @@ export const About = () => {
               Founded in 2022, <span>Hoody </span>is a corporation to raise awareness of the importance of charitable giving,starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
             </p>
-            <button className='learn'>Learn More</button>
+            <button className=' donate learn'>Learn More</button>
           </div>
 
         </div>

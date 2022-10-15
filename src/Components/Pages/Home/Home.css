@@ -5,6 +5,9 @@
     
 }
 
+
+
+
 .background-video{
     background-image:linear-gradient(rgba(9, 23, 15, 0.615),rgba(0, 0, 0, 0.805));
     position: relative;
@@ -25,9 +28,17 @@
     position: absolute;
    top: 35%;
     color: aliceblue;
-    width:60%;
+    width:100%;
     z-index:1;
+    text-align: center;
  
+}
+
+
+.letter{
+    font-weight: 200;
+    display: inline-block;
+    font-size: 15vw;
 }
 .home-content  h1{
     font-size:3.2rem;
@@ -36,6 +47,8 @@
 .home-content p{
     font-size: 1.1rem;
     text-align: center;
+    width: 50%;
+    margin: auto;
    
 }
 .home-content .btn-group{
