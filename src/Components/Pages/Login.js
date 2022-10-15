@@ -90,6 +90,7 @@ export function Login() {
   const hanldeFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
+    
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
