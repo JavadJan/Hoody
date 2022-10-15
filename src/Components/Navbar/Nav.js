@@ -85,8 +85,12 @@ export const Nav = () => {
           > Contact</NavLink>
 
 
-          <NavLink to="/SignUp"
-            className="subscribe item-list5">Subscribe</NavLink>
+          <NavLink to="/Login"
+            className="subscribe item-list5"
+            onClick={() => {
+              setShow(false)
+            }}
+            >Subscribe</NavLink>
 
         </nav>
         <button

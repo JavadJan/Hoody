@@ -64,6 +64,7 @@ export function Login() {
         setEmail('')
         setPassword('')
         setError('unsuccessful to register! ')
+      
       }
     }
     else {
@@ -87,7 +88,7 @@ export function Login() {
 
 
   //handle facebook sign up
-  const hanldeFacebookSignUp = async () => {
+  const handleFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
     
@@ -175,6 +176,7 @@ export function Login() {
               <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" />
             </div>
 
+
             <button type="submit" className="btn">Sign up</button>
 
             <p className="social-text">Or Sign up with social platforms</p>
@@ -182,7 +184,7 @@ export function Login() {
               <Link href="#" className="social-icon" onClick={handleGoogleSignUp}>
                 <i className="fab fa-google"></i>
               </Link>
-              <Link href="#" className="social-icon" onClick={hanldeFacebookSignUp}>
+              <Link href="#" className="social-icon" onClick={handleFacebookSignUp}>
                 <i className="fab fa-facebook-f"></i>
               </Link>
               <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>

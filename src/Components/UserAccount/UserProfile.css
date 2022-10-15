@@ -1,0 +1,160 @@
+.profile-container {
+    min-height: 100vh;
+    min-width: 100vw;
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    overflow-x: hidden;
+    display: flex;
+    padding: 0 40px;
+  }
+  .menu-container {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    padding: 30px 15px;
+  }
+  .sub-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .icon-container {
+    height: 50px;
+    width: 50px;
+    font-size: 28px;
+    min-width: 40px;
+    font-size: 20px;
+    color: #266453;
+    /* border: 2px solid #266453; */
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 15px 0;
+    margin-top: 200px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    transition: 0.3s;
+  }
+  .icon-container:hover,
+  .icon-container.active {
+    background: #2e2f30;
+    color: #feffff;
+    transform: scale(1.1);
+  }
+  main {
+    flex: 1;
+    height: 100%;
+    padding-top: 50px;
+    margin-left: 120px;
+  }
+  .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 800px;
+    width: 100%;
+  }
+  .box .search-box{
+    position: relative;
+    height: 50px;
+    min-width: 760px;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 26px;
+  }
+  .search-box input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 26px;
+    border: none;
+    outline: none;
+    background: #feffff;
+    padding-left: 30px;
+    font-size: 18px;
+  }
+  .search-box .icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-size: 21px;
+    background: #266453;
+    border-radius: 0 26px 26px 0;
+  }
+  .main-container {
+    flex: 1;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-auto-rows: 10px;
+    justify-content: center;
+  }
+  .pin {
+    border-radius: 16px;
+    background: #444;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pin .content {
+    height: 50px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    bottom: -55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    backdrop-filter: blur(5px);
+  }
+  .pin .content h3 {
+    color: #feffff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .pin:hover .content {
+    bottom: 0;
+    transition: bottom 0.4s;
+  }
+  .pin .main-pic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .pin.small {
+    grid-row-end: span 26;
+  }
+  .pin.medium {
+    grid-row-end: span 33;
+  }
+  .pin.large {
+    grid-row-end: span 45;
+  }
+  @media screen and (max-width: 480px) {
+    .profile-container {
+      padding: 0 20px;
+    }
+    .menu-container {
+      padding: 30px 0;
+      width: unset;
+      left: 15px;
+    }
+    main {
+      margin-left: 75px;
+    }
+  }
+  
