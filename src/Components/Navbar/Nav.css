@@ -19,9 +19,18 @@
   -webkit-animation: slideInDown 1s forwards ease-in;
           animation: slideInDown 1s forwards ease-in;
 }
+.header-scroll .navbar .logo img {
+  filter: invert(100%) grayscale(1);
+}
+.header-scroll .navbar .List a {
+  color: var(--colo-bg-gray);
+}
+.header-scroll .navbar .List .subscribe {
+  border: 1px solid rgba(255, 255, 255, 0.481);
+}
 
 .header {
-  background-color: rgba(181, 180, 180, 0.522);
+  background-color: white;
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: fixed;
@@ -35,6 +44,12 @@
   background-color: rgba(0, 0, 0, 0.912);
   position: relative;
 }
+.header.forLogin .navbar .List > * {
+  color: #fff;
+}
+.header.forLogin .navbar .logo img {
+  filter: invert(100%) grayscale(1);
+}
 
 .navbar {
   display: flex;
@@ -45,10 +60,13 @@
   height: 8vh;
   padding: 2% 8%;
   z-index: 9999;
-  color: white;
+  color: black;
 }
 .navbar .logo {
-  color: white;
+  color: black;
+}
+.navbar .logo img {
+  width: 200PX;
 }
 .navbar .List {
   position: relative;
@@ -59,7 +77,7 @@
   gap: 2.1rem;
 }
 .navbar .List a {
-  color: var(--colo-bg-gray);
+  color: black;
   text-transform: uppercase;
   font-weight: 400;
   display: block;
@@ -71,35 +89,14 @@
   z-index: 0;
   font-weight: 500;
 }
-.navbar .List a::before {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 5%;
-  border-radius: 2px;
-  background-color: white;
-  z-index: 1;
-  bottom: -110%;
-  left: 20%;
-  transform-origin: right;
-  transform: scaleX(1);
-  transition: transform 300ms ease-in-out;
-  transition: 300ms ease-in-out;
-}
-.navbar .List a:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
-  width: 100%;
-  left: 0;
-}
 .navbar .List a:hover {
   color: var(--color-light-green);
 }
 .navbar .List a.active {
-  color: var(--color-dark-green);
+  color: var(--color-light-green);
 }
 .navbar .List .subscribe {
-  border: 1px solid rgba(255, 255, 255, 0.481);
+  border: 1px solid rgba(0, 0, 0, 0.481);
   border-radius: 35px;
   padding: 10px;
   transition: 400ms all ease;

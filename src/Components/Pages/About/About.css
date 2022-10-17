@@ -116,12 +116,13 @@ display: block;
     left: 11.46%;
     right: 2.27%;
     top:0;
-
+animation:fadeIn 1s 2s linear forwards;
 
 }
 
 .section-right .blackImg img{
     width: 80%;
+    
 }
 
 
@@ -130,11 +131,7 @@ display: block;
      /*===================== SECTION 2 =======================*/
 
 .about-sections2{
-    margin: 4rem;
-    box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
-    background:url('../../../assets/pattern-png.png');
-    background-color:var(--color-light-green);
-    padding: 2rem;
+  margin-block: 4rem;
 }
 
 
@@ -146,10 +143,31 @@ grid-template-columns: 1fr 1fr 1fr;
 place-items: center;
 padding: 1rem 2rem .8rem;
 
-
 }
 
+
+.background-video{
+    background-image:linear-gradient(rgba(152, 152, 152, 0.615),rgba(28, 27, 27, 0.805));
+    position: relative;
+    width: 100%;
+    height:40vh;
+  
+}
+
+.video{
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 40vh;
+   object-fit: cover;
+   object-position: center;
+}
+
+
 .circle-content{
+    z-index: 1;
     color: white;
     display: flex;
     flex-direction: column;
@@ -182,10 +200,14 @@ padding: 1rem 2rem .8rem;
 
 
 .Founders{
-    margin-top: 2rem;
+    margin-top: 4rem;
 display: block;
 text-align: center;
 color: white;
+background:url('../../../assets/pattern-png.png');
+background-color:var(--color-dark-green);
+box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
+   margin:4rem;
 }
 
 .Founders-boxes{

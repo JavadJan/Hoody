@@ -3,7 +3,8 @@ import './About.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CountUp from 'react-countup';
 import black from '../../../assets/about-back.png'
-import pattern from '../../../assets/about-pattern.png'
+
+import video from '../../../assets/back-video.mp4'
 
 import { GrInstagram, GrTwitter } from 'react-icons/gr'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
@@ -13,7 +14,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 
+
 import { founders } from './founders';
+
 
 
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
@@ -37,7 +40,7 @@ export const About = () => {
       scrollTrigger:{
         trigger:elem,
         start:"top center",
-        end:"bottom center"
+        end:"bottom center",
 
       }
     }
@@ -45,20 +48,22 @@ export const About = () => {
   }
 
   useEffect(()=>{
-   slideIn(".about-sections1",".1",".8")
+   slideIn(".about-main",".1",".8")
 
   },[])
-  useEffect(()=>{
-    slideIn(".about-sections2","0",".5")
+  // useEffect(()=>{
+  //   slideIn(".Founders","0",".5")
  
-   },[])
+  //  },[])
   
   return (
+    
     <div className='about-main contain'>
       <div className="about-sections1">
 
         <div className="section-left">
           <div className="about-content">
+            
             <p>
               Founded in 2022, <span>Hoody </span>is a corporation to raise awareness of the importance of charitable giving,starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
@@ -68,43 +73,53 @@ export const About = () => {
 
         </div>
         <div className="section-right">
-          <div className="blackImg"><img src={black} alt="" /></div>
+          
+<div className="blackImg"> <img src={black} alt="" /></div>
+           
+          
+         
         </div>
       </div>
 
       <div className="about-sections2">
-
-        <div className="circles">
-          <div className="circle-content">
-            <div className="circle">
-              <i className="fa-solid fa-hand-holding-heart"></i>
-              <h3><CountUp start={0} end={19000} duration={5} />+</h3>
+        <div className="background-video">
+            <video autoPlay mute="true" loop className='video'>
+              <source src={video} />
+            
+            </video>
+              
+            <div className="circles">
+            <div className="circle-content">
+              <div className="circle">
+                <i className="fa-solid fa-hand-holding-heart"></i>
+                <h3><CountUp start={0} end={19000} duration={5} />+</h3>
+              </div>
+              <p>Donation Upgrade</p>
+              <small>since 2021</small>
             </div>
-            <p>Donation Upgrade</p>
-            <small>since 2021</small>
-          </div>
 
 
-          <div className="circle-content">
-            <div className="circle">
-              <i className="fa-regular fa-handshake"></i>
-              <h3><CountUp start={0} end={12420} duration={5} />+</h3>
+            <div className="circle-content">
+              <div className="circle">
+                <i className="fa-regular fa-handshake"></i>
+                <h3><CountUp start={0} end={12420} duration={5} />+</h3>
+              </div>
+              <p>Charity movement</p>
+              <small>since 2021</small>
             </div>
-            <p>Charity movement</p>
-            <small>since 2021</small>
-          </div>
 
 
-          <div className="circle-content">
-            <div className="circle">
-              <i className="fa-solid fa-shield-heart"></i>
-              <h3><CountUp start={0} end={14250} duration={5} />+</h3>
+            <div className="circle-content">
+              <div className="circle">
+                <i className="fa-solid fa-shield-heart"></i>
+                <h3><CountUp start={0} end={14250} duration={5} />+</h3>
+              </div>
+              <p>Volunteering activities</p>
+              <small>since 2021</small>
             </div>
-            <p>Volunteering activities</p>
-            <small>since 2021</small>
+            </div>
+          
           </div>
-
-        </div>
 
         <div className="Founders">
           <h1>Founder's of Hoody</h1>
