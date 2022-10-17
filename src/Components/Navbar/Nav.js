@@ -40,7 +40,7 @@ export const Nav = () => {
 
   const location = useLocation()
 
-  console.log(location.pathname === '/Login' ? console.log('login page' ): console.log('home page'))
+  console.log(location.pathname ==="/login" ? console.log('login' ): console.log('not login') , location.pathname)
 
   return (
     <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
