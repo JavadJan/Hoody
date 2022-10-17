@@ -146,3 +146,10 @@ npm install emailjs-com
 npm install react-icons
 ```
 
+<h5>Install react parallax mouse </h5>
+
+
+```bash
+npm i react-parallax-mouse
+```
+
