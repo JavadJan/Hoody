@@ -22,7 +22,7 @@ class UserProfile extends React.Component {
         show_modal: false,
       };
     }
-  
+    
     add_pin = (pinDetails) => {
       this.setState((_state) => {
         const new_pins = [..._state.pins];
@@ -35,7 +35,6 @@ class UserProfile extends React.Component {
         };
       });
     };
-  
     render() {
       return (
         <div>

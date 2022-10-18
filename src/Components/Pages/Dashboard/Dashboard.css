@@ -1,0 +1,133 @@
+.dashboard {
+  background-color: #eeeeee;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 13% 87%;
+  /*-------------main*/
+  /*-----------side bar*/
+}
+.dashboard .main-profile {
+  height: 100%;
+  grid-column: 2;
+  margin-right: 5px;
+  margin-left: 5px;
+  box-shadow: 2px 2px 6px rgb(101, 104, 104);
+  /*----------header*/
+  /*------------- main content*/
+}
+.dashboard .main-profile .header-profile {
+  height: 4rem;
+  background: var(--color-white);
+  padding: 0 1rem;
+}
+.dashboard .main-profile .header-profile .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard .main-profile .header-profile .header-content .logo {
+  height: 100%;
+}
+.dashboard .main-profile .header-profile .header-content .logo img {
+  width: 200px;
+  height: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.dashboard .main-profile .header-profile .header-content .user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard .main-profile .header-profile .header-content .user-info .pic img {
+  border: 1px solid #eeeeee;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.dashboard .main-profile .header-profile .header-content .user-info .down i {
+  font-size: 40px;
+  font-weight: 100;
+  color: rgb(101, 104, 104);
+  cursor: pointer;
+}
+.dashboard .main-profile .main-profileContent {
+  background-color: var(--color-white);
+  margin-top: 5px;
+  padding: 2rem;
+  height: calc(100vh - 5rem);
+}
+.dashboard .sidebar-profile {
+  height: 100vh;
+  grid-column: 1;
+  background-color: white;
+  padding: 2rem 1rem;
+  box-shadow: 2px 2px 6px rgb(101, 104, 104);
+}
+.dashboard .sidebar-profile .sidebar-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11rem;
+}
+.dashboard .sidebar-profile .sidebar-content .user-pic {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.dashboard .sidebar-profile .sidebar-content .user-pic div {
+  margin-top: 25px;
+}
+.dashboard .sidebar-profile .sidebar-content .user-pic button {
+  border: none;
+  height: 30px;
+  margin-top: 15px;
+  width: 150px;
+  cursor: pointer;
+  transition: all 600ms ease;
+}
+.dashboard .sidebar-profile .sidebar-content .user-pic button:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 6px rgb(101, 104, 104);
+}
+.dashboard .sidebar-profile .sidebar-content .user-pic img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #eeeeee;
+  box-shadow: 2px 2px 6px rgb(101, 104, 104);
+}
+.dashboard .sidebar-profile .sidebar-content ul {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: -4rem;
+}
+.dashboard .sidebar-profile .sidebar-content ul li {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #eeeeee;
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  box-shadow: 2px 2px 6px rgb(101, 104, 104);
+  transition: all 600ms ease;
+}
+.dashboard .sidebar-profile .sidebar-content ul li i {
+  font-size: 35px;
+}
+.dashboard .sidebar-profile .sidebar-content ul li:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}/*# sourceMappingURL=Dashboard.css.map */

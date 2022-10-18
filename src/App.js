@@ -12,6 +12,7 @@ import { UserListener } from './hook/userListener'
 import UserProfile from './Components/UserAccount/UserProfile'
 import { NotFound } from './Components/Pages/notFound';
 import * as ROUTES from './Components/Route/ROUTES'
+import { Dashboard } from './Components/Pages/Dashboard/Dashboard';
 
 
 function App() {
@@ -21,17 +22,18 @@ function App() {
   return (
     <userContext.Provider value={{ user }}>
       <Router>
-        {Object.values(ROUTES).some((p)=>p===window.location.pathname) ? <Nav />: ""}
+        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ""}
         <Routes>
           <Route index element={<Home />} />
           <Route path={ROUTES.About} element={<About />} />
           <Route path={ROUTES.Contact} element={<Contact />} />
           <Route path={ROUTES.Sign_Up} element={<SignUp />} />
           <Route path={ROUTES.Login} element={<Login />} />
+          <Route path={ROUTES.Dashboard} element={user ? <Dashboard /> : <Login />} />
           <Route path={ROUTES.Profile} element={<UserProfile />} />
-          <Route path="*" element={<NotFound/>}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        {Object.values(ROUTES).some((p)=>p===window.location.pathname) ? <Footer/>: ""}
+        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""}
       </Router>
     </userContext.Provider>
   );
