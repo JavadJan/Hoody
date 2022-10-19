@@ -57,12 +57,20 @@
   margin-top: 5px;
   padding: 2rem;
   height: calc(100vh - 5rem);
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
 .dashboard .main-profile .main-profileContent iframe {
   border: 2px solid green;
   filter: brightness(20%);
   margin: auto;
   background: gray;
+}
+.dashboard .main-profile .main-profileContent .others-items {
+  border: 2px solid red;
+}
+.dashboard .main-profile .main-profileContent .user-items {
+  border: 2px solid green;
 }
 .dashboard .sidebar-profile {
   height: 100vh;
@@ -136,4 +144,21 @@
 .dashboard .sidebar-profile .sidebar-content ul li:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 780px) {
+  .dashboard {
+    grid-template-columns: 15% 85%;
+  }
+  .dashboard .main-profile .main-profileContent {
+    display: flex;
+    flex-direction: column;
+  }
+  .dashboard .sidebar-profile .sidebar-content .user-pic {
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboard .sidebar-profile .sidebar-content .user-pic button {
+    width: 70%;
+  }
 }/*# sourceMappingURL=Dashboard.css.map */

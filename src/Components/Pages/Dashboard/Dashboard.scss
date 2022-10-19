@@ -64,6 +64,8 @@
             margin-top: 5px;
             padding: 2rem ;
             height: calc(100vh - 5rem);
+            display: grid;
+            grid-template-columns: 70% 30%;
             iframe {
                 // width: fit-content;
                 border: 2px solid green;
@@ -71,6 +73,13 @@
                 margin: auto;
                 background: gray;
             }
+            .others-items{
+                border: 2px solid red;
+            }
+            .user-items{
+                border: 2px solid green;
+            }
+
         }
     }
 
@@ -153,3 +162,22 @@
     }
 }
 
+@media screen and (max-width:780px) {
+    .dashboard{
+        grid-template-columns: 15% 85%;
+    }
+    .dashboard .main-profile .main-profileContent{
+        display: flex;
+        flex-direction: column;
+    }
+    .dashboard .sidebar-profile .sidebar-content .user-pic{
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 70%;
+        }
+    }
+}
+@media screen and (max-width:780px) {
+    
+}

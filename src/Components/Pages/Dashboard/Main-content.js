@@ -1,5 +1,7 @@
 import React, { lazy } from 'react'
 import { Iframe } from './Iframe'
+import { OthersItems } from './OthersItems'
+import { UserItems } from './UserItems'
 
 export const MainContent = () => {
     const style ={border : 0} 
@@ -12,14 +14,16 @@ export const MainContent = () => {
 
     return (
         <div className='main-profileContent'>
-            <Iframe 
+            {/* <Iframe 
             src ={src} 
             width= {width} 
             height = {height} 
             style = {style} 
             allowFullScreen = {""}  
             load = {load} 
-            referrerPolicy = {referrerPolicy} />
+            referrerPolicy = {referrerPolicy} /> */}
+            <OthersItems/>
+            <UserItems/>
            
         </div>
     )
