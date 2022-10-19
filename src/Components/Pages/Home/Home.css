@@ -85,6 +85,7 @@
 
 
 
+
 .home-content{
    
     position: absolute;
@@ -102,7 +103,7 @@
     display: inline-block;
     font-size: 15vw;
     color: var(--colo-bg-gray);
-    text-shadow:5px 5px 3px rgba(30, 30, 30, 0.897);
+    text-shadow:5px 5px 3px rgba(30, 30, 30, 0.664);
 }
 .home-content  h1{
     font-size:3.2rem;

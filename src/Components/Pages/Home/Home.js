@@ -11,12 +11,13 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 
 
-import abstract from '../../../assets/test/abstract.png'
-import circle from '../../../assets/test/hexagon.png'
+
+import polygon from '../../../assets/test/hexagon.png'
 import dots from '../../../assets/test/hexagon.png'
 import dots1 from '../../../assets/test/cell.png'
 
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
+import { Contact } from '../Contact/Contact'
 
 
 
@@ -56,8 +57,8 @@ const parallaxRef=useRef();
 
   const load = () =>{
     let tl1=gsap.timeline();
-    let tl2=gsap.timeline()
-    const elem=document.querySelector('.circlesHome');
+    let tl2=gsap.timeline();
+    
     tl1.fromTo(".letter",
     {
       x:-100,
@@ -177,7 +178,7 @@ opacity:0
 
   useEffect(()=>{
     load()
-    slideIn(".circlesHome")
+    // slideIn(".circlesHome")
   },[])
 
   return (
@@ -192,7 +193,8 @@ opacity:0
               gridTemplateColumns: "auto auto",
               overflow:"visible"
             }}
-            >
+          >
+  
 
     <MouseParallaxChild factorX={0.03} factorY={0.08} >
         <img src={dots1} alt=""  className='abstract'/>
@@ -202,7 +204,7 @@ opacity:0
     </MouseParallaxChild>
 
     <MouseParallaxChild factorX={0.05} factorY={0.09}>
-        <img src={circle} alt="" className='circle1'/>
+        <img src={polygon} alt="" className='circle1'/>
     </MouseParallaxChild>
     
 </MouseParallaxContainer>
@@ -237,10 +239,11 @@ opacity:0
 
      </div>
 
-
+   
       </div>
 
       <About />
+      <Contact/>
     </>
   )
 }

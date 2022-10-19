@@ -1,0 +1,172 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+.contact{
+    background:linear-gradient(rgba(0, 0, 0, 0),rgba(23, 26, 23, 0.036)),url('../../../assets/pattern.jpg');
+   background-size: contain; 
+    /* background-color:darkslategray; */
+    padding:5rem 4rem;
+}
+
+
+.contact-section{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    position: relative;
+}
+
+
+.section1-contact{
+    background-color:#fff;
+    padding: 2rem 4rem;
+    width: fit-content;
+    border-radius: 15px;
+    box-shadow: 0px 0px 50px 10px  rgba(11, 11, 11, 0.438);
+    text-align: center;
+}
+
+.section1-contact h1{
+    color: var(--color-light-green);
+    font-size: 2rem;
+    text-transform: capitalize;
+    letter-spacing: .2em;
+}
+.form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+   padding-top: 2rem;
+}
+
+.form label{
+    color: var(--color-dark-green);
+    place-self: left;
+   
+}
+.form .contact-div{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+position: relative;
+}
+.contact-div input{
+
+    padding-block: .5rem;
+    font-size: .8rem;
+}
+.contact-div >*::placeholder{
+    color: rgba(128, 128, 128, 0.552);
+    font-family: var(--font-family);
+    font-weight: 600;
+}
+.contact-div label{
+    font-weight: 600;
+   
+
+}
+label::before{
+content: '';
+position: absolute;
+height: 1px;
+width: 100%;
+bottom: 0;
+left: 0;
+background-color: rgba(128, 128, 128, 0.703);
+transition: 0.3s all ease;
+
+}
+
+label::after{
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color:var(--color-bg1);
+    transition: 0.3s all ease;
+
+    }
+    
+
+
+input:focus + label::after,
+textarea:focus + label::after{
+width: 100%;
+}
+/* .section1-contact:focus-within {
+    box-shadow: 0px 0.2em 2.5em #c4c4c4;
+    transform: scale(1.025); } */
+
+.contact-div:nth-child(5){
+    grid-column: 1/-1;
+   
+}
+.contact-div textarea{
+    width: 100%;
+}
+
+
+
+.btn-send{
+    width: 80%;
+    padding: .7rem .5rem;
+    margin-block: 5px;
+    border:2px solid  var(--color-dark-green);
+    background-color: transparent;
+    color: var(--color-dark-green);
+    border-radius: 3px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: 400ms all ease;
+
+}
+.btn-send:hover{
+    box-shadow:none;
+    background-color: var(--color-dark-green);
+    color: var(--colo-bg-gray);
+}
+.btn-send:focus{
+    outline:1px solid var(--color-dark-green);
+    outline-offset: 2px;
+}
+.section2-contact{
+    position: absolute;
+transform: translate(-120%,80%);
+
+    background-color: var(--color-dark-green);
+    display: block;
+    text-align: center;
+    padding: 1rem 2rem;
+    color: var(--colo-bg-gray);
+    font-family: var(--font-header);
+    line-height:1.5;
+    width: fit-content;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 50px 10px  rgba(11, 11, 11, 0.438);
+}
+
+.section2-contact p{
+    font-size: .7rem;
+    line-height: 1.2rem;
+    color: rgba(230, 230, 230, 0.805);
+}
+
+
+.logo{
+    font-family: 'Marck Script', cursive;
+    font-size: 1.8rem;
+}

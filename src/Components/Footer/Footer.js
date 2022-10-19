@@ -7,11 +7,16 @@ import {FaFacebookF} from 'react-icons/fa';
 import {BsTwitter,BsInstagram,BsSuitHeartFill}from 'react-icons/bs';
 import {ImPinterest2} from 'react-icons/im'
 
+
+import logo1 from '../../assets/logo1.png'
+
 export const Footer = () => {
     return (
         <footer>
             <div className="footer1">
-                <div className="logo">HOoDY</div>
+                <div className="logo">
+                  <img src={logo1} alt="" />
+                </div>
             </div>
           <div className="footer2">
             <h3>Menu</h3>
