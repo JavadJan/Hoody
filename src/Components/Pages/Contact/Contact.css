@@ -142,6 +142,9 @@ width: 100%;
     outline:1px solid var(--color-dark-green);
     outline-offset: 2px;
 }
+
+
+
 .section2-contact{
     position: absolute;
 transform: translate(-120%,80%);

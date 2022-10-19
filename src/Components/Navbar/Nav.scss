@@ -36,7 +36,14 @@
     
 .List{
   a{
-    color:var(--colo-bg-gray)
+    color:var(--colo-bg-gray);
+    &.active{
+      background-color:var(--color-light-green);
+    }
+
+    &::before{
+      background-color:var(--color-light-green);
+      }
   }
   .subscribe{
     border: 1px solid rgba(255, 255, 255, 0.481);
@@ -63,16 +70,23 @@
   
   .navbar{
    
-  .List >*{
-
+  .List{
+      a{
     color: #fff;
-    
+
+    &::before{
+      background-color:var(--color-light-green);
+    }
+  }
    
   }
   .logo{
     img{
       filter: invert(100%) grayscale(1);
     }
+  }
+  .subscribe.active{
+    color:var(--color-light-green);
   }
 
 }
@@ -124,34 +138,37 @@
         transition: 400ms all ease;
         z-index:0;
         font-weight: 500;
-        // &::before{
-        //     content: '';
-        //     position: absolute;
-        //     width: 50%;
-        //     height: 5%;
-        //     border-radius: 2px;
-        //     background-color:var(--color-light-green);
-        //     z-index: 1;
-        //     bottom: -110%;
-        //     left: 20%;
-        //     transform-origin: right;
-        //     transform: scaleX(1);
-        //     transition: transform 300ms ease-in-out;
-        //     transition: 300ms ease-in-out;
-
-        // }
-        // &:hover::before{
-        //     transform-origin:left;
-        //     transform: scaleX(1);
-        //     width: 100%;
-        //     left: 0;
-       
-        // }
-        &:hover{
-            color:var(--color-light-green);
+        &::before{
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            border-radius: 2px;
+            background-color:var(--color-yellow);
+            z-index: -1;
+            bottom: 0;
+            left: 0;
+            transform-origin: right;
+            transform: scaleX(1);
+            transition: transform 300ms ease-in-out;
+            transition: 300ms ease-in-out;
         }
-        &.active{
-            color:var(--color-light-green);
+        &:hover::before{
+            transform-origin:left;
+            transform: scaleX(1);
+            width: 100%;
+            left: 0;
+       
+        }
+        &:hover{
+            color:var(--color-dark-green);
+        }
+        &.active {
+          
+         
+            background-color:var(--color-yellow);
+            
+            
            
         }
 
@@ -219,8 +236,14 @@
           transition: 400ms ease-in;
           animation: flipOutX .3s ease forwards;
             a{
+              color: #fff;
             padding-inline: 3rem;
          margin-block: 2.5rem;
+         &.active{
+          color: var(--color-dark-green);
+          background-color: transparent;
+          font-weight: 600;
+         }
          &::before{
           width: 0;
           height: 0;
@@ -259,13 +282,14 @@
         display: block;
         border: none;
         z-index: 2;
+       
       }
       
       .menu-btn-burger{
         display: flex;
         width: 25px;
         height:3px;
-        background: var(--colo-bg-gray);
+        background: var(--color-light-green);
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
         transition: all .4s ease-in-out;
@@ -277,7 +301,7 @@
         position: absolute;
         width: 30px;
         height:3px;
-        background: var(--colo-bg-gray);
+        background: var(--color-light-green);
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
         transition: all .4s ease-in-out;
