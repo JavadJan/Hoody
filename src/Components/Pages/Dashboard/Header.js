@@ -16,7 +16,7 @@ export const Header = ({ user }) => {
                     </div>
 
                     <div className='down'>
-                        <i class="uil uil-angle-down"></i>
+                        <i className="uil uil-angle-down"></i>
                     </div>
                 </div>
             </div>

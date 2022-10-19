@@ -12,18 +12,18 @@ export const Sidebar = () => {
 
         <ul>
           <li>
-            <i class="uil uil-chat">
+            <i className="uil uil-chat">
             </i>
           </li>
           <li>
-            <i class="uil uil-plus">
+            <i className="uil uil-plus">
             </i>
           </li>
           <li>
-            <i class="uil uil-setting"></i>
+            <i className="uil uil-setting"></i>
           </li>
           <li>
-            <i class="uil uil-signout">
+            <i className="uil uil-signout">
             </i>
             {/* <i class="uil uil-signin">
             </i> */}

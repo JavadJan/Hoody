@@ -64,7 +64,13 @@
             margin-top: 5px;
             padding: 2rem ;
             height: calc(100vh - 5rem);
-            
+            iframe {
+                // width: fit-content;
+                border: 2px solid green;
+                filter: brightness(20%);
+                margin: auto;
+                background: gray;
+            }
         }
     }
 

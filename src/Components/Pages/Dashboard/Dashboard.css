@@ -58,6 +58,12 @@
   padding: 2rem;
   height: calc(100vh - 5rem);
 }
+.dashboard .main-profile .main-profileContent iframe {
+  border: 2px solid green;
+  filter: brightness(20%);
+  margin: auto;
+  background: gray;
+}
 .dashboard .sidebar-profile {
   height: 100vh;
   grid-column: 1;

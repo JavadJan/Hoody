@@ -29,7 +29,7 @@ function App() {
           <Route path={ROUTES.Contact} element={<Contact />} />
           <Route path={ROUTES.Sign_Up} element={<SignUp />} />
           <Route path={ROUTES.Login} element={<Login />} />
-          <Route path={ROUTES.Dashboard} element={user ? <Dashboard /> : <Login />} />
+          <Route path={ROUTES.Dashboard} element={<Dashboard />} />
           <Route path={ROUTES.Profile} element={<UserProfile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
