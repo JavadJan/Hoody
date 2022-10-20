@@ -75,6 +75,50 @@
             }
             .others-items{
                 border: 2px solid red;
+               .location{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                .search-box-loc{
+                    position: relative;
+                    height: 40px;
+                    width: 30%;
+                    
+                    // margin: auto;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+                    border-radius: 26px;
+                    input{
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 26px;
+                        border: none;
+                        outline: none;
+                        background: #feffff;
+                        padding-left: 30px;
+                        font-size: 14px;
+                    }
+                    .search-icon{
+                        cursor: pointer;
+                      border: 2px solid rgb(216, 210, 210);
+                      position: absolute;
+                      top: 2px;
+                      right: 3px;
+                      width: 37px;
+                      height: 93%;
+                      text-align: center;
+                      line-height: 35px;
+                      color: var(--color-btn2);
+                      font-size: 16px;
+                      
+  
+                      border-radius: 50%;
+                    }
+                }
+               }
+                
+                  
             }
             .user-items{
                 border: 2px solid green;
@@ -99,11 +143,12 @@
             gap: 11rem;
             .user-pic{     
                 // border:2px solid red;
+                margin-left: 5px;
                 width: fit-content;
                 height:fit-content;
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 div{
                     margin-top: 25px;
                 }
@@ -111,7 +156,7 @@
                     border: none;
                     height: 30px;
                     margin-top: 15px;
-                    width: 150px;
+                    width: 70%;
                     cursor: pointer;
                     transition: all 600ms ease;
                 }
