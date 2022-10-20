@@ -1,5 +1,11 @@
 import React,{useState,useRef} from "react";
 import "./Contact.css";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+import { useEffect } from "react";
+
+
 
 export const Contact = () => {
 
@@ -9,8 +15,10 @@ export const Contact = () => {
   const [number, setNumber] = useState('')
   const [message, setMessage] = useState('')
 
-  const form=useRef()
 
+  const success = () => toast.success('Message successfully received ✔')
+
+  const form=useRef()
 
 
   const init = () => {
@@ -19,7 +27,11 @@ export const Contact = () => {
     setEmail('')
     setMessage('')
     setNumber('')
+   
   }
+  useEffect(()=>{
+    success()
+  },[])
 
 
   return (
@@ -36,7 +48,7 @@ export const Contact = () => {
               onChange={(e) => setName(e.target.value)}
                required
               />
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor="firstName">First Name </label>
             </div>
 
             <div className="contact-div">
@@ -76,7 +88,7 @@ export const Contact = () => {
               ></textarea>
               <label htmlFor="text"></label>
             </div>
-
+      
             <button className="btn-send" type="submit" >send</button>
           </form>
         </div>
@@ -94,7 +106,22 @@ export const Contact = () => {
           <p>Email:email@email.com</p>
           <p>+21346497879</p>
         </div>
+
+ 
+   
       </div>
+      <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+  
     </div>
   );
 };

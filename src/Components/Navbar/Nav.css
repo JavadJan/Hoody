@@ -25,6 +25,12 @@
 .header-scroll .navbar .List a {
   color: var(--colo-bg-gray);
 }
+.header-scroll .navbar .List a.active {
+  background-color: var(--color-light-green);
+}
+.header-scroll .navbar .List a::before {
+  background-color: var(--color-light-green);
+}
 .header-scroll .navbar .List .subscribe {
   border: 1px solid rgba(255, 255, 255, 0.481);
 }
@@ -44,11 +50,17 @@
   background-color: rgba(0, 0, 0, 0.912);
   position: relative;
 }
-.header.forLogin .navbar .List > * {
+.header.forLogin .navbar .List a {
   color: #fff;
+}
+.header.forLogin .navbar .List a::before {
+  background-color: var(--color-light-green);
 }
 .header.forLogin .navbar .logo img {
   filter: invert(100%) grayscale(1);
+}
+.header.forLogin .navbar .subscribe.active {
+  color: var(--color-light-green);
 }
 
 .navbar {
@@ -89,11 +101,32 @@
   z-index: 0;
   font-weight: 500;
 }
+.navbar .List a::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-radius: 2px;
+  background-color: var(--color-yellow);
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+.navbar .List a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+  width: 100%;
+  left: 0;
+}
 .navbar .List a:hover {
-  color: var(--color-light-green);
+  color: var(--color-dark-green);
 }
 .navbar .List a.active {
-  color: var(--color-light-green);
+  background-color: var(--color-yellow);
 }
 .navbar .List .subscribe {
   border: 1px solid rgba(0, 0, 0, 0.481);
@@ -138,8 +171,14 @@
             animation: flipOutX 0.3s ease forwards;
   }
   .navbar .List a {
+    color: #fff;
     padding-inline: 3rem;
     margin-block: 2.5rem;
+  }
+  .navbar .List a.active {
+    color: var(--color-dark-green);
+    background-color: transparent;
+    font-weight: 600;
   }
   .navbar .List a::before {
     width: 0;
@@ -171,7 +210,7 @@
     display: flex;
     width: 25px;
     height: 3px;
-    background: var(--colo-bg-gray);
+    background: var(--color-light-green);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.4s ease-in-out;
@@ -182,7 +221,7 @@
     position: absolute;
     width: 30px;
     height: 3px;
-    background: var(--colo-bg-gray);
+    background: var(--color-light-green);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.4s ease-in-out;

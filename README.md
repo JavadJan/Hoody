@@ -152,4 +152,10 @@ npm install react-icons
 ```bash
 npm i react-parallax-mouse
 ```
+<h5>Install react toastify</h5>
+
+
+```bash
+npm install --save react-toastify
+```
 
