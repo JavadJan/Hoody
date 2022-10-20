@@ -6,7 +6,7 @@ export const Sidebar = () => {
       <div className="sidebar-content">
         <div className='user-pic'>
           <img src={Default} alt="" />
-          <div>@username</div>
+          <div className='username'>@username</div>
           <button>Edit</button>
         </div>
 

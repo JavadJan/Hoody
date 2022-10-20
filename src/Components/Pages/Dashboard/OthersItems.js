@@ -8,13 +8,20 @@ export const OthersItems = () => {
                     <i className="fas fa-location"></i>
                 </div>
                 <div className="search-box-loc">
-                    <input type="text" placeholder='Search location ...' Style="font-family:Arial, FontAwesome" />
+                    <input type="text" placeholder='Search location ...'  />
+                    {/* style="font-family:Arial, FontAwesome" */}
                     {/* placeholder="&#xF002;" */}
                     <span htmlFor="" className="search-icon">
                         <i className="fas fa-search"></i>
                     </span>
                 </div>
             </div>
+
+            <div className='map'>
+                
+            </div>
+
+
 
         </div>
     )
