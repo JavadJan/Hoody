@@ -1,4 +1,4 @@
-import React,{useEffect,useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 import './About.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CountUp from 'react-countup';
@@ -19,51 +19,51 @@ import { founders } from './founders';
 
 
 
-gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 
 
 export const About = () => {
 
-  const slideIn = (elem,delay,duration)=>{
+  const slideIn = (elem, delay, duration) => {
     gsap.fromTo(
-    elem,
-    {
-      opacity:0,
-      y:200,
-    },{
-      opacity:1,
-      y:0,
-      ease:"power2.out",
-      delay:delay || .4,
-      duration:duration || .6,
-      scrollTrigger:{
-        trigger:elem,
-        start:"top center",
-        end:"bottom center",
+      elem,
+      {
+        opacity: 0,
+        y: 200,
+      }, {
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      delay: delay || .4,
+      duration: duration || .6,
+      scrollTrigger: {
+        trigger: elem,
+        start: "top center",
+        end: "bottom center",
 
       }
     }
-  )
+    )
   }
 
-  useEffect(()=>{
-   slideIn(".about-main",".1",".8")
+  useEffect(() => {
+    slideIn(".about-main", ".1", ".8")
 
-  },[])
+  }, [])
   // useEffect(()=>{
   //   slideIn(".Founders","0",".5")
- 
+
   //  },[])
-  
+
   return (
-    
+
     <div className='about-main contain'>
       <div className="about-sections1">
 
         <div className="section-left">
           <div className="about-content">
-            
+
             <p>
               Founded in 2022, <span>Hoody </span>is a corporation to raise awareness of the importance of charitable giving,starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
@@ -73,22 +73,22 @@ export const About = () => {
 
         </div>
         <div className="section-right">
-          
-<div className="blackImg"> <img src={black} alt="" /></div>
-           
-          
-         
+
+          <div className="blackImg"> <img src={black} alt="" /></div>
+
+
+
         </div>
       </div>
 
       <div className="about-sections2">
         <div className="background-video">
-            <video autoPlay mute="true" loop className='video'>
-              <source src={video} />
-            
-            </video>
-              
-            <div className="circles">
+          <video autoPlay mute="true" loop className='video'>
+            <source src={video} />
+
+          </video>
+
+          <div className="circles">
             <div className="circle-content">
               <div className="circle">
                 <i className="fa-solid fa-hand-holding-heart"></i>
@@ -117,17 +117,18 @@ export const About = () => {
               <p>Volunteering activities</p>
               <small>since 2021</small>
             </div>
-            </div>
-          
           </div>
+
+        </div>
 
         <div className="Founders">
           <h1>Founder's of Hoody</h1>
           <div className="Founders-boxes">
-            {founders.map((founder , index) => {
+            {founders.map((founder, index) => {
               return (
                 <div className="Founder-box" key={index}>
                   <img src={founder.img} alt="" className='founder-img' />
+                  
                   <div className="content-founder">
                     <h5>{founder.title}</h5>
                     <p>{founder.job}</p>

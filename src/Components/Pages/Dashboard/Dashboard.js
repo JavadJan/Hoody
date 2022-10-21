@@ -4,7 +4,7 @@ import { userContext } from '../../../Context/userContext'
 import { Header } from './Header'
 import './Dashboard.css'
 import { Sidebar } from './Sidebar'
-import { MainContent } from './Main-content'
+import { MainContent } from './mainContent/Main-content'
 
 export const Dashboard = () => {
   const { user } = useContext(userContext)
@@ -14,7 +14,7 @@ export const Dashboard = () => {
 
       <div className='main-profile'>
         <Header user={user} />
-        <MainContent/>
+        <MainContent />
       </div>
     </div>
   )
