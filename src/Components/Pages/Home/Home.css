@@ -24,7 +24,7 @@
     /* transform: rotate(5deg); */
     /* border-radius:71% 29% 0% 100% / 100% 0% 100% 0% ; */
     height: 100%;
-        width: 400px;
+        width: 25vw;
         top: 0;
         bottom: 0;
         right: -1%;
@@ -41,7 +41,7 @@
     opacity: .5;
 
     height: 100%;
-    width: 400px;
+    width: 25vw;
     top: 0;
     left: -5%;
     animation: bounceInLeft 2s forwards;
@@ -99,11 +99,11 @@
 
 
 .letter{
-    font-weight: 200;
+    font-weight: 400;
     display: inline-block;
     font-size: 15vw;
-    color: var(--colo-bg-gray);
-    text-shadow:5px 5px 3px rgba(30, 30, 30, 0.664);
+    color: rgba(255, 255, 255, 0.778);
+    text-shadow:5px 5px 3px rgba(30, 30, 30, 0.367);
 }
 .home-content  h1{
     font-size:3.2rem;
