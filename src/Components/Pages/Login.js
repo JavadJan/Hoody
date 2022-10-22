@@ -4,11 +4,14 @@ import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider, signInWithRedirect, signInWithCredential, signInWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from "../../Context/userContext";
+import * as ROUTES from "../Route/ROUTES.js"
+import { async } from "@firebase/util";
+
 
 export function Login() {
   const navigate = useNavigate()
@@ -30,6 +33,44 @@ export function Login() {
     setSignUpMode(false)
   };
   let toggleClassCheck = signUpMode ? ' sign-up-mode' : '';
+
+
+  // handle login 
+  const handleLogin = async (event)=>{
+    event.preventDefault();
+    console.log('password , email: ',password , email)
+    await signInWithEmailAndPassword(auth, email, password)
+      .then((userConditional) => {
+        navigate(`/p/${user.displayName}`)
+        console.log(userConditional.user)
+      }).catch((error) => {
+        setEmail('');
+        setPassword('');
+        console.log(error.message)
+        setError('This user is not registered!')
+      })
+      
+  }
+
+  //-------------------login with google
+  const handleLoginGoogle = async () =>{
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider)
+
+    navigate(`/p/${user.displayName}`)
+  }
+
+  // --------------------------Login with Facebook
+ const handleLoginFacebook = async () =>{
+     try {
+      const provider = new FacebookAuthProvider()
+      await signInWithPopup(auth , provider)
+      navigate(`/p/${user.displayName}`)
+     } catch (error) {
+      setError("this user is not registered")
+     }
+  }
+  
 
   //handle sign up
   const handleSignup = async (event) => {
@@ -58,13 +99,13 @@ export function Login() {
           password: password
         })
         console.log('sign up done!')
-        navigate('./Login')
+        navigate(ROUTES.Login)
       } catch (error) {
         setUsername('')
         setEmail('')
         setPassword('')
         setError('unsuccessful to register! ')
-      
+
       }
     }
     else {
@@ -72,7 +113,7 @@ export function Login() {
     }
     //go to login mode
   }
-  
+
   //handle google sign up
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
@@ -84,14 +125,34 @@ export function Login() {
       username: user.displayName,
       email: user.email
     })
+    navigate(ROUTES.Login)
   }
-
 
   //handle facebook sign up
   const handleFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
-    
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        console.log(accessToken)
+        navigate(ROUTES.Login)
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(errorMessage)
+        // ...
+      });
+
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
@@ -103,12 +164,14 @@ export function Login() {
   const handleTwitterSignUp = async () => {
     const provider = new TwitterAuthProvider()
     await signInWithPopup(auth, provider)
+    console.log( 'sign up with twitter')
+
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
       email: user.email
     })
-
+    navigate(ROUTES.Login)
   }
   //handle linkedin sign up
   const handleAppleSignUp = async () => {
@@ -122,37 +185,41 @@ export function Login() {
 
   }
 
+  const style ={
+    color:'red'
+  }
+
   return (
     <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
         <div className="signin-signup">
 
-          {error && <p className="error">{error}</p>}
+          {error && <p className="error" style={style}>{error}</p>}
           {/* to login mode form */}
-          <form action="#" className="sign-in-form">
+          <form action="#" className="sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input value={email} type="text" placeholder="Email" onChange={({target})=>setEmail(target.value)}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" value={password} onChange={({target})=>setPassword(target.value)} />
             </div>
-            <input type="submit" value="Login" className="btn solid" />
-            <p className="social-text">Or Sign in with social platforms</p>
+            <button type="submit" className="btn solid">Login</button>
+            <p className="social-text">Or Login with social platforms</p>
             <div className="social-media">
-              <Link href="#" className="social-icon" >
-                <i className="fab fa-google"></i>
+              <Link href="#" className="social-icon" onClick={handleLoginGoogle}>
+                <i className="fab fa-google" ></i>
               </Link>
-              <Link href="#" className="social-icon">
+              <Link href="#" className="social-icon" onClick={handleLoginFacebook}>
                 <i className="fab fa-facebook-f"></i>
               </Link>
               <Link href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
               </Link>
               <Link href="#" className="social-icon">
-                <i className="fab fa-linkedin-in"></i>
+                <i className="fab fa-apple"></i>
               </Link>
             </div>
           </form>

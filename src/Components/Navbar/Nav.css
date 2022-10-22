@@ -19,9 +19,24 @@
   -webkit-animation: slideInDown 1s forwards ease-in;
           animation: slideInDown 1s forwards ease-in;
 }
+.header-scroll .navbar .logo img {
+  filter: invert(100%) grayscale(1);
+}
+.header-scroll .navbar .List a {
+  color: var(--colo-bg-gray);
+}
+.header-scroll .navbar .List a.active {
+  background-color: var(--color-light-green);
+}
+.header-scroll .navbar .List a::before {
+  background-color: var(--color-light-green);
+}
+.header-scroll .navbar .List .subscribe {
+  border: 1px solid rgba(255, 255, 255, 0.481);
+}
 
 .header {
-  background-color: rgba(181, 180, 180, 0.522);
+  background-color: white;
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: fixed;
@@ -35,6 +50,18 @@
   background-color: rgba(0, 0, 0, 0.912);
   position: relative;
 }
+.header.forLogin .navbar .List a {
+  color: #fff;
+}
+.header.forLogin .navbar .List a::before {
+  background-color: var(--color-light-green);
+}
+.header.forLogin .navbar .logo img {
+  filter: invert(100%) grayscale(1);
+}
+.header.forLogin .navbar .subscribe.active {
+  color: var(--color-light-green);
+}
 
 .navbar {
   display: flex;
@@ -45,10 +72,13 @@
   height: 8vh;
   padding: 2% 8%;
   z-index: 9999;
-  color: white;
+  color: black;
 }
 .navbar .logo {
-  color: white;
+  color: black;
+}
+.navbar .logo img {
+  width: 200PX;
 }
 .navbar .List {
   position: relative;
@@ -59,7 +89,7 @@
   gap: 2.1rem;
 }
 .navbar .List a {
-  color: var(--colo-bg-gray);
+  color: black;
   text-transform: uppercase;
   font-weight: 400;
   display: block;
@@ -75,12 +105,12 @@
   content: "";
   position: absolute;
   width: 50%;
-  height: 5%;
+  height: 100%;
   border-radius: 2px;
-  background-color: white;
-  z-index: 1;
-  bottom: -110%;
-  left: 20%;
+  background-color: var(--color-yellow);
+  z-index: -1;
+  bottom: 0;
+  left: 0;
   transform-origin: right;
   transform: scaleX(1);
   transition: transform 300ms ease-in-out;
@@ -93,13 +123,13 @@
   left: 0;
 }
 .navbar .List a:hover {
-  color: var(--color-light-green);
-}
-.navbar .List a.active {
   color: var(--color-dark-green);
 }
+.navbar .List a.active {
+  background-color: var(--color-yellow);
+}
 .navbar .List .subscribe {
-  border: 1px solid rgba(255, 255, 255, 0.481);
+  border: 1px solid rgba(0, 0, 0, 0.481);
   border-radius: 35px;
   padding: 10px;
   transition: 400ms all ease;
@@ -141,8 +171,14 @@
             animation: flipOutX 0.3s ease forwards;
   }
   .navbar .List a {
+    color: #fff;
     padding-inline: 3rem;
     margin-block: 2.5rem;
+  }
+  .navbar .List a.active {
+    color: var(--color-dark-green);
+    background-color: transparent;
+    font-weight: 600;
   }
   .navbar .List a::before {
     width: 0;
@@ -174,7 +210,7 @@
     display: flex;
     width: 25px;
     height: 3px;
-    background: var(--colo-bg-gray);
+    background: var(--color-light-green);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.4s ease-in-out;
@@ -185,7 +221,7 @@
     position: absolute;
     width: 30px;
     height: 3px;
-    background: var(--colo-bg-gray);
+    background: var(--color-light-green);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 0.4s ease-in-out;

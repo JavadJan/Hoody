@@ -158,7 +158,7 @@ form.sign-in-form {
 .panels-container {
   position: absolute;
   height: 100%;
-  width: 80%;
+  width: 100%;
   top: 0;
   left: 0;
   display: grid;
@@ -185,6 +185,7 @@ form.sign-in-form {
   align-self: center;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
+ 
 }
 
 .panel {
@@ -198,12 +199,12 @@ form.sign-in-form {
 
 .left-panel {
   pointer-events: all;
-  padding: 3rem 17% 2rem 12%;
+  padding: 3rem 18% 2rem 10%;
 }
 
 .right-panel {
   pointer-events: none;
-  padding: 3rem 1% 1rem 50%;
+  padding: 3rem 1% 1rem 10%;
  
 }
 

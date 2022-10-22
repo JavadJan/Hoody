@@ -3,10 +3,20 @@ import { useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import './Nav.css'
 
+import logo from '../../assets/logo.png'
+import logo1 from '../../assets/logo1.png'
 
 export const Nav = () => {
 
   const [showMenu, setShow] = useState(false);
+  // const [classname,setClassName] = useState(false);
+
+
+  // const changeClassName = ()=>{
+  //   if(window.scrollY >= 100){
+  //     console.log()
+  //   }
+  // }
 
   const handleMenu = () => {
     console.log('clicked')
@@ -26,7 +36,7 @@ export const Nav = () => {
     }
   };
   window.addEventListener("scroll", changeColor);
-
+// window.addEventListener('scroll',changeClassName)
   // useEffect(()=>{
   // if(window.innerWidth<=800){
   //  setColor(false)
@@ -34,19 +44,21 @@ export const Nav = () => {
 
   // },[])
 
+
+
   const handleStyle = {
     backgroundColor: "transparent"
   }
 
   const location = useLocation()
 
-  console.log(location.pathname === '/Login' ? console.log('login page' ): console.log('home page'))
+  console.log(location.pathname ==="/login" ? console.log('login' ): console.log('not login') , location.pathname)
 
   return (
     <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <Link to="/" className="logo">
-          HOoDY </Link>
+          <img src={logo1} alt=""></img></Link>
         <nav className='List' >
 
           <NavLink to="/" exact="true"
@@ -105,3 +117,5 @@ export const Nav = () => {
 
   )
 }
+
+// export default Nav;
