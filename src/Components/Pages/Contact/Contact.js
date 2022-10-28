@@ -2,7 +2,7 @@ import React,{useState,useRef} from "react";
 import "./Contact.css";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import emailjs from "emailjs-com";
 import { useEffect } from "react";
 
 
@@ -19,6 +19,26 @@ export const Contact = () => {
   const success = () => toast.success('Message successfully received ✔')
 
   const form=useRef()
+
+
+  const sendContact = (e) => {
+    // e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_uc2gy2a",
+        "template_a99aec9",
+        form.current,
+        ""
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
 
   const init = () => {
@@ -41,7 +61,7 @@ export const Contact = () => {
           <h1>Send your message</h1>
 
 
-          <form ref={form} className="form" onSubmit={init}>
+          <form ref={form} className="form" onSubmit={sendContact}>
             <div className="contact-div">
               <input type="text" placeholder="John"  
               value={name}
