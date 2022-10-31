@@ -23,7 +23,9 @@
     "react-parallax": "^3.5.1",
     "react-parallax-mouse": "^1.7.3",
     "react-router": "^6.4.2",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.8",
     "react-toastify": "^9.0.8",
     "web-vitals": "^2.1.4"
   },

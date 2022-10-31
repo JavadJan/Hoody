@@ -1,3 +1,10 @@
+*,*::before,*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 .home{
    width: 100%;
    display: flex;
@@ -167,7 +174,12 @@
     font-weight: 600;
     transition: 300ms all ease-in;
 }
+.join a{
+    color: var(--colo-bg-gray);
+    transition: 300ms all ease-in;
+}
 .join{
+   
     background-color: var(--color-light-green);
     color:var(--colo-bg-gray);
     border: none;
@@ -176,8 +188,11 @@
 }
 .join:hover{
     background-color:rgba(255, 255, 255, 0.825);
-    color:var(--color-light-green);
     box-shadow: none;
+}
+.join:hover a{
+
+    color:var(--color-light-green);
 }
 .donate{
     color: var(--colo-bg-gray);
@@ -190,6 +205,7 @@
     border: 1px solid var(--color-light-green);
     color: var(--color-light-green);
     box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.512);
 }
 
 
