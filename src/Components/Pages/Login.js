@@ -41,6 +41,7 @@ export function Login() {
     console.log('password , email: ',password , email)
     await signInWithEmailAndPassword(auth, email, password)
       .then((userConditional) => {
+        
         navigate(`/p/${user.displayName}`)
         console.log(userConditional.user)
       }).catch((error) => {

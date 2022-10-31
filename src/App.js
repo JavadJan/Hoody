@@ -17,12 +17,12 @@ import { Dashboard } from './Components/Pages/Dashboard/Dashboard';
 
 function App() {
   const { user } = UserListener()
-  // const location = useLocation()
-  console.log('user: ', user)
+
+  console.log('user: ', user ,window.location.pathname)
   return (
     <userContext.Provider value={{ user }}>
       <Router>
-        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ""}
+        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ''}
         <Routes>
           <Route index element={<Home />} />
           <Route path={ROUTES.About} element={<About />} />
