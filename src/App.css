@@ -35,3 +35,11 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background:rgb(1, 23, 1); 
 }
+
+
+.Oval{
+  position: absolute;
+ left: 50%;
+  top: 40%;
+  margin:auto;
+}

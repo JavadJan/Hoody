@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import {Link, NavLink, useLocation} from 'react-router-dom'
+
+
 import './Nav.css'
 
 import logo from '../../assets/logo.png'
-import logo1 from '../../assets/logo1.png'
+import logo1 from '../../assets/logo1.png';
 
 export const Nav = () => {
 
@@ -86,6 +88,14 @@ export const Nav = () => {
               setShow(false)
             }}
           >Service</NavLink>
+
+        <NavLink to="/product"
+            className='item-list3'
+            activeclassname="active"
+            onClick={() => {
+              setShow(false)
+            }}
+          >Products</NavLink>
 
 
           <NavLink to="/contact"

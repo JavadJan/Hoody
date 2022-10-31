@@ -186,7 +186,7 @@ opacity:0
     <>
       <div className='home'>
       <div className="circlesHome" ref={parallaxRef}>
-      <MouseParallaxContainer   containerStyles={{
+      {/* <MouseParallaxContainer   containerStyles={{
               width: "100%",
               display: "grid",
               position:"relative",
@@ -207,7 +207,7 @@ opacity:0
         <img src={polygon} alt="" className='circle1'/>
     </MouseParallaxChild>
     
-</MouseParallaxContainer>
+</MouseParallaxContainer> */}
 </div>
      
 
@@ -220,6 +220,7 @@ opacity:0
             <span className="letter">Y</span>
             </h1>
             <div id="content">
+
             <h1 id="hText">Let's build a better world</h1>
           <p>“There is no exercise better for the heart
             than reaching down and lifting people up.”

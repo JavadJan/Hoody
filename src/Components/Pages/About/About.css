@@ -19,10 +19,19 @@
 .about-main{
     display: flex;
     flex-direction: column;
-    
+    /* background: var(--color-dark-green); */
     /* background-color: var(--color-bg1); */
 }
 
+.about-main h1{
+    background:-webkit-linear-gradient(317deg, rgba(38,70,83,1) 1%, rgba(40,135,127,1) 31%, rgba(38,70,83,1) 68%, rgba(86,92,111,1) 98%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    font-family: var(--font-family);
+    font-weight: 900;
+    margin:2rem auto;
+}
 
 
      /*===================== SECTION 1 =======================*/
@@ -44,6 +53,7 @@
 .section-left{
 position: relative;
 display: block;
+
 }
 
 .section-left::before{
@@ -58,23 +68,27 @@ display: block;
     height: 340px;
     left: 18px;
     top: 23px;
-    background: var(--color-light-green);
+    /* background: var(--color-light-green); */
     opacity: .6;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
+    border: 2px solid black;
+    z-index: -2;
 }
 
 .about-content{
     position: absolute;
    display: block;
-    width:70%;
+    width:80%;
+    max-width: 100%;
     max-height: 100%;
     height:fit-content;
     left: 80px;
     top: 120px;
     padding: 20px 25px;
     background: #FFFFFF;
+    background: var(--color-dark-green);
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+    color: var(--colo-bg-gray);
 }
 .about-content::before{
     content: '';
@@ -89,23 +103,64 @@ display: block;
 
 .section-left p{
     overflow: hidden;
+    font-family: var(--font-header);
+    line-height: 1.8rem;
+ 
  
 }
 .learn{
-    position: absolute;
-    right: -20%;
-    bottom: -70px;
+    position: relative;
+    right: -100px;
+    top: 80px;
     float: right;
     border: none;
     padding: 1.1rem 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.633);
+    /* border: 1px solid rgba(255, 255, 255, 0.633); */
     font-variant-caps: all-petite-caps;
    transition: 400ms ease-in-out;
+   background-color: transparent;
+   /* background-color: var(--color-dark-green); */
+   color: var(--color-dark-green);
+   font-weight: 600;
+   border:2px solid  var(--color-dark-green);
+  
+ 
 }
-.learn:hover{
-    background-color: var(--color-dark-green);
+
+.learn::before{
+    content:'';
+    position: absolute;
+    display: block;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top:8px;
+    left:8px;
+    background-color: var(--color-light-green);
     color:white;
+    animation: moveOn 1s ease-in forwards;
+    transition: 400ms all ease;
     
+}
+@keyframes moveOn {
+    from{
+        top:0;
+        opacity: .7;
+    }
+    to{
+        top:8px;
+    }
+}
+/* .learn:hover{
+    
+    top:92px;
+    right:-100px;
+} */
+
+.learn:hover::before{
+
+    transform: translate(-8px,-8px);
+ 
 }
 
      /*===================== SECTION 1/RIGHT =======================*/
@@ -122,6 +177,8 @@ animation:fadeIn 1s 2s linear forwards;
 
 .section-right .blackImg img{
     width: 80%;
+    border-radius:44% 56% 68% 32% / 59% 25% 75% 41% ;
+ 
     
 }
 
@@ -147,7 +204,7 @@ padding: 1rem 2rem .8rem;
 
 
 .background-video{
-    background-image:linear-gradient(rgba(152, 152, 152, 0.615),rgba(28, 27, 27, 0.805));
+    background-image:linear-gradient(rgba(16, 16, 16, 0.615),rgba(0, 0, 0, 0.805));
     position: relative;
     width: 100%;
     height:40vh;
@@ -201,13 +258,20 @@ padding: 1rem 2rem .8rem;
 
 .Founders{
     margin-top: 4rem;
+    margin-inline: 0;
 display: block;
 text-align: center;
 color: white;
-background:url('../../../assets/pattern-png.png');
-background-color:var(--color-dark-green);
-box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
-   margin:4rem;
+/* background:url('../../../assets/pattern-png.png'); */
+/* background-color: rgb(38, 70, 83); */
+
+   /* margin:4rem; */
+}
+.Founders h1{
+    
+    background:-webkit-linear-gradient(317deg, rgba(38,70,83,1) 1%, rgba(40,135,127,1) 31%, rgba(38,70,83,1) 68%, rgba(86,92,111,1) 98%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .Founders-boxes{
@@ -216,6 +280,7 @@ box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
     justify-content:center;
     margin:2rem 5rem;
     color: black;
+
 }
 .Founder-box{
     width: 200px;
@@ -225,6 +290,7 @@ box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
     margin: 2rem;
     display: block;
     position: relative;
+    box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
 }
 .founder-img{
     width: 150px;
@@ -250,6 +316,7 @@ box-shadow:10px 10px 52px 20px rgba(0, 0, 0, 0.225);
 }
 .content-founder h5{
     transition: 400ms all;
+ 
 }
 .content-founder p{
     font-size: .8rem;

@@ -12,6 +12,9 @@ import { userContext } from "../../Context/userContext";
 import * as ROUTES from "../Route/ROUTES.js"
 import { async } from "@firebase/util";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export function Login() {
   const navigate = useNavigate()
@@ -23,6 +26,31 @@ export function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
+
+  const notifyError = (message) => toast.error(message, {
+    position: "bottom-center",
+    autoClose: 1500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+
+
+
+    const notifySuccess = (message) => toast.success(message, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
 
 
 
@@ -48,12 +76,13 @@ export function Login() {
         setEmail('');
         setPassword('');
         console.log(error.message)
-        setError('This user is not registered!')
+        // setError('This user is not registered!')
+        notifyError('Please add your email!')
       })
       
   }
 
-  //-------------------login with google
+  //-------------------Login with google
   const handleLoginGoogle = async () =>{
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
@@ -105,12 +134,14 @@ export function Login() {
         setUsername('')
         setEmail('')
         setPassword('')
-        setError('unsuccessful to register! ')
+        // setError('unsuccessful to register! ')
+        notifyError('Unsuccessful to register!')
 
       }
     }
     else {
       setError('username already exist!')
+
     }
     //go to login mode
   }
@@ -187,7 +218,11 @@ export function Login() {
   }
 
   const style ={
-    color:'red'
+    color:'red',
+    margin:'auto',
+    position:'absolute',
+
+
   }
 
   return (
@@ -201,11 +236,11 @@ export function Login() {
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input value={email} type="text" placeholder="Email" onChange={({target})=>setEmail(target.value)}/>
+              <input value={email} type="text" placeholder="Email" onChange={({target})=>setEmail(target.value)} required/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" value={password} onChange={({target})=>setPassword(target.value)} />
+              <input type="password" placeholder="Password" value={password} onChange={({target})=>setPassword(target.value)} required/>
             </div>
             <button type="submit" className="btn solid">Login</button>
             <p className="social-text">Or Login with social platforms</p>
@@ -226,26 +261,30 @@ export function Login() {
           </form>
 
           {/* to sign up mode from */}
+
           <form action="#" className="sign-up-form" onSubmit={handleSignup}>
             <h2 className="title">Sign up</h2>
 
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" />
+              <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required/>
             </div>
 
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" />
+              <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required/>
             </div>
 
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" />
+              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required/>
             </div>
 
 
-            <button type="submit" className="btn">Sign up</button>
+            <button type="submit" className="btn" onClick={(e)=>{
+              e.preventDefault()
+              alert('clicked')
+            }}>Sign up</button>
 
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
@@ -264,6 +303,7 @@ export function Login() {
             </div>
           </form>
         </div>
+        <ToastContainer />
       </div>
 
       <div className="panels-container">
@@ -295,6 +335,7 @@ export function Login() {
         </div>
       </div>
     </div>
+  
   );
 }
 
