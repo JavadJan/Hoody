@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const index = () => {
+export const Admin = () => {
   return (
-    <div>index</div>
+    <div>admin</div>
   )
 }

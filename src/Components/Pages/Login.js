@@ -10,7 +10,6 @@ import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from "../../Context/userContext";
 import * as ROUTES from "../Route/ROUTES.js"
-import { async } from "@firebase/util";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,6 +26,7 @@ export function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  console.log('user' , user)
 
   const notifyError = (message) => toast.error(message, {
     position: "bottom-center",
@@ -37,20 +37,20 @@ export function Login() {
     draggable: true,
     progress: undefined,
     theme: "colored",
-    });
+  });
 
 
 
-    const notifySuccess = (message) => toast.success(message, {
-      position: "bottom-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
+  const notifySuccess = (message) => toast.success(message, {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 
 
 
@@ -64,12 +64,12 @@ export function Login() {
 
 
   // handle login 
-  const handleLogin = async (event)=>{
+  const handleLogin = async (event) => {
     event.preventDefault();
-    console.log('password , email: ',password , email)
+    console.log('password , email: ', password, email)
     await signInWithEmailAndPassword(auth, email, password)
       .then((userConditional) => {
-        
+
         navigate(`/p/${user.displayName}`)
         console.log(userConditional.user)
       }).catch((error) => {
@@ -79,11 +79,11 @@ export function Login() {
         // setError('This user is not registered!')
         notifyError('Please add your email!')
       })
-      
+
   }
 
   //-------------------Login with google
-  const handleLoginGoogle = async () =>{
+  const handleLoginGoogle = async () => {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
 
@@ -91,22 +91,22 @@ export function Login() {
   }
 
   // --------------------------Login with Facebook
- const handleLoginFacebook = async () =>{
-     try {
+  const handleLoginFacebook = async () => {
+    try {
       const provider = new FacebookAuthProvider()
-      await signInWithPopup(auth , provider)
+      await signInWithPopup(auth, provider)
       navigate(`/p/${user.displayName}`)
-     } catch (error) {
+    } catch (error) {
       setError("this user is not registered")
-     }
+    }
   }
-  
+
 
   //handle sign up
   const handleSignup = async (event) => {
     event.preventDefault();
     //does username exist?
-    const userExist = await DoesUserExist(username)
+    const userExist = await DoesUserExist(email)
 
     //use auth state and add to with email
     if (userExist.length === 0) {
@@ -164,39 +164,19 @@ export function Login() {
   const handleFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
-      .then((result) => {
-        // The signed-in user info.
-        const user = result.user;
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
-        console.log(accessToken)
-        navigate(ROUTES.Login)
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        console.log(errorMessage)
-        // ...
-      });
-
+    
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
       email: user.email
     })
-
+    setSignUpMode(false)
   }
   //handle tweeter sign up
   const handleTwitterSignUp = async () => {
     const provider = new TwitterAuthProvider()
     await signInWithPopup(auth, provider)
-    console.log( 'sign up with twitter')
+    console.log('sign up with twitter')
 
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
@@ -217,10 +197,10 @@ export function Login() {
 
   }
 
-  const style ={
-    color:'red',
-    margin:'auto',
-    position:'absolute',
+  const style = {
+    color: 'red',
+    margin: 'auto',
+    position: 'absolute',
 
 
   }
@@ -236,11 +216,11 @@ export function Login() {
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input value={email} type="text" placeholder="Email" onChange={({target})=>setEmail(target.value)} required/>
+              <input value={email} type="text" placeholder="Email" onChange={({ target }) => setEmail(target.value)} required />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" value={password} onChange={({target})=>setPassword(target.value)} required/>
+              <input type="password" placeholder="Password" value={password} onChange={({ target }) => setPassword(target.value)} required />
             </div>
             <button type="submit" className="btn solid">Login</button>
             <p className="social-text">Or Login with social platforms</p>
@@ -267,21 +247,21 @@ export function Login() {
 
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required/>
+              <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required />
             </div>
 
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required/>
+              <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required />
             </div>
 
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required/>
+              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required />
             </div>
 
 
-            <button type="submit" className="btn" onClick={(e)=>{
+            <button type="submit" className="btn" onClick={(e) => {
               e.preventDefault()
               alert('clicked')
             }}>Sign up</button>
@@ -335,7 +315,7 @@ export function Login() {
         </div>
       </div>
     </div>
-  
+
   );
 }
 

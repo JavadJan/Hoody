@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes,Route,useRoutes, useLocation} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useRoutes, useLocation } from 'react-router-dom'
 import { userContext } from './Context/userContext';
 import { Nav } from './Components/Navbar/Nav';
 import { Home } from './Components/Pages/Home/Home';
@@ -11,10 +11,11 @@ import { Footer } from './Components/Footer/Footer';
 import { NotFound } from './Components/Pages/notFound';
 import { UserListener } from './hook/userListener'
 import UserProfile from './Components/UserAccount/UserProfile'
+import { Admin } from './Components/Pages/Admin/index';
 
 import * as ROUTES from './Components/Route/ROUTES'
 import { Dashboard } from './Components/Pages/Dashboard/Dashboard';
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Oval } from 'react-loader-spinner'
 
 function App() {
@@ -31,58 +32,56 @@ function App() {
   console.log('user: ', user)
   return (
 
-<>
-    {isLoading ? (
-      <Oval
-      height={100}
-      width={100}
-      color="#28877f"
-      wrapperStyle={{}}
-      wrapperClass="Oval"
-      visible={true}
-      ariaLabel='oval-loading'
-      secondaryColor="#4fa94d"
-      strokeWidth={2}
-      strokeWidthSecondary={2}
-    
-    />
-          ) : (
-  <>     <userContext.Provider value={{ user }}>
-  
-      <Router>
-        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ''}
-        <Routes>
-          <Route index element={<Home />} />
-          {/* <Route path={ROUTES.About} element={<About />} /> */}
-          {/* <Route path={ROUTES.Contact} element={<Contact />} /> */}
-          <Route path={ROUTES.Sign_Up} element={<SignUp />} />
-          <Route path={ROUTES.Login} element={<Login />} />
-          <Route path={ROUTES.Dashboard} element={<Dashboard />} />
-          <Route path={ROUTES.Profile} element={<UserProfile />} />
- 
-        </Routes>
-        {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : "" }
-      
-     
+    <>
+      {isLoading ? (
+        <Oval
+          height={100}
+          width={100}
+          color="#28877f"
+          wrapperStyle={{}}
+          wrapperClass="Oval"
+          visible={true}
+          ariaLabel='oval-loading'
+          secondaryColor="#4fa94d"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
 
-       
-        <Routes>
-    
-        <Route path='*' element={<NotFound/>} />
+        />
+      ) : (
+        <>
+          <userContext.Provider value={{ user }}>
+            <Router>
+              {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ''}
+              <Routes>
+                <Route index element={<Home />} />
+                {/* <Route path={ROUTES.About} element={<About />} /> */}
+                {/* <Route path={ROUTES.Contact} element={<Contact />} /> */}
+                <Route path={ROUTES.Sign_Up} element={<SignUp />} />
+                <Route path={ROUTES.Login} element={<Login />} />
+                <Route path={ROUTES.Dashboard} element={<Dashboard />} />
+                <Route path={ROUTES.Profile} element={<UserProfile />} />
+                <Route path={ROUTES.Admin} element={<Admin />} />
 
-         <Route index element='/' />
-    
-        <Route path={ROUTES.Login}/>
-     
-        </Routes>
-       </Router>
-     
+              </Routes>
+              {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""}
 
-    </userContext.Provider>
+              <Routes>
+
+                <Route path='*' element={<NotFound />} />
+
+                <Route index element='/' />
+
+                <Route path={ROUTES.Login} />
+
+              </Routes>
+            </Router>
+
+
+          </userContext.Provider>
+        </>
+
+      )}
     </>
-
-)}  
-</>
   );
 
 
