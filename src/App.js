@@ -22,7 +22,7 @@ import * as ROUTES from "./Components/Route/ROUTES";
 import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
 import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
-import {Admin} from "./Components/Pages/Admin"
+import { Admin } from "./Components/Pages/Admin"
 
 function App() {
   const { user } = UserListener();
@@ -37,7 +37,7 @@ function App() {
   // const location = useLocation()
   console.log("user: ", user);
   return (
-    
+
     <>
       {isLoading ? (
         <Oval
@@ -67,19 +67,19 @@ function App() {
                 <Route path={ROUTES.Dashboard} element={<Dashboard />} />
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
+                <Route path='*' element={<NotFound />} />
 
               </Routes>
               {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""}
 
-              <Routes>
+              {/* <Routes> */}
 
-                <Route path='*' element={<NotFound />} />
 
-                <Route index element='/' />
+                {/* <Route index element='/' /> */}
 
-                <Route path={ROUTES.Login} />
+                {/* <Route path={ROUTES.Login} /> */}
 
-              </Routes>
+              {/* </Routes> */}
             </Router>
 
 

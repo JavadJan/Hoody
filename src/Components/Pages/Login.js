@@ -164,7 +164,27 @@ export function Login() {
   const handleFacebookSignUp = async () => {
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
-    
+      .then((result) => {
+        // The signed-in user info.
+        const userr = result.user;
+        console.log('userr' , userr)
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        console.log(accessToken)
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log( error.message, errorMessage)
+        // ...
+      });
+
     await addDoc(collection(db, 'users'), {
       userId: user.uid,
       username: user.displayName,
@@ -206,7 +226,7 @@ export function Login() {
   }
 
   return (
-    <div className={`container${toggleClassCheck}`} id="login">
+    <div className={`container${toggleClassCheck}`}>
       <div className="forms-container">
         <div className="signin-signup">
 
@@ -234,9 +254,9 @@ export function Login() {
               <Link href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
               </Link>
-              {/* <Link href="#" className="social-icon">
+              <Link href="#" className="social-icon">
                 <i className="fab fa-apple"></i>
-              </Link> */}
+              </Link>
             </div>
           </form>
 
@@ -277,9 +297,9 @@ export function Login() {
               <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
                 <i className="fab fa-twitter"></i>
               </Link>
-              {/* <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
+              <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
                 <i className="fab fa-linkedin-in"></i>
-              </Link> */}
+              </Link>
             </div>
           </form>
         </div>
