@@ -1,25 +1,31 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useRoutes, useLocation } from 'react-router-dom'
-import { userContext } from './Context/userContext';
-import { Nav } from './Components/Navbar/Nav';
-import { Home } from './Components/Pages/Home/Home';
-import { About } from './Components/Pages/About/About';
-import { Contact } from './Components/Pages/Contact/Contact';
-import { SignUp } from './Components/Pages/SignUp';
-import { Login } from './Components/Pages/Login';
-import { Footer } from './Components/Footer/Footer';
-import { NotFound } from './Components/Pages/notFound';
-import { UserListener } from './hook/userListener'
-import UserProfile from './Components/UserAccount/UserProfile'
-import { Admin } from './Components/Pages/Admin/index';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useRoutes,
+  useLocation,
+} from "react-router-dom";
+import { userContext } from "./Context/userContext";
+import { Nav } from "./Components/Navbar/Nav";
+import { Home } from "./Components/Pages/Home/Home";
+import { About } from "./Components/Pages/About/About";
+import { Contact } from "./Components/Pages/Contact/Contact";
+import { SignUp } from "./Components/Pages/SignUp";
+import { Login } from "./Components/Pages/Login";
+import { Footer } from "./Components/Footer/Footer";
+import { NotFound } from "./Components/Pages/notFound";
+import { UserListener } from "./hook/userListener";
+import UserProfile from "./Components/UserAccount/UserProfile";
 
-import * as ROUTES from './Components/Route/ROUTES'
-import { Dashboard } from './Components/Pages/Dashboard/Dashboard';
-import React, { useState, useEffect } from 'react'
-import { Oval } from 'react-loader-spinner'
+import * as ROUTES from "./Components/Route/ROUTES";
+import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
+import React, { useState, useEffect } from "react";
+import { Oval } from "react-loader-spinner";
+import {Admin} from "./Components/Pages/Admin"
 
 function App() {
-  const { user } = UserListener()
+  const { user } = UserListener();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -29,9 +35,9 @@ function App() {
     }, 1000);
   }, []);
   // const location = useLocation()
-  console.log('user: ', user)
+  console.log("user: ", user);
   return (
-
+    
     <>
       {isLoading ? (
         <Oval
@@ -83,8 +89,6 @@ function App() {
       )}
     </>
   );
-
-
 }
 
 export default App;

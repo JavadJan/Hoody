@@ -160,6 +160,7 @@ transform: translate(-120%,80%);
     max-width: 300px;
     border-radius: 15px;
     box-shadow: 0px 0px 50px 10px  rgba(11, 11, 11, 0.438);
+    transition: transform  0.9s ease-in-out;
 }
 
 .section2-contact p{
@@ -172,4 +173,53 @@ transform: translate(-120%,80%);
 .logo{
     font-family: 'Marck Script', cursive;
     font-size: 1.8rem;
+}
+
+
+
+
+
+@media screen and (max-width:1000px){
+
+    .contact-section{
+        flex-direction: column-reverse;
+    }
+    .section2-contact{
+        transform: translate(0,0);
+        position: relative;
+        max-width: 100%;
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .section1-contact{
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+@media screen and (max-width:600px){
+    .contact{
+        padding: 4% 3%;
+    }
+    .section1-contact{
+        padding:4% 10px;
+    }
+    .section1-contact h1 {
+        color: var(--color-light-green);
+        font-size: 2rem;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+    }
+    .form{
+       grid-template-columns: 1fr;
+       width: 100%;
+    }
+    .btn-send{
+        width: 100%;
+    }
+    .contact-div{
+        width: 100%;
+    }
+
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { NavLink, useLocation} from 'react-router-dom'
+import { NavLink, useLocation, useNavigate} from 'react-router-dom'
 
 // import {NavHashLink as Link} from 'react-router-hash-link'
 import { Link } from "react-scroll";
@@ -12,7 +12,12 @@ import { Home } from '../Route/ROUTES';
 
 export const Nav = () => {
 
-
+  let navigate = useNavigate(); 
+  const routeChange = (path) =>{ 
+    // let path = `/`; 
+    navigate(path);
+  }
+  
 
   const [showMenu, setShow] = useState(false);
   // const [classname,setClassName] = useState(false);
@@ -73,7 +78,9 @@ export const Nav = () => {
             activeClass='active'
             onClick={() => {     //when click button hide the menu
               setShow(false)
+              routeChange('/')
               console.log('clicked')
+              
             }}
             smooth spy
             end        //when click on other button the home will not be active
@@ -88,6 +95,7 @@ export const Nav = () => {
             activeClass='active'
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}>About</Link>
 
           <Link to="service"
@@ -96,6 +104,7 @@ export const Nav = () => {
             activeClass='active'
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
           >Service</Link>
 
@@ -105,6 +114,7 @@ export const Nav = () => {
             smooth spy
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
             end
           >Products</Link>
@@ -116,6 +126,7 @@ export const Nav = () => {
             smooth spy
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
           > Contact</Link>
 
@@ -126,6 +137,7 @@ export const Nav = () => {
             activeClass='active'
             onClick={() => {
               setShow(false)
+              routeChange('/Login')
             }}
             >Subscribe</NavLink>
 

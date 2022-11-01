@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import Pin from "./Pin.js";
-import Model from "./Model.js";
-import Plus from '../../assets/plus.png';
+import Model from "./ModelTest.js";
+import Plus from "../../assets/plus.png";
+import SearchBox from "./SearchBox";
+// import { db } from "../DB/firebase";
 
 class UserProfile extends React.Component {
-  // useEffect(()=>{
-  //     const allIcon = document.querySelectorAll('.icon-container');
-
-  //     function setMenuActive(){
-  //         allIcon.forEach((e)=> e.classList.remove('active'));
-  //         this.classList.add('active');
-  //     }
-  //     allIcon.forEach(e=> e.addEventListener('click', setMenuActive))
-  // },[]);
-
   constructor(props) {
     super(props);
 
@@ -23,7 +15,26 @@ class UserProfile extends React.Component {
       show_modal: false,
     };
   }
-
+  // Function for fetching Pins in firestore
+  // fetchPins = () => {
+  //   const query = db.collection("Pins").orderBy("createdAt");
+  //   query.onSnapshot((snapshot) => {
+  //     snapshot.docChanges().forEach((change) => {
+  //       const pinsObj = {};
+  //       pinsObj.data = change.doc.data();
+  //       pinsObj.id = change.doc.id;
+  //       this.setState({
+  //         ...this.state,
+  //         pins: [pinsObj, ...this.state.pins],
+  //       });
+  //     });
+  //   });
+  // };
+  // //Function for rerendering pins in our app
+  // componentDidMount() {
+  //   this.fetchPins();
+  // }
+  // Function for adding pins
   add_pin = (pinDetails) => {
     this.setState((_state) => {
       const new_pins = [..._state.pins];
@@ -58,9 +69,9 @@ class UserProfile extends React.Component {
                 <img
                   src={Plus}
                   alt=""
-                  className="plusIcon"
+                  className="plusIcon pint_mock_icon_container add_pin"
                   onClick={() => this.setState({ show_modal: true })}
-                  className="pint_mock_icon_container add_pin"
+                  // className="pint_mock_icon_container add_pin"
                 />
                 {/* <i
                     className="fa-regular fa-plus pint_mock_icon_container add_pin"
@@ -73,16 +84,28 @@ class UserProfile extends React.Component {
             </div>
           </div>
           <main>
-            <div className="box">
-              <div className="search-box">
-                <input type="text" placeholder="Search..." />
-                <label htmlFor="" className="icon">
-                  <i className="fas fa-search"></i>
-                </label>
-              </div>
-            </div>
+            <SearchBox />
             <div className="main-container">
               <div className="pin_container">{this.state.pins}</div>
+
+              {/* {data
+            .filter((item) => {
+              return search.toLocaleLowerCase() === ""
+                ? item
+                : item.first_name.toLocaleLowerCase().includes(search);
+            })
+            .map((item) => (
+                {item.first_name}
+                {
+                  ...pinDetails,
+                  author: "Jack",
+                  board: "default",
+                  title: document.querySelector("#pin_title").value,
+                  description: document.querySelector("#pin_description").value,
+                  destination: document.querySelector("#pin_destination").value,
+                  pin_size: document.querySelector("#pin_size").value,
+                };
+            ))} */}
             </div>
           </main>
         </div>
@@ -96,6 +119,9 @@ class UserProfile extends React.Component {
           className="add_pin_modal_container"
         >
           {this.state.show_modal ? <Model add_pin={this.add_pin} /> : null}
+          {/* {imageUrls.map((url) => {
+        return <img src={url} />;
+      })} */}
         </div>
       </div>
     );
