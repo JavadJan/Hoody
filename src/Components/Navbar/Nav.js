@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import {Link, NavLink, useLocation} from 'react-router-dom'
+import { NavLink, useLocation, useNavigate} from 'react-router-dom'
 
-
+// import {NavHashLink as Link} from 'react-router-hash-link'
+import { Link } from "react-scroll";
 import './Nav.css'
 
 import logo from '../../assets/logo.png'
 import logo1 from '../../assets/logo1.png';
+import { Home } from '../Route/ROUTES';
 
 export const Nav = () => {
+
+  let navigate = useNavigate(); 
+  const routeChange = (path) =>{ 
+    // let path = `/`; 
+    navigate(path);
+  }
+  
 
   const [showMenu, setShow] = useState(false);
   // const [classname,setClassName] = useState(false);
@@ -59,58 +68,76 @@ export const Nav = () => {
   return (
     <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
-        <Link to="/" className="logo">
-          <img src={logo1} alt=""></img></Link>
+        <NavLink to="/" className="logo">
+          <img src={logo1} alt=""></img></NavLink>
         <nav className='List' >
 
-          <NavLink to="/" exact="true"
+          <Link to="home" exact="true"
+          target='/'
             className='item-list1'
-            activeclassname="active"
+            activeClass='active'
             onClick={() => {     //when click button hide the menu
               setShow(false)
+              routeChange('/')
+              console.log('clicked')
+              
             }}
+            smooth spy
             end        //when click on other button the home will not be active
           >
-            Home</NavLink>
+            Home
+            </Link>
 
-          <NavLink to="/about"
+          <Link 
+            to="about"
+            smooth spy
             className='item-list2'
-            activeclassname="active"
+            activeClass='active'
             onClick={() => {
               setShow(false)
-            }}
-          >About</NavLink>
+              routeChange('/')
+            }}>About</Link>
 
-          <NavLink to="/service"
+          <Link to="service"
             className='item-list3'
-            activeclassname="active"
+            smooth spy
+            activeClass='active'
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
-          >Service</NavLink>
+          >Service</Link>
 
-        <NavLink to="/product"
+        <Link to="product"
             className='item-list3'
-            activeclassname="active"
+            activeClass='active'
+            smooth spy
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
-          >Products</NavLink>
+            end
+          >Products</Link>
 
 
-          <NavLink to="/contact"
+          <Link to="contact"
             className='item-list4'
-            activeclassname="active"
+            activeClass='active'
+            smooth spy
             onClick={() => {
               setShow(false)
+              routeChange('/')
             }}
-          > Contact</NavLink>
+          > Contact</Link>
 
 
           <NavLink to="/Login"
             className="subscribe item-list5"
+            smooth spy
+            activeClass='active'
             onClick={() => {
               setShow(false)
+              routeChange('/Login')
             }}
             >Subscribe</NavLink>
 

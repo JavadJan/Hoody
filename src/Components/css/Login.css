@@ -4,6 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow-y: hidden; */
+}
+
+body{
+  background-color: rgba(151, 151, 151, 0.144);
+
 }
 
 body,
@@ -13,10 +19,15 @@ input {
 
 .container {
   position: relative;
-  width: 100%;
+  margin:4rem auto;
+  width: 80%;
   background-color: #fff;
-  min-height: 100vh;
+  min-height: 90vh;
+  height:100%;
   overflow: hidden;
+  box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.571);
+  border-radius: 5px;
+ 
 }
 
 .forms-container {

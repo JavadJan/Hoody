@@ -16,10 +16,13 @@
 //   // background-color: #266453;
    
 // }
+
+
 .header-scroll{
   background-color: rgba(12, 12, 12, 0.722);
   backdrop-filter: blur(8px);
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 99999;
   transition: 400ms all linear;
@@ -53,6 +56,8 @@
 }
   //flipInX
  }
+
+
 .header{
     // background-color: rgba(181, 180, 180, 0.522);
     background-color: white;
@@ -63,17 +68,20 @@
     z-index: 9999;
     border-bottom: 1px solid rgba(244, 244, 244, 0.275);
     transition: 400ms all linear;
+   
 }
 .header.forLogin{
  
   background-color:rgba(0, 0, 0, 0.912);
   position: relative;
+
   
   .navbar{
    
   .List{
       a{
     color: #fff;
+    cursor: pointer;
 
     &::before{
       background-color:var(--color-light-green);
@@ -139,6 +147,7 @@
         transition: 400ms all ease;
         z-index:0;
         font-weight: 500;
+        cursor: pointer;
         &::before{
             content: '';
             position: absolute;
@@ -213,7 +222,19 @@
 
 
 
+@media screen and (max-width:1024px){
 
+  
+  .navbar {
+    padding: 2% 2%;
+    .List{
+      gap:1.3rem;
+    }
+  
+}
+
+
+}
 
 
 @media screen and (max-width:780px){
@@ -255,8 +276,6 @@
             
          
         }
-
-  
 
 
     }
@@ -348,6 +367,10 @@
       // .open .item-list5{
       //   animation: fadeInRight .8s ease-in normal forwards;
       // }
+
+      .header-scroll .navbar .List a.active {
+        background-color: transparent; 
+    }
     
 }
 

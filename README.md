@@ -160,3 +160,9 @@ npm i react-parallax-mouse
 npm install --save react-toastify
 ```
 
+<h5>Install emailJs</h5>
+
+
+```bash
+npm install emailjs-com --save
+```

@@ -25,8 +25,8 @@ export const Contact = () => {
     // e.preventDefault();
     emailjs
       .sendForm(
-        "service_uc2gy2a",
-        "template_a99aec9",
+        "service_",
+        "template_",
         form.current,
         ""
       )
@@ -55,7 +55,7 @@ export const Contact = () => {
 
 
   return (
-    <div className="contact">
+    <div className="contact" id="contact">
       <div className="contact-section">
         <div className="section1-contact">
           <h1>Send your message</h1>

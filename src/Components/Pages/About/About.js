@@ -58,7 +58,7 @@ export const About = () => {
 
   return (
 
-    <div className='about-main contain'>
+    <div className='about-main contain' id='about'>
            <h1>What's Hoody</h1>
 
       <div className="about-sections1">

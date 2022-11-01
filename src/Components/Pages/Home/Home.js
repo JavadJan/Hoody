@@ -18,6 +18,7 @@ import dots1 from '../../../assets/test/cell.png'
 
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { Contact } from '../Contact/Contact'
+import { Link } from 'react-router-dom'
 
 
 
@@ -184,7 +185,7 @@ opacity:0
   return (
 
     <>
-      <div className='home'>
+      <div className='home' id='home'>
       <div className="circlesHome" ref={parallaxRef}>
       {/* <MouseParallaxContainer   containerStyles={{
               width: "100%",
@@ -231,8 +232,9 @@ opacity:0
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium perferendis, dolorum temporibus modi quis minus natus voluptatem possimus, blanditiis dolorem ex ipsum expedita ratione praesentium ab. Ipsam quasi libero blanditiis.</p>
 
           <div className="btn-group">
-            <button className="join">join</button>
-            <button className="donate">donate</button>
+            <Link className="join" to="/Login">
+             join</Link>
+            <Link className="donate" to="/">donate</Link>
           </div>
 
 
