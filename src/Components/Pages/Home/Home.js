@@ -232,10 +232,9 @@ opacity:0
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium perferendis, dolorum temporibus modi quis minus natus voluptatem possimus, blanditiis dolorem ex ipsum expedita ratione praesentium ab. Ipsam quasi libero blanditiis.</p>
 
           <div className="btn-group">
-            <button className="join">
-              <Link to="/Login">join</Link>
-              </button>
-            <button className="donate">donate</button>
+            <Link className="join" to="/Login">
+             join</Link>
+            <Link className="donate" to="/">donate</Link>
           </div>
 
 

@@ -13,6 +13,7 @@
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 99999;
   transition: 400ms all linear;
@@ -51,6 +52,7 @@
 }
 .header.forLogin .navbar .List a {
   color: #fff;
+  cursor: pointer;
 }
 .header.forLogin .navbar .List a::before {
   background-color: var(--color-light-green);
@@ -99,6 +101,7 @@
   transition: 400ms all ease;
   z-index: 0;
   font-weight: 500;
+  cursor: pointer;
 }
 .navbar .List a::before {
   content: "";
@@ -154,6 +157,14 @@
   display: none;
 }
 
+@media screen and (max-width: 1024px) {
+  .navbar {
+    padding: 2% 2%;
+  }
+  .navbar .List {
+    gap: 1.3rem;
+  }
+}
 @media screen and (max-width: 780px) {
   .navbar .List {
     position: absolute;
@@ -258,6 +269,9 @@
   .open .item-list4 {
     -webkit-animation: fadeInRight 0.7s ease-in;
             animation: fadeInRight 0.7s ease-in;
+  }
+  .header-scroll .navbar .List a.active {
+    background-color: transparent;
   }
 }
 @media screen and (max-width: 475px) {

@@ -225,7 +225,7 @@ export function Login() {
   }
 
   return (
-    <div className={`container${toggleClassCheck}`}>
+    <div className={`container${toggleClassCheck}`} id="login">
       <div className="forms-container">
         <div className="signin-signup">
 
@@ -253,9 +253,9 @@ export function Login() {
               <Link href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
               </Link>
-              <Link href="#" className="social-icon">
+              {/* <Link href="#" className="social-icon">
                 <i className="fab fa-apple"></i>
-              </Link>
+              </Link> */}
             </div>
           </form>
 
@@ -296,9 +296,9 @@ export function Login() {
               <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
                 <i className="fab fa-twitter"></i>
               </Link>
-              <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
+              {/* <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
                 <i className="fab fa-linkedin-in"></i>
-              </Link>
+              </Link> */}
             </div>
           </form>
         </div>
