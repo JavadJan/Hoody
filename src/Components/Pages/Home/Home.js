@@ -19,6 +19,8 @@ import dots1 from '../../../assets/test/cell.png'
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { Contact } from '../Contact/Contact'
 import { Link } from 'react-router-dom'
+import { Footer } from '../../Footer/Footer'
+import { Nav } from '../../Navbar/Nav'
 
 
 
@@ -28,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 export const Home = () => {
 
   const titleRef = useRef();
-const parallaxRef=useRef();
+  const parallaxRef=useRef();
   const slideIn = (elem)=>{
     gsap.fromTo(
     elem,
@@ -185,6 +187,7 @@ opacity:0
   return (
 
     <>
+      <Nav/>
       <div className='home' id='home'>
       <div className="circlesHome" ref={parallaxRef}>
       {/* <MouseParallaxContainer   containerStyles={{
@@ -247,6 +250,8 @@ opacity:0
 
       <About />
       <Contact/>
+      <Footer />
     </>
   )
+
 }
