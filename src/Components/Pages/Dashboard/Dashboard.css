@@ -1,7 +1,8 @@
 .dashboard {
   background-color: #eeeeee;
-  width: 100%;
+  width: 90%;
   height: 100vh;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 13% 87%;
   /*-------------main*/
@@ -12,7 +13,6 @@
   grid-column: 2;
   margin-right: 3px;
   margin-left: 1px;
-  box-shadow: 2px 2px 6px rgb(101, 104, 104);
   /*----------header*/
   /*------------- main content*/
 }
@@ -54,45 +54,57 @@
 }
 .dashboard .main-profile .main-profileContent {
   background-color: var(--color-white);
+  position: relative;
   margin-top: 2px;
   padding: 5px 1rem;
   height: calc(100vh - 4.2rem);
-  display: grid;
-  grid-template-columns: 70% 30%;
+  display: flex;
   -moz-column-gap: 5px;
        column-gap: 5px;
 }
-.dashboard .main-profile .main-profileContent iframe {
-  margin: auto;
-  background: gray;
-}
 .dashboard .main-profile .main-profileContent .others-items {
-  background-color: rgb(245, 242, 242);
-  padding: 10px;
-  padding-bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  position: absolute;
-  width: 120.5vh;
-  bottom: 0;
+  flex: 6;
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(1, 19, 18, 0.614), rgb(0, 0, 0)), url("https://media.istockphoto.com/photos/technology-network-data-with-icons-connection-digital-datanetwork-and-picture-id1211772593?k=20&m=1211772593&s=612x612&w=0&h=P5gTxKWdcoDrWb2lfJuUaAwX_iAltEbiwOhkesLRXnc=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: auto;
+  height: 92vh;
+  position: relative;
 }
-.dashboard .main-profile .main-profileContent .others-items .location {
+.dashboard .main-profile .main-profileContent .others-items .google-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.dashboard .main-profile .main-profileContent .others-items .map {
+  position: absolute;
+  bottom: 2.3rem;
+  height: 400px;
+  width: 100%;
+  border-top: 1px solid #dddddd;
+}
+.dashboard .main-profile .main-profileContent .others-items .map .location {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #dddddd;
+  padding: 5px;
 }
-.dashboard .main-profile .main-profileContent .others-items .location .flash-down {
+.dashboard .main-profile .main-profileContent .others-items .map .location .flash-down {
   width: 200px;
   display: flex;
   align-items: flex-end;
   justify-content: end;
 }
-.dashboard .main-profile .main-profileContent .others-items .location .flash-down i {
-  color: black;
+.dashboard .main-profile .main-profileContent .others-items .map .location .flash-down i {
+  color: white;
   font-size: 20px;
 }
-.dashboard .main-profile .main-profileContent .others-items .location .search-box-loc {
+.dashboard .main-profile .main-profileContent .others-items .map .location .search-box-loc {
   position: relative;
   height: 40px;
   width: 270px;
@@ -100,7 +112,7 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 26px;
 }
-.dashboard .main-profile .main-profileContent .others-items .location .search-box-loc input {
+.dashboard .main-profile .main-profileContent .others-items .map .location .search-box-loc input {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -111,7 +123,7 @@
   padding-left: 30px;
   font-size: 14px;
 }
-.dashboard .main-profile .main-profileContent .others-items .location .search-box-loc .search-icon {
+.dashboard .main-profile .main-profileContent .others-items .map .location .search-box-loc .search-icon {
   cursor: pointer;
   border: 2px solid rgb(216, 210, 210);
   position: absolute;
@@ -125,10 +137,8 @@
   font-size: 16px;
   border-radius: 50%;
 }
-.dashboard .main-profile .main-profileContent .others-items .map {
-  bottom: 0;
-  height: 400px;
-  width: 100%;
+.dashboard .main-profile .main-profileContent .others-items .map .location .fa-location {
+  color: white;
 }
 .dashboard .main-profile .main-profileContent .others-items .map .item-categories {
   padding: 4px;
@@ -151,6 +161,7 @@
   padding: 0 1rem;
   cursor: pointer;
   flex: 0 0 auto;
+  color: white;
 }
 .dashboard .main-profile .main-profileContent .others-items .map .item-categories ul li:last-child {
   border-right: none;
@@ -208,6 +219,9 @@
   padding: 6px;
   border-radius: 5px;
   color: white;
+}
+.dashboard .main-profile .main-profileContent .user-items {
+  flex: 2;
 }
 .dashboard .sidebar-profile {
   grid-column: 1;

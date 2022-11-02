@@ -78,8 +78,6 @@ function App() {
               </Routes>
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""} */}
             </Router>
-
-
           </userContext.Provider>
         </>
 
