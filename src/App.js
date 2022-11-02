@@ -22,6 +22,8 @@ import * as ROUTES from "./Components/Route/ROUTES";
 import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
 import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
+// import { SunspotLoader } from "react-awesome-loaders";
+
 import { Admin } from "./Components/Pages/Admin"
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
   // const location = useLocation()
   console.log("user: ", user);
@@ -41,9 +43,9 @@ function App() {
     <>
       {isLoading ? (
         <Oval
-          height={100}
-          width={100}
-          color="#28877f"
+          height={120}
+          width={120}
+          color="#264653"
           wrapperStyle={{}}
           wrapperClass="Oval"
           visible={true}
@@ -53,6 +55,13 @@ function App() {
           strokeWidthSecondary={2}
 
         />
+      //   <SunspotLoader
+      //   gradientColors={["#6366F1", "#E0E7FF"]}
+      //   shadowColor={"#3730A3"}
+      //   desktopSize={"128px"}
+      //   mobileSize={"100px"}
+      //   className="Oval"
+      // />
       ) : (
         <>
           <userContext.Provider value={{ user }}>

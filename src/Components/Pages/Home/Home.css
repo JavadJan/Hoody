@@ -96,11 +96,12 @@
 .home-content{
    
     position: absolute;
-     top: 45%;
+     top: 30%;
      left: 0%;
     color: aliceblue;
     width:100%;
     text-align: center;
+    z-index: 2;
 }
 
 
@@ -117,11 +118,6 @@
     backdrop-filter: blur(8px);
    
 } */
-/* #hText{
-    background: rgba(white,.2);
-    
-} */
-
 
 
 #content h1{
@@ -209,6 +205,34 @@
     box-shadow: none;
     background-color: rgba(0, 0, 0, 0.512);
 }
+
+
+/* -------------------------- */
+
+.custom-shape-divider-bottom-1667321573 {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 0;
+}
+
+.custom-shape-divider-bottom-1667321573 svg {
+    position: relative;
+    display: block;
+    width: calc(132% + 1.3px);
+    height: 124px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1667321573 .shape-fill {
+    fill:rgb(255, 255, 255);
+}
+
+
 
 
 @media screen and (max-width:1024px){

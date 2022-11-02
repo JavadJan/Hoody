@@ -15,6 +15,7 @@
    background-size: contain; 
     /* background-color:darkslategray; */
     padding:5rem 4rem;
+  
 }
 
 
@@ -183,6 +184,8 @@ transform: translate(-120%,80%);
 
     .contact-section{
         flex-direction: column-reverse;
+        box-shadow: 0px 0px 50px 10px  rgba(11, 11, 11, 0.438);
+        border-radius:15px;
     }
     .section2-contact{
         transform: translate(0,0);
@@ -191,11 +194,13 @@ transform: translate(-120%,80%);
         width: 100%;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        box-shadow:none;
     }
     .section1-contact{
         width: 100%;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+        box-shadow:none;
     }
 }
 @media screen and (max-width:600px){
