@@ -53,17 +53,19 @@ function Pin(props) {
             <span>{props.pinDetails.description}</span>
           </div>
           <div className="destination">
-            {/* <div className="pint_mock_icon_container">
-              <i class="fa-solid fa-up-right" id="pint-destination-icon"></i>
-            </div> */}
             <span>{`${"Owner"} ${props.pinDetails.destination}`}</span>
           </div>
+          {props.pinDetails.pin_type.value === "sell" ? (
+            <div className="pricing">
+              <span>{`${"Price"} ${props.pinDetails.pin_type}`}</span>
+            </div>
+          ) : null}
           <div className="wrapper">
             <div className="cart-btn">
               <div className="icon">
                 <i class="fa-solid fa-cart-shopping"></i>
               </div>
-              <span>Add To Cart</span>
+              <span>Get Product</span>
             </div>
           </div>
         </div>
