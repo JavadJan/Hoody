@@ -64,6 +64,13 @@
   
     /* background-color: purple; */
   }
+  .section1 .model-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    margin-left: 140px;
+  }
   
   .section2 {
     padding: 0px 10px;
@@ -188,42 +195,42 @@
   }
   
   #right_side .section1 .select_size {
-      width: 236px;
-      height: 40px;
-  
-      display: flex;
-  }
-  
-  #right_side .section1 .select_size select {
-      width: 70%;
-      height: 100%;
-      border: none;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-      outline: none;
-  
-      font-size: 16px;
-  
-      background-color: #EFEFEF;
-  }
-  
-  #right_side .section1 .select_size .save_pin {
-      width: 30%;
-      height: 100%;
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
-  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      font-size: 16px;
-      font-weight: 700;
-      
-      color: white;
-      background-color: #266453;
-      cursor: pointer;
-  }
+    width: 320px;
+    height: 40px;
+    display: flex;
+}
+
+#right_side .section1 .select_size select {
+    width: 70%;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    outline: none;
+
+    font-size: 16px;
+
+    background-color: #EFEFEF;
+}
+
+#right_side .section1 .select_size .save_pin {
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 700;
+    
+    color: white;
+    background-color: #266453;
+    cursor: pointer;
+}
   
   #right_side .section2 .new_pin_input {
       margin-bottom: 20px;
