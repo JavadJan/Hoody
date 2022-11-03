@@ -157,7 +157,7 @@
     align-items: center;
   }
   
-  .pin_image img {
+  /* .pin_image img {
     opacity: 0;
   }
   .pin_max_width {
@@ -165,7 +165,7 @@
   }
   .pin_max_height {
     max-height: 100%;
-  }
+  } */
   
   #left_side .section3 .save_from_site {
       width: 340px;
