@@ -11,7 +11,6 @@ export const Dashboard = () => {
   return (
     <div className='dashboard'>
       <Sidebar />
-
       <div className='main-profile'>
         <Header user={user} />
         <MainContent />

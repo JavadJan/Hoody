@@ -65,7 +65,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -85,7 +85,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -103,7 +103,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -121,7 +121,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -139,7 +139,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -157,7 +157,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -175,7 +175,7 @@ export const OthersItems = () => {
                             <h4>name</h4>
                             <h5>Price: free</h5>
                             <p>
-                                <i class="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i> 500 m
                             </p>
                             <p>
                                 <i className="fa-regular fa-comment-dots"></i> message

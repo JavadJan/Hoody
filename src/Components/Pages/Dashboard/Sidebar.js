@@ -1,7 +1,15 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import Default from './Default.png'
+import { Modal } from './Modals/Modal'
+
 export const Sidebar = () => {
+  const [openModal , setOpenModal] = useState(false)
+  
+
   return (
+
     <div className='sidebar-profile'>
       <div className="sidebar-content">
         <div className='user-pic'>
@@ -16,7 +24,8 @@ export const Sidebar = () => {
             </i>
           </li>
           <li>
-            <i className="uil uil-plus">
+            <i className="uil uil-plus" onClick={setOpenModal(true)}>
+            <Modal open={openModal}/>
             </i>
           </li>
           <li>

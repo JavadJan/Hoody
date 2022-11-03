@@ -18,10 +18,10 @@ export const Admin = () => {
           <Widget type="NGO"/>
           <Widget type="Market"/>
         </div>
-        {/* <div className="charts">
+        <div className="charts">
           <Featured/>
           <Chart/>
-        </div> */}
+        </div>
       </div>
     </div>
   )
