@@ -166,3 +166,10 @@ npm install --save react-toastify
 ```bash
 npm install emailjs-com --save
 ```
+
+<h5>Install react-unicons </h5>
+
+
+```bash
+npm i @iconscout/react-unicons
+```
