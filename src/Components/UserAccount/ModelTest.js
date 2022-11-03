@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
 import "./ModelTest.css";
+import { storage } from "../../DB/firebase";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import Logo from "../../assets/logo1.png";
 
 function upload_img(
@@ -24,6 +30,7 @@ function upload_img(
       };
 
       reader.readAsDataURL(event.target.files[0]);
+      //   handleChangeToFirebaseStorage(event);
     }
   }
 }
@@ -82,26 +89,46 @@ function Model(props) {
   });
   const [showLabel, setShowLabel] = useState(true);
   const [showModalPin, setShowModalPin] = useState(false);
-  // const [progress, setProgress] = useState(0);
+ 
+  // progress
+  const [progress, setProgress] = useState(0);
+  // State to store uploaded file
+  const [imageUploadToFirebase, setImageUploadToFirebase] = useState("");
 
-  // const uploadFile = (file) => {
-  //   if (!file) return;
-  //   const storageRef = ref(storage, `/files/${file.name}`);
+  // Handles input change event and updates state
+  function handleChangeToFirebaseStorage(event) {
+    setImageUploadToFirebase(event.target.files[0]);
+  }
+  const handleImageUpload = () => {
+    if (!imageUploadToFirebase) {
+        alert("Please upload an image first!");
+    }
 
-  //   const uploadTask = uploadBytesResumable(storageRef, file);
-  //   uploadTask.on(
-  //     "state_changed",
-  //     (snapshot) => {
-  //       const prog = Math.round(
-  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //       );
-  //       setProgress(prog);
-  //     },
-  //     (err) => console.log(err),
-  //     () => {
-  //       getDownloadURL(uploadTask.snapshot.ref).then((url) => console.log(url));
-  //     }
-  //   );
+    const storageRef = ref(storage, `/files/${imageUploadToFirebase.name}`);
+
+    // progress can be paused and resumed. It also exposes progress updates.
+    // Receives the storage reference and the file to upload.
+    const uploadTask = uploadBytesResumable(storageRef, imageUploadToFirebase);
+
+    uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+            const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+
+            // update progress
+            setProgress(progress);
+        },
+        (err) => console.log(err),
+        () => {
+            // download url
+            getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                console.log(url);
+            });
+        }
+    );
+};
 
   return (
     <div className="add_pin_modal">
@@ -132,17 +159,19 @@ function Model(props) {
               </div>
 
               <input
-                onChange={(event) =>
+                onChange={(event) => {
                   upload_img(
                     event,
                     pinDetails,
                     setPinDetails,
                     setShowLabel,
                     setShowModalPin
-                  )
-                }
+                  );
+                  handleChangeToFirebaseStorage(event, pinDetails);
+                }}
                 type="file"
                 name="upload_img"
+                accept="image/*"
                 id="upload_img"
                 value=""
               />
@@ -186,11 +215,12 @@ function Model(props) {
                 <option value="sell">Sell</option>
               </select>
               <div
-                onClick={() => save_pin(pinDetails, props.add_pin)}
+                onClick={() => {save_pin(pinDetails, props.add_pin); handleImageUpload();}}
                 className="save_pin"
               >
                 Save
               </div>
+              <p>{progress} "% done"</p>
             </div>
           </div>
 
