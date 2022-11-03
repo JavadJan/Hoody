@@ -13,7 +13,9 @@ import * as ROUTES from "../Route/ROUTES.js"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import logo1 from '../../assets/logo1.png';
+import { NavLink } from "react-router-dom";
+import { Nav } from "../Navbar/Nav";
 
 export function Login() {
   const navigate = useNavigate()
@@ -218,15 +220,31 @@ export function Login() {
   }
 
   const style = {
-    color: 'red',
-    margin: 'auto',
-    position: 'absolute',
+    // color: 'red',
+    // margin: 'auto',
+    // position: 'absolute',
+    color: "#ff642f",
+    margin: "auto",
+    position: "absolute",
+    bottom:-12,
+    /* text-align: center; */
+    /* display: flex; */
+    /* justify-content: center; */
+    justifySelf:"center",
+    border: "2px solid #28877f",
+    padding: "5px 12px",
+    textTransform: 'capitalize',
 
 
   }
 
   return (
+    <>
+    <Nav/>
+    {/* <NavLink to="/" className="logoLogin">
+    <img src={logo1} alt=""></img></NavLink> */}
     <div className={`container${toggleClassCheck}`}>
+      
       <div className="forms-container">
         <div className="signin-signup">
 
@@ -335,7 +353,7 @@ export function Login() {
         </div>
       </div>
     </div>
-
+    </>
   );
 }
 

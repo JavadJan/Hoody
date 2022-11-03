@@ -8,7 +8,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-
+import {BsMouse} from 'react-icons/bs'
 
 
 
@@ -64,8 +64,7 @@ export const Home = () => {
     
     tl1.fromTo(".letter",
     {
-      x:-100,
-      
+      x:-200,
       opacity:0,
     },
     {
@@ -78,7 +77,7 @@ export const Home = () => {
 
     }
     ).to(".Hoody",{
-      y:-45,
+      y:-35,
       delay:.7
 
     }).to(".letter",{
@@ -97,8 +96,8 @@ export const Home = () => {
       x:-titleRef.current.clientWidth,
       delay:1,
       duration:2,
-    rotate:-360,
-    opacity:0
+      rotate:-360,
+      opacity:0
 
     }).to("#content",{
     
@@ -245,7 +244,14 @@ opacity:0
 
      </div>
 
-   
+     <a href="#about"
+      className="mouseMove">
+     <div className="mouseScroll"> <BsMouse></BsMouse></div>
+    <div className="endPoint"></div>
+     
+     </a>
+ 
+
       </div>
 
       <About />

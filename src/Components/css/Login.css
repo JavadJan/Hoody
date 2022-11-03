@@ -7,26 +7,28 @@
   /* overflow-y: hidden; */
 }
 
-body{
-  background-color: rgba(151, 151, 151, 0.144);
-
-}
-
 body,
 input {
   font-family: "Poppins", sans-serif;
 }
 
+.logoLogin img{
+  width: 250px;
+  position: absolute;
+  top:-10%;
+ z-index: 88;
+}
 .container {
-  position: relative;
-  margin:4rem auto;
-  width: 80%;
+ 
+  margin:2rem auto;
+  width: 90%;
   background-color: #fff;
   min-height: 90vh;
   height:100%;
   overflow: hidden;
-  box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.571);
+  box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.059);
   border-radius: 5px;
+  position: relative;
  
 }
 

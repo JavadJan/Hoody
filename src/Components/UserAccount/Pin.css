@@ -123,6 +123,13 @@
     margin: 0 16px 8px 16px;
     color: #f0f0f0;
   }
+  .pin_modal .modal_foot .pricing {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 16px 8px 16px;
+    color: #f0f0f0;
+  }
   .wrapper .cart-btn {
     display: inline-block;
     width: 50px;

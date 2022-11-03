@@ -64,7 +64,9 @@ function check_size(event) {
 
   image.style.opacity = 1;
 }
-
+function check_item_type(event){
+  const itemType = event.target;
+}
 function save_pin(pinDetails, add_pin) {
   const users_data = {
     ...pinDetails,

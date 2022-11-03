@@ -21,6 +21,7 @@
     flex-direction: column;
     /* background: var(--color-dark-green); */
     /* background-color: var(--color-bg1); */
+ 
 }
 
 .about-main h1{
@@ -87,6 +88,7 @@ display: block;
     padding: 20px 25px;
     background: #FFFFFF;
     background: var(--color-dark-green);
+   
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
     color: var(--colo-bg-gray);
 }
@@ -137,6 +139,7 @@ display: block;
     top:8px;
     left:8px;
     background-color: var(--color-light-green);
+    
     color:white;
     animation: moveOn 1s ease-in forwards;
     transition: 400ms all ease;
@@ -264,12 +267,12 @@ text-align: center;
 color: white;
 /* background:url('../../../assets/pattern-png.png'); */
 /* background-color: rgb(38, 70, 83); */
-
    /* margin:4rem; */
 }
 .Founders h1{
     
     background:-webkit-linear-gradient(317deg, rgba(38,70,83,1) 1%, rgba(40,135,127,1) 31%, rgba(38,70,83,1) 68%, rgba(86,92,111,1) 98%);
+    background-size: cover;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -334,7 +337,7 @@ color: white;
     border-radius: 80%;
     display: flex;
     /* color:var(--color-black); */
-    box-shadow:1px 1px 12px 4px rgba(0, 0, 0, 0.129);
+    box-shadow:1px 1px 15px 2px rgba(0, 0, 0, 0.218);
     transition: 400ms transform ease-in-out;
 
 }
