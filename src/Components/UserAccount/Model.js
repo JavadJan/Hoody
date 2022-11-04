@@ -54,9 +54,9 @@ function check_size(event) {
 
   if (
     image.getBoundingClientRect().width <
-      image.parentElement.getBoundingClientRect().width ||
+    image.parentElement.getBoundingClientRect().width ||
     image.getBoundingClientRect().height <
-      image.parentElement.getBoundingClientRect().height
+    image.parentElement.getBoundingClientRect().height
   ) {
     image.classList.remove("pin_max_width");
     image.classList.add("pin_max_height");
@@ -64,7 +64,7 @@ function check_size(event) {
 
   image.style.opacity = 1;
 }
-function check_item_type(event){
+function check_item_type(event) {
   const itemType = event.target;
 }
 function save_pin(pinDetails, add_pin) {
