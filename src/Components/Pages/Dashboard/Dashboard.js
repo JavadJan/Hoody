@@ -12,7 +12,7 @@ import { Modal } from './Modals/Modal'
 export const Dashboard = () => {
   const { user } = useContext(userContext)
   console.log(user)
-  const [openModal, setOpenModal] = useState(true)
+  const [openModal, setOpenModal] = useState(false)
   console.log(openModal)
 
   return (

@@ -15,14 +15,14 @@ export const OthersItems = () => {
     return (
         <div className='others-items'>
             {/* <div className='google-map'> */}
-                {/* <Iframe
+                 <Iframe
                     src={src}
                     width={width}
                     height={height}
                     style={style}
                     allowFullScreen={""}
                     load={load}
-                    referrerPolicy={referrerPolicy} /> */}
+                    referrerPolicy={referrerPolicy} /> 
             {/* </div> */}
             
             <div className='map'>

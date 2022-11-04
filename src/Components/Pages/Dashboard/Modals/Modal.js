@@ -21,7 +21,15 @@ export const Modal = ({ open, setOpenModal }) => {
 
   //for saving image
   function handleSaveImage(e) {
-    e.prevent.Default()
+    e.preventDefault()
+    const item = {
+      imgURL:image , 
+      type:type,
+      category:category,
+      explain:explain
+    }
+
+    console.log(item)
   }
 
   return (
@@ -34,7 +42,7 @@ export const Modal = ({ open, setOpenModal }) => {
         </div>
 
         <div id="upload-image">
-          <form id='form' onSubmit={handleSaveImage} method="POST">
+          <form id='form' onSubmit={handleSaveImage}>
 
             <div className="content-form">
               <div className='upload'>
@@ -60,14 +68,14 @@ export const Modal = ({ open, setOpenModal }) => {
 
                   <div className='categories'>
                     <h5 className='title'>what is kind of?</h5>
-                    <select name="categories" id="category" onChange={(target) => { setCategory(target.value) }}>
-                      <option value="volvo">Costume</option>
-                      <option value="saab">Sports</option>
-                      <option value="mercedes">Appliance Home</option>
-                      <option value="audi">Toys</option>
-                      <option value="audi">Electronic</option>
-                      <option value="audi">Gaming</option>
-                      <option value="audi">Discount</option>
+                    <select name="categories" id="category" value="Select Category" onChange={({target}) => { setCategory(target.value) }}>
+                      <option value="Costume">Costume</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Appliance Home">Appliance Home</option>
+                      <option value="Toys">Toys</option>
+                      <option value="Electronic">Electronic</option>
+                      <option value="Gaming">Gaming</option>
+                      <option value="Discount">Discount</option>
                     </select>
                   </div>
 
