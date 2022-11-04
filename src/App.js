@@ -17,6 +17,7 @@ import { Footer } from "./Components/Footer/Footer";
 import { NotFound } from "./Components/Pages/notFound";
 import { UserListener } from "./hook/userListener";
 import UserProfile from "./Components/UserAccount/UserProfile";
+import Product from "./Components/Pages/Products/Product";
 import ScrollUp from "./Components/Pages/ScrollUp/ScrollUp";
 import * as ROUTES from "./Components/Route/ROUTES";
 import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
@@ -72,6 +73,7 @@ function App() {
                 <Route path={ROUTES.Sign_Up} element={<SignUp />} />
                 <Route path={ROUTES.Login} element={<Login />} />
                 <Route path={ROUTES.Dashboard} element={<Dashboard />} />
+                <Route path={ROUTES.Products} element={<Product/>}/>
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
                 <Route path='*' element={<NotFound />} />
