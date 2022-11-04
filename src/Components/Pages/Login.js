@@ -250,7 +250,7 @@ export function Login() {
 
           {error && <p className="error" style={style}>{error}</p>}
           {/* to login mode form */}
-          <form action="#" className="sign-in-form" onSubmit={handleLogin}>
+          <form action="#" className="form sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
@@ -280,7 +280,7 @@ export function Login() {
 
           {/* to sign up mode from */}
 
-          <form action="#" className="sign-up-form" onSubmit={handleSignup}>
+          <form action="#" className="form sign-up-form" onSubmit={handleSignup}>
             <h2 className="title">Sign up</h2>
 
             <div className="input-field">

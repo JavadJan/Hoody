@@ -17,7 +17,7 @@
   margin: 7% auto; /* 15% from the top and centered */
   padding: 10px;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 40%; /* Could be more or less, depending on screen size */
   height: 500px;
   
   .modal-head{
@@ -32,29 +32,25 @@
       height: 150px;
     }
   }
-
-  #upload-image{
-    
-    
-    
-  }
   
 }
-#form{
+.content-form{
+  position: relative;
   padding: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 40% 60%;
   justify-content: space-between;
   width: 100%;
   flex-direction: row;
-  .upload{
-    flex: 1;
+  .upload{ 
     height: 370px;
     border: 0.1px dashed rgb(192, 192, 192);
     padding: 10px;
     border-radius: 10px;
+    background: rgb(235, 234, 234);
+
   }
   .info{
-    flex: 2;
     background: rgb(235, 234, 234);
     padding: 10px;
     height: 370px;
@@ -62,17 +58,77 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left: 10px;
+    border-radius: 10px;
     .get-info{
       display: flex;
-      gap: 20px;
+      gap:10px;
+      flex-direction: column;
+
+      // type of donation
       .choose-type{
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: space-around;
         padding: 2px;
         width: 100%;
-        align-items: center;
         gap: 10px;
         font-family: var(--font-family);
+        border-bottom: 0.2px solid white;
+        height: 50px;
+        .title{
+          font-size: 14px;
+          text-align: center;
+          margin-bottom: 0;        
+        }
+        span{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          input{
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+      
+      //Group of Categories
+      .categories{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(font-family);
+        border-bottom: 0.2px solid white;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .title{
+          font-size: 14px;
+          margin-bottom: 0;
+          font-family: var(--font-family);
+        }
+        select{
+          height: 30px;
+          width: 150px;
+        }
+      }
+
+      //explain of Item
+      .explain{
+        display: flex;
+        flex-direction: column;
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .title{
+          font-size: 14px;
+          font-family: var(--font-family);
+        }
+        textarea{
+          padding: 10px;
+          font-size: 12px;
+          font-family: var(--font-family);
+        }
       }
     }
     button{
@@ -99,3 +155,24 @@
   cursor: pointer;
 }
 
+
+@media screen and (max-width:1360px) {
+  .modal-content{
+    width: 60%;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .modal {
+    .modal-content {
+      width: 70%;
+      
+    }
+  }
+}
+
+@media screen and (min-width:960) {
+  .modal-content{
+    width: 60%;
+  }
+}

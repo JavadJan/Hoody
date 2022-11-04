@@ -70,13 +70,13 @@ function App() {
             <Router>
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ''} */}
               <Routes>
-                <Route index element={<Home />} />
                 <Route path={ROUTES.Sign_Up} element={<SignUp />} />
                 <Route path={ROUTES.Login} element={<Login />} />
                 <Route path={ROUTES.Dashboard} element={<Dashboard />} />
                 <Route path={ROUTES.Products} element={<Product/>}/>
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
+                <Route index element={<Home />} />
                 <Route path='*' element={<NotFound />} />
               </Routes>
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""} */}

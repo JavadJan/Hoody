@@ -17,7 +17,7 @@ export const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      <Sidebar setOpenModal={setOpenModal} />
+      {user && <Sidebar setOpenModal={setOpenModal} /> }
       <div className='main-profile'>
         <Modal open={openModal} setOpenModal={setOpenModal} />
         <Header/>

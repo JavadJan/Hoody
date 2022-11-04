@@ -10,7 +10,7 @@ export const Header = () => {
         <div className='header-profile'>
             <div className="header-content">
                 <div className='logo'>
-                    <img src={Default} alt="" />
+                    <img src={logo1} alt="" />
                 </div>
 
                 <div className='user-info'>
