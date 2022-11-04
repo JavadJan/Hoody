@@ -108,16 +108,16 @@ export const Nav = () => {
             }}
           >Service</Link>
 
-        <Link to="product"
+        <NavLink to="/Products"
             className='item-list3'
             activeClass='active'
             smooth spy
             onClick={() => {
               setShow(false)
-              routeChange('/')
+              routeChange('/Products')
             }}
             end
-          >Products</Link>
+          >Products</NavLink>
 
 
           <Link to="contact"

@@ -9,8 +9,8 @@ import {
 import SearchBox from '../../UserAccount/SearchBox';
 import './Product.css';
 import '../../UserAccount/SearchBox.css'
-import Nav from '../../Navbar/Nav';
-import Footer from '../../Footer/Footer';
+import {Nav} from '../../Navbar/Nav';
+import {Footer} from '../../Footer/Footer';
 // import { storage } from "../../DB/firebase";
 
 
@@ -45,17 +45,17 @@ import Footer from '../../Footer/Footer';
 //     });
 //   }, []);
 
-function Product() {
+export function Product() {
   return (
     <div>
+      <Nav/>
         
         <SearchBox/> 
    {/* {imageUrls.map((url) => {
         return <img src={url} />;
       })} */}
-      
+      <Footer/>
     </div>
   )
 }
 
-export default Product
