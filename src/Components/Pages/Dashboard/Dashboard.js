@@ -11,6 +11,7 @@ import { Modal } from './Modals/Modal'
 
 export const Dashboard = () => {
   const { user } = useContext(userContext)
+  console.log(user)
   const [openModal, setOpenModal] = useState(true)
   console.log(openModal)
 
@@ -19,7 +20,7 @@ export const Dashboard = () => {
       <Sidebar setOpenModal={setOpenModal} />
       <div className='main-profile'>
         <Modal open={openModal} setOpenModal={setOpenModal} />
-        <Header user={user} />
+        <Header/>
         <MainContent />
       </div>
     </div>

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
-import Default from './Default.png'
+import { userContext } from '../../../Context/userContext'
+import Najla from './Najla.jpg'
 
 export const Sidebar = ({setOpenModal}) => {
+  // const {user} = useContext(userContext)
   function showModal(params) {
     setOpenModal(true)
   }
@@ -12,8 +14,8 @@ export const Sidebar = ({setOpenModal}) => {
     <div className='sidebar-profile'>
       <div className="sidebar-content">
         <div className='user-pic'>
-          <img src={Default} alt="" />
-          <div className='username'>@username</div>
+          <img src={Najla} alt="" />
+          <div className='username'>user.displayName</div>
           <button>Edit</button>
         </div>
         <ul>

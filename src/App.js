@@ -26,11 +26,12 @@ import { Oval } from "react-loader-spinner";
 // import { SunspotLoader } from "react-awesome-loaders";
 
 import { Admin } from "./Components/Pages/Admin"
+import { useContext } from "react";
+import { DbContext } from "./Context/DBContext";
 
 function App() {
   const { user } = UserListener();
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
