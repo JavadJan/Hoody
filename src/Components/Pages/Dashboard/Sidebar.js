@@ -1,15 +1,14 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { useState } from 'react'
 import Default from './Default.png'
-import { Modal } from './Modals/Modal'
 
-export const Sidebar = () => {
-  const [openModal , setOpenModal] = useState(false)
+export const Sidebar = ({setOpenModal}) => {
+  function showModal(params) {
+    setOpenModal(true)
+  }
   
-
   return (
-
+    
     <div className='sidebar-profile'>
       <div className="sidebar-content">
         <div className='user-pic'>
@@ -17,15 +16,14 @@ export const Sidebar = () => {
           <div className='username'>@username</div>
           <button>Edit</button>
         </div>
-
         <ul>
           <li>
             <i className="uil uil-chat">
             </i>
           </li>
           <li>
-            <i className="uil uil-plus" onClick={setOpenModal(true)}>
-            <Modal open={openModal}/>
+            <i className="uil uil-plus" onClick={showModal}>
+            
             </i>
           </li>
           <li>
