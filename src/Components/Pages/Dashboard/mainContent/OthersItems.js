@@ -15,6 +15,7 @@ export const OthersItems = () => {
     return (
         <div className='others-items'>
             {/* <div className='google-map'> */}
+            
                  <Iframe
                     src={src}
                     width={width}

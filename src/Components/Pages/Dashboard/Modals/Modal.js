@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import './Modal.scss'
 import logo1 from '../../../../assets/logo1.png'
 import { useState } from 'react'
+import { storage } from '../../../../DB/firebase'
+import { UilPlus } from '@iconscout/react-unicons'
 
 export const Modal = ({ open, setOpenModal }) => {
   const [image, setImage] = useState(null)
@@ -23,11 +25,12 @@ export const Modal = ({ open, setOpenModal }) => {
   function handleSaveImage(e) {
     e.preventDefault()
     const item = {
-      imgURL:image , 
-      type:type,
-      category:category,
-      explain:explain
+      imgURL: image,
+      type: type,
+      category: category,
+      explain: explain
     }
+
 
     console.log(item)
   }
@@ -45,8 +48,11 @@ export const Modal = ({ open, setOpenModal }) => {
           <form id='form' onSubmit={handleSaveImage}>
 
             <div className="content-form">
+
               <div className='upload'>
-                <input type="file" accept='image/*' onChange={({ target }) => { setImage(target.value) }} />
+                  <input type="file" accept='image/*' onChange={({ target }) => { setImage(target.value) }} />
+                  <button><UilPlus /></button>
+                
               </div>
 
               <div className='info'>
@@ -68,7 +74,7 @@ export const Modal = ({ open, setOpenModal }) => {
 
                   <div className='categories'>
                     <h5 className='title'>what is kind of?</h5>
-                    <select name="categories" id="category" value="Select Category" onChange={({target}) => { setCategory(target.value) }}>
+                    <select name="categories" id="category" value="Select Category" onChange={({ target }) => { setCategory(target.value) }}>
                       <option value="Costume">Costume</option>
                       <option value="Sports">Sports</option>
                       <option value="Appliance Home">Appliance Home</option>

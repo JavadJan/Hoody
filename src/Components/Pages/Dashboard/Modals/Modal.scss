@@ -46,10 +46,13 @@
   .upload{ 
     height: 370px;
     border: 0.1px dashed rgb(192, 192, 192);
-    padding: 10px;
     border-radius: 10px;
     background: rgb(235, 234, 234);
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 60px;
+    padding-right: 60px;
   }
   .info{
     background: rgb(235, 234, 234);

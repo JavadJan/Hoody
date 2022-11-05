@@ -5,7 +5,7 @@ import Najla from './Najla.jpg'
 
 export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
-  console.log('user.photoURL' ,user.photoURL )
+  // console.log('user.photoURL' ,user.photoURL )
   function showModal() {
     setOpenModal(true)
   }
@@ -16,7 +16,7 @@ export const Sidebar = ({setOpenModal}) => {
       <div className="sidebar-content">
         <div className='user-pic'>
           <img src={Najla} alt="" />
-          <div className='username'>{user.displayName}</div>
+          <div className='username'>{user ? user.displayName : 'username'}</div>
           <button>Edit</button>
         </div>
         <ul>
