@@ -25,25 +25,26 @@ export const Dashboard = () => {
         console.log('take loc', 'checkbox get to', turnLocation)
         navigator.geolocation.getCurrentPosition(showPosition);
       }
-      
+
     }
     else {
       console.log('take loc', 'checkbox get to', turnLocation)
       setCoordination({ latitude: '', longitude: '' })
     }
-  
+
     function showPosition(position) {
       setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude })
     }
-  },[turnLocation])
+  }, [turnLocation])
 
   
+
   return (
     <div className='dashboard'>
-      <Sidebar setOpenModal={setOpenModal} /> 
+      <Sidebar setOpenModal={setOpenModal} />
       <div className='main-profile'>
-        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} user={user} />
-        <Header/>
+        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} />
+        <Header />
         <MainContent />
       </div>
     </div>

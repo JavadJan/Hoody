@@ -18,5 +18,5 @@ export const useUser = () => {
     }, [user])
 
     console.log('activeUser: ', activeUser)
-    return { user: activeUser }
+    return {user: activeUser }
 }

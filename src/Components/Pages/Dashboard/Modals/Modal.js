@@ -7,18 +7,17 @@ import { storage } from '../../../../DB/firebase'
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilCloudUpload } from '@iconscout/react-unicons'
 import { useUser } from '../../../../DB/useUser'
+import { userContext } from '../../../../Context/userContext'
+import { useContext } from 'react'
 
-export const Modal = ({ open, setOpenModal, setTurnLocation , coordination , user}) => {
-  // const {user} =useContext(userContext)
+export const Modal = ({ open, setOpenModal, setTurnLocation , coordination }) => {
   const [image, setImage] = useState(null)
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
   
-  // console.log(user.uid)
-  const currentUser = useUser()
-
- currentUser && console.log(type, category , image , currentUser.id)
+  const { user: { username, fullName, userId, id } } = useUser()
+  console.log(id )  
 
   //close modal
   if (!open) return null
@@ -38,7 +37,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation , coordination , use
       coordination:coordination
     }
     console.log(item)
-    // userId:currentUser.id,
+    // docId:currentUser.id,
   }
 
   console.log('coordination', coordination)
