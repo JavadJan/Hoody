@@ -1,0 +1,51 @@
+.widget {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: -1px 5px 15px -6px rgba(0, 0, 0, 0.81);
+  border-radius: 10px;
+  height: 150px;
+}
+.widget .left, .widget .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.widget .left .title, .widget .right .title {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(145, 142, 142);
+  font-family: var(--font-family);
+}
+.widget .left .counter, .widget .right .counter {
+  font-size: 24px;
+  font-weight: 300;
+}
+.widget .left .link, .widget .right .link {
+  font-size: 12px;
+  border-bottom: 1px solid gray;
+  font-family: var(--font-family);
+}
+.widget .left .percentage, .widget .right .percentage {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.widget .left .percentage.positive, .widget .right .percentage.positive {
+  color: green;
+}
+.widget .left .percentage.negative, .widget .right .percentage.negative {
+  color: red;
+}
+.widget .left .icon, .widget .right .icon {
+  font-size: 18px;
+  align-self: flex-end;
+  background-color: var(--color-bg1);
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+}/*# sourceMappingURL=Widget.css.map */

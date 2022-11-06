@@ -4,4 +4,13 @@
 .admin .admin-container {
   flex: 6;
   min-height: 100vh;
+}
+.admin .admin-container .widgets, .admin .admin-container .charts {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+}
+.admin .admin-container .charts {
+  padding: 5px 10px;
 }/*# sourceMappingURL=admin.css.map */

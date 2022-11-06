@@ -28,7 +28,7 @@ export function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  console.log('user' , user)
+  console.log('user', user)
 
   const notifyError = (message) => toast.error(message, {
     position: "bottom-center",
@@ -158,22 +158,25 @@ export function Login() {
       userId: user.uid,
       username: user.displayName,
       email: user.email
+
     })
     navigate(ROUTES.Login)
   }
 
   //handle facebook sign up
-  const handleFacebookSignUp = async () => {
+  const handleFacebookSignUp = async (event) => {
+    event.preventDefault()
     const provider = new FacebookAuthProvider()
     await signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.
-        const userr = result.user;
-        console.log('userr' , userr)
+        // setUserr(result.user);
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
         console.log(accessToken)
+
+
       })
       .catch((error) => {
         // Handle Errors here.
@@ -183,16 +186,22 @@ export function Login() {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = FacebookAuthProvider.credentialFromError(error);
-        console.log( error.message, errorMessage)
+        console.log(error.message, errorMessage)
         // ...
       });
 
-    await addDoc(collection(db, 'users'), {
-      userId: user.uid,
-      username: user.displayName,
-      email: user.email
+    
+      const currentUser = JSON.parse(localStorage.getItem('authUser'))
+
+   await addDoc(collection(db, 'users'), {
+      userId: currentUser.uid,
+      username: currentUser.displayName,
+      email: currentUser.email,
+      itemId: []
     })
+    // console.log(user.uid)
     setSignUpMode(false)
+
   }
   //handle tweeter sign up
   const handleTwitterSignUp = async () => {
@@ -226,11 +235,11 @@ export function Login() {
     color: "#ff642f",
     margin: "auto",
     position: "absolute",
-    bottom:-12,
+    bottom: -12,
     /* text-align: center; */
     /* display: flex; */
     /* justify-content: center; */
-    justifySelf:"center",
+    justifySelf: "center",
     border: "2px solid #28877f",
     padding: "5px 12px",
     textTransform: 'capitalize',
@@ -240,119 +249,116 @@ export function Login() {
 
   return (
     <>
-    <Nav/>
-    {/* <NavLink to="/" className="logoLogin">
+      <Nav />
+      {/* <NavLink to="/" className="logoLogin">
     <img src={logo1} alt=""></img></NavLink> */}
-    <div className={`container${toggleClassCheck}`}>
-      
-      <div className="forms-container">
-        <div className="signin-signup">
+      <div className={`container${toggleClassCheck}`}>
 
-          {error && <p className="error" style={style}>{error}</p>}
-          {/* to login mode form */}
-          <form action="#" className="form sign-in-form" onSubmit={handleLogin}>
-            <h2 className="title">Sign in</h2>
-            <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input value={email} type="text" placeholder="Email" onChange={({ target }) => setEmail(target.value)} required />
-            </div>
-            <div className="input-field">
-              <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" value={password} onChange={({ target }) => setPassword(target.value)} required />
-            </div>
-            <button type="submit" className="btn solid">Login</button>
-            <p className="social-text">Or Login with social platforms</p>
-            <div className="social-media">
-              <Link href="#" className="social-icon" onClick={handleLoginGoogle}>
-                <i className="fab fa-google" ></i>
-              </Link>
-              <Link href="#" className="social-icon" onClick={handleLoginFacebook}>
-                <i className="fab fa-facebook-f"></i>
-              </Link>
-              <Link href="#" className="social-icon">
-                <i className="fab fa-twitter"></i>
-              </Link>
-              <Link href="#" className="social-icon">
-                <i className="fab fa-apple"></i>
-              </Link>
-            </div>
-          </form>
+        <div className="forms-container">
+          <div className="signin-signup">
 
-          {/* to sign up mode from */}
+            {error && <p className="error" style={style}>{error}</p>}
+            {/* to login mode form */}
+            <form action="#" className="form sign-in-form" onSubmit={handleLogin}>
+              <h2 className="title">Sign in</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input value={email} type="text" placeholder="Email" onChange={({ target }) => setEmail(target.value)} required />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input type="password" placeholder="Password" value={password} onChange={({ target }) => setPassword(target.value)} required />
+              </div>
+              <button type="submit" className="btn solid">Login</button>
+              <p className="social-text">Or Login with social platforms</p>
+              <div className="social-media">
+                <Link href="#" className="social-icon" onClick={handleLoginGoogle}>
+                  <i className="fab fa-google" ></i>
+                </Link>
+                <Link href="#" className="social-icon" onClick={handleLoginFacebook}>
+                  <i className="fab fa-facebook-f"></i>
+                </Link>
+                <Link href="#" className="social-icon">
+                  <i className="fab fa-twitter"></i>
+                </Link>
+                <Link href="#" className="social-icon">
+                  <i className="fab fa-apple"></i>
+                </Link>
+              </div>
+            </form>
 
-          <form action="#" className="form sign-up-form" onSubmit={handleSignup}>
-            <h2 className="title">Sign up</h2>
+            {/* to sign up mode from */}
 
-            <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required />
-            </div>
+            <form action="#" className="form sign-up-form" onSubmit={handleSignup}>
+              <h2 className="title">Sign up</h2>
 
-            <div className="input-field">
-              <i className="fas fa-envelope"></i>
-              <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required />
-            </div>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required />
+              </div>
 
-            <div className="input-field">
-              <i className="fas fa-lock"></i>
-              <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required />
-            </div>
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required />
+              </div>
+
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required />
+              </div>
 
 
-            <button type="submit" className="btn" onClick={(e) => {
-              e.preventDefault()
-              alert('clicked')
-            }}>Sign up</button>
+              <button type="submit" className="btn">Sign up</button>
 
-            <p className="social-text">Or Sign up with social platforms</p>
-            <div className="social-media">
-              <Link href="#" className="social-icon" onClick={handleGoogleSignUp}>
-                <i className="fab fa-google"></i>
-              </Link>
-              <Link href="#" className="social-icon" onClick={handleFacebookSignUp}>
-                <i className="fab fa-facebook-f"></i>
-              </Link>
-              <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
-                <i className="fab fa-twitter"></i>
-              </Link>
-              <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
-                <i className="fab fa-linkedin-in"></i>
-              </Link>
-            </div>
-          </form>
-        </div>
-        <ToastContainer />
-      </div>
-
-      <div className="panels-container">
-        <div className="panel left-panel">
-          <div className="content">
-            <h3>New here ?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
-            </p>
-            <button onClick={signUpButton} className="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
+              <p className="social-text">Or Sign up with social platforms</p>
+              <div className="social-media">
+                <Link href="#" className="social-icon" onClick={handleGoogleSignUp}>
+                  <i className="fab fa-google"></i>
+                </Link>
+                <Link href="#" className="social-icon" onClick={handleFacebookSignUp}>
+                  <i className="fab fa-facebook-f"></i>
+                </Link>
+                <Link href="#" className="social-icon" onClick={handleTwitterSignUp}>
+                  <i className="fab fa-twitter"></i>
+                </Link>
+                <Link href="#" className="social-icon" onClick={handleAppleSignUp}>
+                  <i className="fab fa-linkedin-in"></i>
+                </Link>
+              </div>
+            </form>
           </div>
-          <img src={LogImg} className="image" alt="" />
+          <ToastContainer />
         </div>
-        <div className="panel right-panel">
-          <div className="content">
-            <h3>One of us ?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
-            </p>
-            <button onClick={signInButton} className="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
+
+        <div className="panels-container">
+          <div className="panel left-panel">
+            <div className="content">
+              <h3>New here ?</h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+                ex ratione. Aliquid!
+              </p>
+              <button onClick={signUpButton} className="btn transparent" id="sign-up-btn">
+                Sign up
+              </button>
+            </div>
+            <img src={LogImg} className="image" alt="" />
           </div>
-          <img src={RegisterImg} className="image" alt="" />
+          <div className="panel right-panel">
+            <div className="content">
+              <h3>One of us ?</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+                laboriosam ad deleniti.
+              </p>
+              <button onClick={signInButton} className="btn transparent" id="sign-in-btn">
+                Sign in
+              </button>
+            </div>
+            <img src={RegisterImg} className="image" alt="" />
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

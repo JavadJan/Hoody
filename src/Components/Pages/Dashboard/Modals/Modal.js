@@ -6,15 +6,19 @@ import { useState } from 'react'
 import { storage } from '../../../../DB/firebase'
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilCloudUpload } from '@iconscout/react-unicons'
+import { useUser } from '../../../../DB/useUser'
 
-export const Modal = ({ open, setOpenModal, setTurnLocation , coordination}) => {
+export const Modal = ({ open, setOpenModal, setTurnLocation , coordination , user}) => {
+  // const {user} =useContext(userContext)
   const [image, setImage] = useState(null)
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
   
+  // console.log(user.uid)
+  const currentUser = useUser()
 
-  console.log(type, category)
+ currentUser && console.log(type, category , image , currentUser.id)
 
   //close modal
   if (!open) return null
@@ -26,9 +30,15 @@ export const Modal = ({ open, setOpenModal, setTurnLocation , coordination}) => 
   //for saving image
   function handleSaveImage(e) {
     e.preventDefault()
-    const item = {imgURL: image,type: type,category: category,explain:explain , coordination:coordination
+    const item = {
+      imageInfo: image,
+      type: type,
+      category: category,
+      explain:explain , 
+      coordination:coordination
     }
     console.log(item)
+    // userId:currentUser.id,
   }
 
   console.log('coordination', coordination)
