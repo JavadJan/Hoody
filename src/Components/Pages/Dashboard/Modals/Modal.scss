@@ -34,6 +34,7 @@
   }
   
 }
+
 .content-form{
   position: relative;
   padding: 10px;
@@ -50,9 +51,60 @@
     background: rgb(235, 234, 234);
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-left: 60px;
-    padding-right: 60px;
+    // justify-content: center;
+    gap: 35px;
+    flex-direction: column;
+    .upload-content{
+      position: relative;
+      top: 20px;
+      width: 80%;
+      height: 45px;
+      .file{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        opacity: 0;
+        cursor: pointer;
+        
+      }
+      .btnUpload{
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        background: var(--color-btn2);
+        // cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: white;
+      }
+      
+    }
+
+    .preview{
+      // background-color: rgb(248, 249, 248);
+      border-radius: 5px;
+      height: 80%;
+      width: 90%;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      img{
+        object-fit: cover;
+        border-radius: 5px;
+        width: 100%;
+      }
+      .cloud{
+        width: 60px;
+        height: 60px;
+        color: rgb(163, 161, 161);
+      }
+    }
   }
   .info{
     background: rgb(235, 234, 234);
@@ -96,7 +148,7 @@
       }
       
       //Group of Categories
-      .categories{
+      .categories , .current-location{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -113,6 +165,15 @@
         select{
           height: 30px;
           width: 150px;
+        }
+      }
+
+      // ask turn on current location? 
+      .current-location{
+        .turn-location{
+          cursor: pointer;
+          width: 15px;
+          height:15px;
         }
       }
 
@@ -137,6 +198,9 @@
     button{
       height: 35px;
       background-color: var(--color-btn2);
+      width: 95%;
+      margin: auto;
+      margin-bottom: -5px;
     }
   }
 }
@@ -187,8 +251,13 @@
     flex-direction: column;
     width: 100%;
     .upload{
-      height: 200px;
+      height: fit-content;
+      min-height: 250px;
       width: 100%;
+      .upload-content{
+        height: 40px;
+        font-size: 14px;
+      }
     }
     
  }

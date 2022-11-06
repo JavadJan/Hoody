@@ -7,7 +7,7 @@ export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
   // console.log('user.photoURL' ,user.photoURL )
   function showModal() {
-    setOpenModal(true)
+    setOpenModal(false)
   }
   
   return (

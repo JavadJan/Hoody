@@ -5,17 +5,20 @@ import logo1 from '../../../../assets/logo1.png'
 import { useState } from 'react'
 import { storage } from '../../../../DB/firebase'
 import { UilPlus } from '@iconscout/react-unicons'
+import { UilCloudUpload } from '@iconscout/react-unicons'
 
 export const Modal = ({ open, setOpenModal }) => {
   const [image, setImage] = useState(null)
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
+  const [turnLocation, setTurnLocation] = useState(false)
+  const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
 
   console.log(type, category)
 
   //close modal
-  if (!open) return null
+  // if (!open) return null
   function closeModal() {
     setOpenModal(false)
   }
@@ -28,12 +31,34 @@ export const Modal = ({ open, setOpenModal }) => {
       imgURL: image,
       type: type,
       category: category,
-      explain: explain
+      explain: explain,
+      location: turnLocation
     }
-
-
     console.log(item)
   }
+
+  //get current location 
+  useEffect(() => {
+    if (!turnLocation) {
+      if (navigator.geolocation) {
+        console.log('take loc', 'checkbox get to', turnLocation)
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+      
+    }
+    else {
+      console.log('take loc', 'checkbox get to', turnLocation)
+      setCoordination({ latitude: '', longitude: '' })
+    }
+  
+    function showPosition(position) {
+      setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+    }
+  console.log('coordination', coordination)
+  },[turnLocation])
+
+
+
 
   return (
     <div id="myModal" className="modal">
@@ -50,9 +75,17 @@ export const Modal = ({ open, setOpenModal }) => {
             <div className="content-form">
 
               <div className='upload'>
-                  <input type="file" accept='image/*' onChange={({ target }) => { setImage(target.value) }} />
-                  <button><UilPlus /></button>
-                
+
+                <div className='upload-content'>
+                  <input className="file" type="file" accept='image/*' onChange={({ target }) => { setImage(target.files[0]) }} />
+                  <span className='btnUpload'><UilPlus />Upload</span>
+                </div>
+
+                <div className='preview'>
+                  {!image && <UilCloudUpload className="cloud" />}
+                  {image && <img src={URL.createObjectURL(image)} alt="arr" />}
+                </div>
+
               </div>
 
               <div className='info'>
@@ -65,7 +98,6 @@ export const Modal = ({ open, setOpenModal }) => {
                       <input type="radio" id='sell' value="sell" name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="sell">Sell</label>
                     </span>
-
                     <span>
                       <input type="radio" id='donate' value="Donate" name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="donate">Donate</label>
@@ -85,6 +117,11 @@ export const Modal = ({ open, setOpenModal }) => {
                     </select>
                   </div>
 
+                  <div className='current-location'>
+                    current location?
+                    <input type="checkbox" className='turn-location' onChange={({ target }) => { setTurnLocation(target.checked) }} />
+                  </div>
+
                   <div className='explain'>
                     <h5 className="title">please explain your stock!</h5>
                     <textarea name="" id="" cols="30" rows="8" onChange={({ target }) => { setExplain(target.value) }}></textarea>
@@ -99,9 +136,6 @@ export const Modal = ({ open, setOpenModal }) => {
 
           </form>
         </div>
-
-
-
       </div>
     </div>
   )
