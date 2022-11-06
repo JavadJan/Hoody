@@ -7,18 +7,17 @@ import { storage } from '../../../../DB/firebase'
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilCloudUpload } from '@iconscout/react-unicons'
 
-export const Modal = ({ open, setOpenModal }) => {
+export const Modal = ({ open, setOpenModal, setTurnLocation , coordination}) => {
   const [image, setImage] = useState(null)
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
-  const [turnLocation, setTurnLocation] = useState(false)
-  const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
+  
 
   console.log(type, category)
 
   //close modal
-  // if (!open) return null
+  if (!open) return null
   function closeModal() {
     setOpenModal(false)
   }
@@ -27,35 +26,13 @@ export const Modal = ({ open, setOpenModal }) => {
   //for saving image
   function handleSaveImage(e) {
     e.preventDefault()
-    const item = {
-      imgURL: image,
-      type: type,
-      category: category,
-      explain: explain,
-      location: turnLocation
+    const item = {imgURL: image,type: type,category: category,explain:explain , coordination:coordination
     }
     console.log(item)
   }
 
-  //get current location 
-  useEffect(() => {
-    if (!turnLocation) {
-      if (navigator.geolocation) {
-        console.log('take loc', 'checkbox get to', turnLocation)
-        navigator.geolocation.getCurrentPosition(showPosition);
-      }
-      
-    }
-    else {
-      console.log('take loc', 'checkbox get to', turnLocation)
-      setCoordination({ latitude: '', longitude: '' })
-    }
-  
-    function showPosition(position) {
-      setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-    }
   console.log('coordination', coordination)
-  },[turnLocation])
+
 
 
 
@@ -118,7 +95,7 @@ export const Modal = ({ open, setOpenModal }) => {
                   </div>
 
                   <div className='current-location'>
-                    current location?
+                    <h5 className='title'>Find items in your neighborhood!</h5>
                     <input type="checkbox" className='turn-location' onChange={({ target }) => { setTurnLocation(target.checked) }} />
                   </div>
 

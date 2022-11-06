@@ -6,8 +6,11 @@ import Najla from './Najla.jpg'
 export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
   // console.log('user.photoURL' ,user.photoURL )
+  
+
+
   function showModal() {
-    setOpenModal(false)
+    setOpenModal(true)
   }
   
   return (
