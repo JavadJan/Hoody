@@ -45,16 +45,18 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
       userDocId: id
     }
     console.log(item)
-    console.log(`${category}/` + image.name)
+    console.log(`${category}/` + image.name , id)
 
     //add items in fireStore
     await addDoc(collection(db, 'items'), item)
 
+    const metadata = {...item , uid : userId}
+
     //---------------------add picture in storage 
 
     // Upload file and metadata to the object 'images/mountains.jpg'
-    const storageRef = ref(storage, `${category}/` + image.name);
-    const uploadTask = uploadBytesResumable(storageRef, image , item)
+    const storageRef = ref(storage, `${id}/` + image.name);
+    const uploadTask = uploadBytesResumable(storageRef, image , metadata)
 
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on('state_changed',

@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
 import { userContext } from '../../../Context/userContext'
-import Najla from './Najla.jpg'
+import Najla from './dash-css/Najla.jpg'
 
 export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
   // console.log('user.photoURL' ,user.photoURL )
   
-
 
   function showModal() {
     setOpenModal(true)

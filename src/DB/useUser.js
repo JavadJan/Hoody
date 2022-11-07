@@ -16,7 +16,5 @@ export const useUser = () => {
             getUserObjByUserId()
         }
     }, [user])
-
-    console.log('activeUser: ', activeUser)
     return {user: activeUser }
 }

@@ -2,12 +2,13 @@ import React from 'react'
 import { useContext } from 'react'
 import { userContext } from '../../../Context/userContext'
 import { Header } from './Header'
-import './Dashboard.css'
+import './dash-css/Dashboard.css'
 import { Sidebar } from './Sidebar'
 import { MainContent } from './mainContent/Main-content'
 import { useState } from 'react'
 import { Modal } from './Modals/Modal'
 import { useEffect } from 'react'
+import { useUser } from '../../../DB/useUser'
 
 
 export const Dashboard = () => {
@@ -18,9 +19,10 @@ export const Dashboard = () => {
   const [turnLocation, setTurnLocation] = useState(false)
   const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
 
+
   //get current location 
   useEffect(() => {
-    if (!turnLocation) {
+    if (turnLocation) {
       if (navigator.geolocation) {
         console.log('take loc', 'checkbox get to', turnLocation)
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -37,7 +39,7 @@ export const Dashboard = () => {
     }
   }, [turnLocation])
 
-  
+
 
   return (
     <div className='dashboard'>
