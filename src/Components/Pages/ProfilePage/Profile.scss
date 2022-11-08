@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 0;
+    text-decoration: none;
+
+}
+
+.profile{
+    display: grid;
+   grid-template-columns:25% 1fr;
+}
+
+.leftSideBar{
+    background: linear-gradient(0deg, rgba(18, 17, 17, 0.2), rgba(18, 17, 17, 0.2)), url('../../../assets/Triangify.png');
+    height: 100vh;
+    width: 100%;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+     position: relative;
+
+    img{
+        width: 100px;
+        height: 100px;
+        background-color: rgba(255, 255, 255, 0.462);
+        border-radius: 50%;
+        
+    }
+.addPicture{
+    display: block;
+   
+    .bsCamera{
+        display: block;
+        position: absolute;
+        right: 38%;
+        bottom: 30%;
+        background-color: var(--color-light-green);
+        color:white;
+        padding: 5px;
+        border-radius: 50%;
+        font-size: 25px;
+    
+    }
+
+    input{
+        width: 25px;
+        border-radius: 50%;
+        position: absolute;
+        right: 38%;
+        bottom: 30%;
+        opacity: 0;
+    }
+
+}
+}

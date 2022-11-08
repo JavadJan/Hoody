@@ -25,6 +25,8 @@ import { Oval } from "react-loader-spinner";
 // import { SunspotLoader } from "react-awesome-loaders";
 
 import { Admin } from "./Components/Pages/Admin"
+import Profile from './Components/Pages/ProfilePage/Profile'
+import Donation from "./Components/Pages/Donation/Donation";
 
 function App() {
   const { user } = UserListener();
@@ -74,7 +76,9 @@ function App() {
                 <Route path={ROUTES.Dashboard} element={<Dashboard />} />
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
+                <Route path='/Profile' element={<Profile/>} />
                 <Route path='*' element={<NotFound />} />
+                <Route path='/DOnation' element={<Donation />} />
               </Routes>
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""} */}
             </Router>

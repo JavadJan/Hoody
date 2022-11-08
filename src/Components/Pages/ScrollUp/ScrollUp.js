@@ -7,11 +7,11 @@ const ScrollUp=() =>{
     const checkScrollTop = () => {
       if (!showScroll && window.pageYOffset > 400){
         setShowScroll(true)
-      } else if (showScroll && window.pageYOffset <= 400){
+      } else if (showScroll && window.pageYOffset <= 400 ){
         setShowScroll(false)
       }
     };
-  
+  console.log(window.pageYOffset)
     const scrollTop = () =>{
       window.scrollTo({top: 0, behavior: 'smooth'});
     };

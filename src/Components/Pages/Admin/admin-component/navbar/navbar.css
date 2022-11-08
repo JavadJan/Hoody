@@ -1,1 +1,79 @@
-/*# sourceMappingURL=navbar.css.map */
+.ad-navbar {
+  height: 50px;
+  border-bottom: 0.2px solid rgba(211, 211, 211, 0.895);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.ad-navbar .wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.ad-navbar .wrapper .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.2px solid rgba(211, 211, 211, 0.895);
+  padding: 3px;
+  background-color: white;
+  border-radius: 5px;
+}
+.ad-navbar .wrapper .search input {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+.ad-navbar .wrapper .search input::-moz-placeholder {
+  font-size: 12px;
+}
+.ad-navbar .wrapper .search input:-ms-input-placeholder {
+  font-size: 12px;
+}
+.ad-navbar .wrapper .search input::placeholder {
+  font-size: 12px;
+}
+.ad-navbar .wrapper .ad-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.ad-navbar .wrapper .ad-items .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.ad-navbar .wrapper .ad-items .item .counter {
+  color: white;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 10px;
+  background-color: crimson;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.ad-navbar .wrapper .ad-items .user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+.ad-navbar .wrapper .ad-items .user img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}/*# sourceMappingURL=navbar.css.map */

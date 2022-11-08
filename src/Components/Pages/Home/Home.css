@@ -223,6 +223,7 @@
     right: 18%;
     text-align: right;
     border-right: 2px dashed rgba(255, 255, 255, 0.3);
+
     z-index: 2;
 }
 
@@ -269,6 +270,7 @@
     height: 10px;
    border-radius: 50%;
    margin-bottom:10vh;
+   
 }
 
 
@@ -304,6 +306,19 @@
         width: 100%;
        height: 80vh;
     }
+    .mouseMove{
+        top: 50px;
+        right: 25px;
+     
+    }
+    .endPoint{
+        position: absolute;
+        top:130px;
+ 
+    }
+    
+
+
 }
 
 @media screen and (max-width:475px){

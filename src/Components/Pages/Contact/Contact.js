@@ -17,25 +17,29 @@ export const Contact = () => {
 
 
   const success = () => toast.success('Message successfully received ✔')
-
+  const error = () => toast.error('An error has occurred! Try again')
   const form=useRef()
 
 
   const sendContact = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     emailjs
       .sendForm(
-        "service_",
-        "template_",
+        "service_3ox8hcc",
+        "template_3qjbebe",
         form.current,
-        ""
+        "a8c8Yk5xsPBcuaC8v"
       )
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
+          success()
+          init()
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
+          // alert(error.text)
+          error()
         }
       );
   };
@@ -131,7 +135,7 @@ export const Contact = () => {
    
       </div>
       <ToastContainer
-              position="top-right"
+              position= "bottom-center"
               autoClose={3000}
               hideProgressBar={false}
               newestOnTop={false}

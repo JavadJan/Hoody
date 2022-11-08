@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './About.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 import black from '../../../assets/about-back.png'
 
@@ -71,7 +72,7 @@ export const About = () => {
              starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
             </p>
-            <button className='learn'>Learn More</button>
+            <Link to="#services" className='learn'>Learn More</Link>
           </div>
 
         </div>
