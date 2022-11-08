@@ -19,8 +19,8 @@
 .about-main{
     display: flex;
     flex-direction: column;
-    /* background: var(--color-dark-green); */
-    /* background-color: var(--color-bg1); */
+
+
  
 }
 
@@ -45,7 +45,7 @@
     border: 2px solid red; */
     margin: 4rem auto;
     width: var(--container-md);
-
+ 
 }
 
 
@@ -116,7 +116,8 @@ display: block;
     top: 80px;
     float: right;
     border: none;
-    padding: 1.1rem 2rem;
+    padding: 1rem 2rem;
+
     /* border: 1px solid rgba(255, 255, 255, 0.633); */
     font-variant-caps: all-petite-caps;
    transition: 400ms ease-in-out;
@@ -379,3 +380,22 @@ color: white;
 transform: scale(1.2);
 }
 
+
+
+
+
+
+@media screen and (max-width:1100px){
+    .about-sections1{
+        grid-template-columns: 1fr;
+        position: relative;
+      
+
+    }
+    .blackImg{
+        display: none;
+    }
+    .section-left{
+        height: 40vh;
+    }
+}

@@ -1,0 +1,153 @@
+*,
+*::before,
+*::after{
+padding: 0;
+margin: 0;
+outline: 0;
+box-sizing: border-box;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+:root{
+    --font-header:'Montserrat', sans-serif;
+    --font-sub-header: 'Montserrat Alternates', sans-serif;
+}
+
+
+.donation-section{
+    background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.5)),url('../../../assets/Triangify.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 2rem auto;
+    width:55vw;
+    max-width: 100%;
+    padding:4rem 2rem;
+    text-align: center;
+   
+}
+
+.donation-content{
+    background: rgba(255, 255, 255, 0.205);
+    backdrop-filter: blur(8px);
+    margin: 2rem;
+    height: fit-content;
+    padding: 1rem 2rem;
+}
+.section-content{
+    padding:4rem 2rem 1rem 2rem;
+    text-align: center;
+    
+}
+
+.logoD{
+    position: absolute;
+    top: -7%;
+    left:35%;
+    display: block;
+    width: 200px;
+}
+.section-content h1{
+    font-family: var(--font-header);
+    font-size: 32px;
+    font-weight: 700;
+    line-height:1.9;
+   
+}
+.section-content h3{
+    font-family: var(--font-sub-header);
+    font-size: 15px;
+    width: 80%;
+  margin: auto;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.donation-form{
+    background:  #FFFEFE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-block: 1rem;
+    margin-block-end: 4rem;
+    
+}
+
+.dot-part h5{
+    font-family: var(--font-sub-header);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.7;
+    padding-block: 18px;
+  
+}
+.dot-part-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap:2rem;
+    row-gap:1em;
+    padding-inline: 4rem;
+}
+.PRT{
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+margin-block-end: 12px;
+}
+
+.PRT label{
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-sub-header);
+}
+.PRT input,select{
+    border: 2px solid #266453;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 100%;
+    height: 37px;
+   margin-top: 12px;
+   padding-left: 15px;
+   border-radius: 4px;
+   transition: 400ms all ease-in;
+}
+
+
+
+.donateBtn{
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    margin-block: 18px;
+    background: transparent;
+    text-align: center;
+    border: 2px solid var(--color-light-green);
+    font-weight: 700;
+    font-family: var(--font-sub-header);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    z-index:0;
+}
+.donateBtn::before{
+    content: '';
+    position: absolute;
+    /* display: block; */
+    top:0;
+    left:0;
+    z-index:-1;
+    width: 100%;
+    height: 0%;
+     background: url('../../../assets/Triangify.png');
+     background-size: cover;
+     background-repeat: no-repeat;
+    transition: 400ms all ease;
+
+}
+
+.donateBtn:hover::before{
+
+height: 100px;
+}
+.donateBtn:hover{
+
+    color: white;
+}

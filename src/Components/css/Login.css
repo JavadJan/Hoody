@@ -29,7 +29,8 @@ input {
   box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.059);
   border-radius: 5px;
   position: relative;
- 
+  animation:fadeInRight 600ms ease-in both;
+  animation-delay: .3s;
 }
 
 .forms-container {
