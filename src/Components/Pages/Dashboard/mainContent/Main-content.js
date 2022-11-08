@@ -12,17 +12,19 @@ import { async } from '@firebase/util'
 
 export const MainContent = () => {
     const { user: { id } } = useUser()
+    const [items, setItems] = useState(null)
 
-    let t = getItemsById(id)
-   let items = t.then( function (v){
-        console.log(v)
-        return v
-    })
-    items.then(function (v) {console.log(v)})
+//3. third way with using useEffect
+    useEffect(() => {
+        getItemsById(id).then((data) => {
+            setItems(data)
+        })
+    }, [id])
+
     return (
         <div className='main-profileContent'>
             <OthersItems />
-            <UserItems id={id} items={items} />
+           { items ? <UserItems id={id} items={items} /> : ""}
         </div>
     )
 }
