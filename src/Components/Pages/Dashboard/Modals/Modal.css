@@ -1,0 +1,241 @@
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 7% auto; /* 15% from the top and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  height: 500px;
+}
+.modal-content .modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+  border-bottom: 0.2px solid rgb(211, 208, 208);
+}
+.modal-content .modal-head img {
+  width: 200px;
+  height: 150px;
+}
+
+.content-form {
+  position: relative;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row;
+  gap: 10px;
+}
+.content-form .upload {
+  height: 370px;
+  border: 0.1px dashed rgb(192, 192, 192);
+  border-radius: 10px;
+  background: rgb(235, 234, 234);
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  flex-direction: column;
+}
+.content-form .upload .upload-content {
+  position: relative;
+  top: 20px;
+  width: 80%;
+  height: 45px;
+}
+.content-form .upload .upload-content .file {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  opacity: 0;
+  cursor: pointer;
+}
+.content-form .upload .upload-content .btnUpload {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: var(--color-btn2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+}
+.content-form .upload .preview {
+  border-radius: 5px;
+  height: 80%;
+  width: 90%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.content-form .upload .preview img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+  width: 100%;
+}
+.content-form .upload .preview .cloud {
+  width: 60px;
+  height: 60px;
+  color: rgb(163, 161, 161);
+}
+.content-form .info {
+  background: rgb(235, 234, 234);
+  padding: 10px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.content-form .info .get-info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.content-form .info .get-info .choose-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2px;
+  width: 100%;
+  gap: 10px;
+  font-family: var(--font-family);
+  border-bottom: 0.2px solid white;
+  height: 50px;
+}
+.content-form .info .get-info .choose-type .title {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.content-form .info .get-info .choose-type span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.content-form .info .get-info .choose-type span input {
+  width: 15px;
+  height: 15px;
+}
+.content-form .info .get-info .categories, .content-form .info .get-info .current-location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(font-family);
+  border-bottom: 0.2px solid white;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.content-form .info .get-info .categories .title, .content-form .info .get-info .current-location .title {
+  font-size: 14px;
+  margin-bottom: 0;
+  font-family: var(--font-family);
+}
+.content-form .info .get-info .categories select, .content-form .info .get-info .current-location select {
+  height: 30px;
+  width: 150px;
+}
+.content-form .info .get-info .current-location .turn-location {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+.content-form .info .get-info .explain {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.content-form .info .get-info .explain .title {
+  font-size: 14px;
+  font-family: var(--font-family);
+}
+.content-form .info .get-info .explain textarea {
+  padding: 10px;
+  font-size: 12px;
+  font-family: var(--font-family);
+}
+.content-form .info button {
+  height: 35px;
+  background-color: var(--color-btn2);
+  width: 95%;
+  margin: auto;
+  margin-bottom: -5px;
+}
+
+/* The Close Button */
+.close {
+  color: rgb(99, 99, 99);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1360px) {
+  .modal-content {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .modal .modal-content {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .modal .modal-content {
+    width: 70%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .content-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .content-form .upload {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: 250px;
+    width: 100%;
+  }
+  .content-form .upload .upload-content {
+    height: 40px;
+    font-size: 14px;
+  }
+}/*# sourceMappingURL=Modal.css.map */

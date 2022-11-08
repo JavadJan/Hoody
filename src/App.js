@@ -17,6 +17,7 @@ import { Footer } from "./Components/Footer/Footer";
 import { NotFound } from "./Components/Pages/notFound";
 import { UserListener } from "./hook/userListener";
 import UserProfile from "./Components/UserAccount/UserProfile";
+import {Product} from "./Components/Pages/Products/Product";
 import ScrollUp from "./Components/Pages/ScrollUp/ScrollUp";
 import * as ROUTES from "./Components/Route/ROUTES";
 import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
@@ -25,8 +26,13 @@ import { Oval } from "react-loader-spinner";
 // import { SunspotLoader } from "react-awesome-loaders";
 
 import { Admin } from "./Components/Pages/Admin"
+
 import Profile from './Components/Pages/ProfilePage/Profile'
 import Donation from "./Components/Pages/Donation/Donation";
+
+import { useContext } from "react";
+import { DbContext } from "./Context/DBContext";
+
 
 function App() {
   const { user } = UserListener();
@@ -38,10 +44,9 @@ function App() {
       setIsLoading(false);
     }, 2000);
   }, []);
-  // const location = useLocation()
+  
   console.log("user: ", user);
   return (
-
     <>
       {isLoading ? (
         <Oval
@@ -74,6 +79,7 @@ function App() {
                 <Route path={ROUTES.Sign_Up} element={<SignUp />} />
                 <Route path={ROUTES.Login} element={<Login />} />
                 <Route path={ROUTES.Dashboard} element={<Dashboard />} />
+                <Route path={ROUTES.Products} element={<Product/>}/>
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
                 <Route path='/Profile' element={<Profile/>} />

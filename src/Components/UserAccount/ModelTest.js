@@ -220,7 +220,7 @@ function Model(props) {
               >
                 Save
               </div>
-              <p>{progress} "% done"</p>
+              {/* <p>{progress} "% done"</p> */}
             </div>
           </div>
 

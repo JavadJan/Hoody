@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import Default from './Default.png'
+import Default from './dash-css/Default.png'
 import logo1 from '../../../assets/logo1.png'
-export const Header = ({ user }) => {
+import { useContext } from 'react'
+import { userContext } from '../../../Context/userContext'
+export const Header = () => {
+    const {user} = useContext(userContext) 
+
+    
     return (
         <div className='header-profile'>
             <div className="header-content">

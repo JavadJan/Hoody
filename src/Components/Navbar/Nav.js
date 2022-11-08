@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { NavLink, useLocation, useNavigate} from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 // import {NavHashLink as Link} from 'react-router-hash-link'
 import { Link } from "react-scroll";
@@ -12,12 +12,12 @@ import { Home } from '../Route/ROUTES';
 
 export const Nav = () => {
 
-  let navigate = useNavigate(); 
-  const routeChange = (path) =>{ 
+  let navigate = useNavigate();
+  const routeChange = (path) => {
     // let path = `/`; 
     navigate(path);
   }
-  
+
 
   const [showMenu, setShow] = useState(false);
   // const [classname,setClassName] = useState(false);
@@ -47,7 +47,7 @@ export const Nav = () => {
     }
   };
   window.addEventListener("scroll", changeColor);
-// window.addEventListener('scroll',changeClassName)
+  // window.addEventListener('scroll',changeClassName)
   // useEffect(()=>{
   // if(window.innerWidth<=800){
   //  setColor(false)
@@ -61,9 +61,10 @@ export const Nav = () => {
     backgroundColor: "transparent"
   }
 
+  const exact = 'true'
   const location = useLocation()
 
-  console.log(location.pathname ==="/login" ? console.log('login' ): console.log('not login') , location.pathname)
+  console.log(location.pathname === "/login" ? console.log('login') : console.log('not login'), location.pathname)
 
   return (
     <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
@@ -72,23 +73,23 @@ export const Nav = () => {
           <img src={logo1} alt=""></img></NavLink>
         <nav className='List' >
 
-          <Link to="home" exact="true"
-          target='/'
+          <Link to="home" exact={exact.toString()}
+            target='/'
             className='item-list1'
             activeClass='active'
             onClick={() => {     //when click button hide the menu
               setShow(false)
               routeChange('/')
               console.log('clicked')
-              
+
             }}
             smooth spy
             end        //when click on other button the home will not be active
           >
             Home
-            </Link>
+          </Link>
 
-          <Link 
+          <Link
             to="about"
             smooth spy
             className='item-list2'
@@ -108,16 +109,16 @@ export const Nav = () => {
             }}
           >Service</Link>
 
-        <Link to="product"
+          <NavLink to="/Products"
             className='item-list3'
             activeClass='active'
             smooth spy
             onClick={() => {
               setShow(false)
-              routeChange('/')
+              routeChange('/Products')
             }}
             end
-          >Products</Link>
+          >Products</NavLink>
 
 
           <Link to="contact"
@@ -139,7 +140,7 @@ export const Nav = () => {
               setShow(false)
               routeChange('/Login')
             }}
-            >Subscribe</NavLink>
+          >Subscribe</NavLink>
 
         </nav>
         <button

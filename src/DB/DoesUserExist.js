@@ -9,3 +9,10 @@ export async function DoesUserExist (email) {
     console.log(data)
     return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 }
+
+export async function getUserById(uId) {
+    const q = query(collection(db , 'users') , where('userId' , '==' , uId))
+    const result =await getDocs(q)
+    const user = result.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    return user;
+}
