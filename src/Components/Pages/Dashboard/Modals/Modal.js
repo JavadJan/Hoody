@@ -11,7 +11,8 @@ import { userContext } from '../../../../Context/userContext'
 import { useContext } from 'react'
 import { addDoc, collection } from 'firebase/firestore'
 import { DbContext } from '../../../../Context/DBContext'
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+import { getUserById } from '../../../../DB/DoesUserExist'
 
 export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => {
 
@@ -20,10 +21,9 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
-  const [getLiknDowanload , setGetLinkDownload] = useState('')
-
+  const [getLinkDownload , setGetLinkDownload] = useState('')
+    
   const { user: { username, fullName, userId, id } } = useUser()
-  console.log(id)
 
   //close modal
   if (!open) return null
@@ -42,22 +42,26 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
       category: category,
       explain: explain,
       coordination: coordination,
-      userDocId: id
+      userDocId: id,
+      dateCreated : Date.now(),
     }
     console.log(item)
-    console.log(`${category}/` + image.name , id)
+    // console.log(`${category}/` + image.name , id)
 
-    //add items in fireStore
-    await addDoc(collection(db, 'items'), item)
-
-    const metadata = {...item , uid : userId}
+    
+    
 
     //---------------------add picture in storage 
 
     // Upload file and metadata to the object 'images/mountains.jpg'
     const storageRef = ref(storage, `${id}/` + image.name);
-    const uploadTask = uploadBytesResumable(storageRef, image , metadata)
-
+    const uploadTask = uploadBytesResumable(storageRef, image)
+    // updateMetadata(storageRef, metadata)
+    // .then((metadata) => {
+    //   // Updated metadata for 'images/forest.jpg' is returned in the Promise
+    // }).catch((error) => {
+    //   // Uh-oh, an error occurred!
+    // });
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on('state_changed',
       (snapshot) => {
@@ -97,9 +101,17 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
           setGetLinkDownload(downloadURL)
+          const metadata = {...item , uid : userId ,getLinkDownload:getLinkDownload }
+          addItem(metadata)
         });
       }
     );
+
+    //add items in fireStore
+    async function addItem(metadata) {
+      await addDoc(collection(db, 'items'), metadata)
+      
+    }
 
 
     //<--------------------------------

@@ -1,0 +1,19 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.post .header-post {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+}
+.post .header-post .icon-list {
+  margin-right: 35px;
+}/*# sourceMappingURL=photo.css.map */

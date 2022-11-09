@@ -3,11 +3,7 @@
   flex: 1;
   justify-content: space-between;
   padding: 20px;
-<<<<<<< HEAD
-  box-shadow: 1px 22px 50px -8px rgba(0, 0, 0, 0.34);
-=======
   box-shadow: -1px 5px 15px -6px rgba(0, 0, 0, 0.81);
->>>>>>> ea1ffeffa9f1ed317f99b54b79de4d4a665d36bd
   border-radius: 10px;
   height: 150px;
 }

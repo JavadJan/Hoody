@@ -23,7 +23,7 @@ export const UserItems = ({ id, items }) => {
         .then((url) => {
           // `url` is the download URL for 'userId/name.jpg'
           console.log(url)
-          setImageLink([...imageLink, url])
+          setImageLink(current => [...current, url])
           console.log('use effect 2----->', i, item, imageLink)
           // <img src={url} alt="" />
         })
@@ -39,29 +39,28 @@ export const UserItems = ({ id, items }) => {
           // Metadata now contains the metadata for 'images/forest.jpg'
           console.log(data.timeCreated)
           // link.push(data.type)
-          setMetadata([...metadata , data])
+          setMetadata(current => [...current, data])
         })
         .catch((error) => {
           // Uh-oh, an error occurred!
         });
 
-
-
     })
-  }, [items])
-  
-  console.log('metadata', metadata, id, imageLink)
+  }, [])
+
+  console.log('metadata', metadata, id, typeof(imageLink))
   //upload photo from storage
-
-
+imageLink.map((url)=>{
+  console.log('urllllllll---------->' , url)
+})
   return (
     <div className='user-items'>
       {
-        imageLink && imageLink.map((url) => {
-          <Photos src={url} />
-        })
+        imageLink && imageLink.map((url) =>{ return (
+          url && <Photos src={url} />
+        )})
       }
-
+      
     </div>
   )
 }

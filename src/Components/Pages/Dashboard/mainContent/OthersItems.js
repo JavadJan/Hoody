@@ -43,6 +43,7 @@ export const OthersItems = () => {
                         </span>
                     </div>
                 </div>
+
                 <div className="item-categories">
                     <ul>
                         <li>Costume</li>
@@ -64,7 +65,7 @@ export const OthersItems = () => {
 
                         <div className='item-content'>
                             <h4>name</h4>
-                            <h5>Price: free</h5>
+                            <h5>Price: 10$</h5>
                             <p>
                                 <i className="uil uil-map-marker"></i> 500 m
                             </p>
@@ -102,7 +103,7 @@ export const OthersItems = () => {
 
                         <div className='item-content'>
                             <h4>name</h4>
-                            <h5>Price: free</h5>
+                            <h5>Price: 10$</h5>
                             <p>
                                 <i className="uil uil-map-marker"></i> 500 m
                             </p>

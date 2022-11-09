@@ -65,13 +65,15 @@
             // top: 5px;
             margin-top: 2px;
             padding:5px 1rem ;
+            padding-right: 2px;
             height: calc(100vh - 4.2rem);
             display: flex;
             // grid-template-columns: 70% 30%;
             column-gap: 5px;
             .others-items{
                 flex: 6;
-                background: linear-gradient(45deg,rgb(0, 0, 0),rgba(1, 19, 18, 0.614),rgb(0, 0, 0)),url('https://media.istockphoto.com/photos/technology-network-data-with-icons-connection-digital-datanetwork-and-picture-id1211772593?k=20&m=1211772593&s=612x612&w=0&h=P5gTxKWdcoDrWb2lfJuUaAwX_iAltEbiwOhkesLRXnc=');
+                // background: linear-gradient(45deg,rgb(0, 0, 0),rgba(1, 19, 18, 0.614),rgb(0, 0, 0)),url('https://media.istockphoto.com/photos/technology-network-data-with-icons-connection-digital-datanetwork-and-picture-id1211772593?k=20&m=1211772593&s=612x612&w=0&h=P5gTxKWdcoDrWb2lfJuUaAwX_iAltEbiwOhkesLRXnc=');
+                background-color: rgba(184, 184, 184, 0.399);
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -113,7 +115,7 @@
                         align-items: flex-end;
                         justify-content: end;
                         i{
-                            color: white;
+                            color: black;
                             font-size: 20px;
     
                         }
@@ -154,7 +156,7 @@
                     }
                 }
                 .fa-location{
-                    color: white;
+                    color: black;
                 }
                }
                 .item-categories{
@@ -178,7 +180,7 @@
                             cursor: pointer;
                             // display: inline-block;
                             flex: 0 0 auto;
-                            color: white;
+                            color: black;
                         }
                         li:last-child{
                             border-right: none;
@@ -261,6 +263,8 @@
             .user-items{
                 // border: 2px solid green;
                 flex: 2;
+                background-color: #eae8e8;
+                overflow-y: auto;
             }
 
         }
