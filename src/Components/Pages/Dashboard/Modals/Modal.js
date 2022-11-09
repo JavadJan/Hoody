@@ -29,6 +29,12 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
   if (!open) return null
   function closeModal() {
     setOpenModal(false)
+    setImage(null)
+    setType('')
+    setCategory(null)
+    setExplain('')
+    setGetLinkDownload('')
+
   }
 
   console.log(image, id, userId)
@@ -56,12 +62,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
     // Upload file and metadata to the object 'images/mountains.jpg'
     const storageRef = ref(storage, `${id}/` + image.name);
     const uploadTask = uploadBytesResumable(storageRef, image)
-    // updateMetadata(storageRef, metadata)
-    // .then((metadata) => {
-    //   // Updated metadata for 'images/forest.jpg' is returned in the Promise
-    // }).catch((error) => {
-    //   // Uh-oh, an error occurred!
-    // });
+    
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on('state_changed',
       (snapshot) => {
@@ -101,7 +102,8 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
           setGetLinkDownload(downloadURL)
-          const metadata = {...item , uid : userId ,getLinkDownload:getLinkDownload }
+          console.log('adding link!' , downloadURL)
+          const metadata = {...item , uid : userId ,linkImage:downloadURL}
           addItem(metadata)
         });
       }
@@ -109,8 +111,14 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
 
     //add items in fireStore
     async function addItem(metadata) {
+      console.log('addinggggggggggggggggg!')
       await addDoc(collection(db, 'items'), metadata)
-      
+      setOpenModal(false)
+      setImage(null)
+      setType('')
+      setCategory(null)
+      setExplain('')
+      setGetLinkDownload('')
     }
 
 

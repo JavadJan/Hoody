@@ -4,7 +4,8 @@ import { UilEllipsisH } from '@iconscout/react-unicons'
 import { formatDistance } from 'date-fns'
 
 
-export const Photos = ({ src }) => {
+export const Photos = ({ item }) => {
+
   return (
     <>
       <div className='post'>
@@ -13,12 +14,12 @@ export const Photos = ({ src }) => {
           <UilEllipsisH className="icon-list" />
         </div>
         <div className='photo-post'>
-          <img width="250px" height='200px' src={src} alt="" />
+          <img width="250px" height='200px' src={item.linkImage} alt="" />
         </div>
 
         <div className="details-post">
-          <p className='time'>2 days ago</p>
-          <p>Lorem ipsum dolor sit amet </p>
+          <p className='time'>{formatDistance(item.dateCreated, new Date())} ago</p>
+          <p>Lorem ipsum dolor sit amet</p>
         </div>
 
       </div>

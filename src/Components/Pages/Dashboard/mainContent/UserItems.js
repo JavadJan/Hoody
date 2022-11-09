@@ -56,8 +56,11 @@ imageLink.map((url)=>{
   return (
     <div className='user-items'>
       {
-        imageLink && imageLink.map((url) =>{ return (
-          url && <Photos src={url} />
+        // imageLink && imageLink.map((url) =>{ return (
+        //   url && <Photos src={url} />
+        // )})
+        items && items.map((item) =>{ return (
+          item.linkImage && <Photos item={item} />
         )})
       }
       
