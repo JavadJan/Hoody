@@ -60,8 +60,8 @@ export const About = () => {
   return (
 
     <div className='about-main contain' id='about'>
-           <h1>What's Hoody</h1>
 
+      <h1 className="BigTitle">About Hoody</h1>
       <div className="about-sections1">
 
         <div className="section-left">
@@ -126,7 +126,7 @@ export const About = () => {
         </div>
 
         <div className="Founders">
-          <h1>Founder's of Hoody</h1>
+          <h1>Founders</h1>
           <div className="Founders-boxes">
             {founders.map((founder, index) => {
               return (

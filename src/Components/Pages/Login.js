@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../css/Login.css";
 import LogImg from "../../assets/log.svg";
 import RegisterImg from "../../assets/rocket.svg";
@@ -17,7 +17,21 @@ import logo1 from '../../assets/logo1.png';
 import { NavLink } from "react-router-dom";
 import { Nav } from "../Navbar/Nav";
 
+
+import Loader from "../Loader/Loader";
 export function Login() {
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+
+
   const navigate = useNavigate()
   const [signUpMode, setSignUpMode] = useState(false)
   const { db, auth } = useContext(DbContext)
@@ -249,7 +263,12 @@ export function Login() {
 
   return (
     <>
+
       <Nav />
+      {isLoading ? (
+      <Loader/>
+      ) : (
+        <>
       {/* <NavLink to="/" className="logoLogin">
     <img src={logo1} alt=""></img></NavLink> */}
       <div className={`container${toggleClassCheck}`}>
@@ -358,7 +377,9 @@ export function Login() {
             <img src={RegisterImg} className="image" alt="" />
           </div>
         </div>
-      </div>
+      </div> 
+      </>
+      )}
     </>
   );
 }

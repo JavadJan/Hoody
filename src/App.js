@@ -22,7 +22,7 @@ import ScrollUp from "./Components/Pages/ScrollUp/ScrollUp";
 import * as ROUTES from "./Components/Route/ROUTES";
 import { Dashboard } from "./Components/Pages/Dashboard/Dashboard";
 import React, { useState, useEffect } from "react";
-import { Oval } from "react-loader-spinner";
+import { MutatingDots } from "react-loader-spinner";
 // import { SunspotLoader } from "react-awesome-loaders";
 
 import { Admin } from "./Components/Pages/Admin"
@@ -49,9 +49,9 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <Oval
-          height={120}
-          width={120}
+        <MutatingDots 
+        height="100"
+        width="100"
           color="#264653"
           wrapperStyle={{}}
           wrapperClass="Oval"
