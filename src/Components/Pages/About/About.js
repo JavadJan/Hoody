@@ -72,7 +72,7 @@ export const About = () => {
              starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
             </p>
-            <Link to="#services" className='learn'>Learn More</Link>
+            <Link to="#services" className='learn'>explore</Link>
           </div>
 
         </div>

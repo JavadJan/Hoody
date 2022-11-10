@@ -26,10 +26,12 @@
 
 .about-main h1{
     background:-webkit-linear-gradient(317deg, rgba(38,70,83,1) 1%, rgba(40,135,127,1) 31%, rgba(38,70,83,1) 68%, rgba(86,92,111,1) 98%);
+    /* background: rgb(249,222,172);
+background: linear-gradient(228deg,  rgb(156, 82, 22) 75%, rgb(226, 62, 8) 97%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 4rem;
-    font-family: var(--font-family);
+    font-size: 3.5rem;
+    font-family: var(--font-header);
     font-weight: 900;
     margin:2rem auto;
 }
@@ -43,8 +45,9 @@
     grid-template-columns: 1fr 1fr;
     /* margin-top: 9rem ;
     border: 2px solid red; */
-    margin: 4rem auto;
+    margin: 2rem auto;
     width: var(--container-md);
+    border: 2px dashed green;
  
 }
 

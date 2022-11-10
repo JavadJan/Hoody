@@ -1,10 +1,51 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 import "./Donation.css";
 import { DonationObj } from "./DonationObj";
 import data from "./countries.json";
 import logo from '../../../assets/logo1.png'
-function Donation() {
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+
+// import paypal from 'paypal-checkout';
+// import ReactDOM from "react-dom"
+// const PayPalButton = paypal.Button.driver('react', {
+//   React: window.React,
+//   ReactDOM: window.ReactDOM
+// });
+
+const Donation=()=> {
+
+  const DonateButton = ({ currency, amount }) => {
+    const amountRef = useRef(amount);
+    useEffect(() => {
+      amountRef.current = amount;
+    }, [amount]);
   
+  }
+
+//    const createOrder = (data, actions) => {
+//   return actions.order.create({
+//     purchase_units: [
+//       {
+//         amount: {
+//           value: "0.01",
+//         },
+//       },
+//     ],
+//   });
+// };
+// const onApprove = (data, actions) => {
+//   return actions.order.capture();
+// };
+  // PayPal.Donation.Button({
+  //   env:'sandbox',
+  //   hosted_button_id:'B27DBKY8CJT98',
+  //   image: {
+  //   src:'https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif',
+  //   alt:'Donate with PayPal button',
+  //   title:'PayPal - The safer, easier way to pay online!',
+  //   }
+  //   }).render('#donate-button');
     
   return (
     <div className="donation-section" id="donation">
@@ -87,9 +128,16 @@ function Donation() {
         
 
 
-        <button className="donateBtn">
-            Donate
-        </button>
+       
+        <div id="donate-button-container">
+<div id="donate-button">   Donate</div></div>
+
+
+
+{/* <PayPalButton
+      createOrder={(data, actions) => createOrder(data, actions)}
+      onApprove={(data, actions) => onApprove(data, actions)}
+    /> */}
 
         </div>
       </div>
@@ -98,4 +146,4 @@ function Donation() {
   );
 }
 
-export default Donation;
+export default Donation

@@ -14,9 +14,10 @@ export const Footer = () => {
     return (
         <footer>
             <div className="footer1">
-                <div className="logo">
-                  <img src={logo1} alt="" />
-                </div>
+            <NavLink to="/" className="logo">
+          {/* <img src={logo1} alt=""></img> */}
+          <span>Hoody</span>
+          </NavLink>
             </div>
           <div className="footer2">
             <h3>Menu</h3>
