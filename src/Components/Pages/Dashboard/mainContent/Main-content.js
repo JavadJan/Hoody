@@ -7,26 +7,15 @@ import { useEffect , useState } from 'react'
 import { useUser } from '../../../../DB/useUser'
 
 
-export const MainContent = () => {
+export const MainContent = ({coordination}) => {
     const { user: { id } } = useUser()
-    const [items, setItems] = useState(null)
-
-    //3. third way with using useEffect
-    useEffect(() => {
-        getItemsById(id).then((data) => {
-            setItems(data)
-        })
-    }, [id])
-
-
-
-
-
+    
 
     return (
         <div className='main-profileContent'>
-            <OthersItems />
-            {items ? <UserItems id={id} items={items} /> : ""}
+            <OthersItems id={id} coordination={coordination}/>
+            {/* {items ? <UserItems id={id} items={items} /> : ""} */}
+            <UserItems id={id}/>
         </div>
     )
 }

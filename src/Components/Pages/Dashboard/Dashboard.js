@@ -45,9 +45,9 @@ export const Dashboard = () => {
     <div className='dashboard'>
       <Sidebar setOpenModal={setOpenModal} />
       <div className='main-profile'>
-        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} />
+        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}/>
         <Header />
-        <MainContent />
+        <MainContent coordination={coordination} />
       </div>
     </div>
   )

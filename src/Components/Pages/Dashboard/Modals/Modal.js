@@ -23,7 +23,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
   const [explain, setExplain] = useState('')
   const [getLinkDownload , setGetLinkDownload] = useState('')
     
-  const { user: { username, fullName, userId, id } } = useUser()
+  const { user: { username, userId, id } } = useUser()
 
   //close modal
   if (!open) return null
@@ -34,7 +34,6 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
     setCategory(null)
     setExplain('')
     setGetLinkDownload('')
-
   }
 
   console.log(image, id, userId)
@@ -50,16 +49,14 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
       coordination: coordination,
       userDocId: id,
       dateCreated : Date.now(),
+      owner:username     
     }
     console.log(item)
-    // console.log(`${category}/` + image.name , id)
 
-    
     
 
     //---------------------add picture in storage 
 
-    // Upload file and metadata to the object 'images/mountains.jpg'
     const storageRef = ref(storage, `${id}/` + image.name);
     const uploadTask = uploadBytesResumable(storageRef, image)
     
@@ -113,12 +110,10 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
     async function addItem(metadata) {
       console.log('addinggggggggggggggggg!')
       await addDoc(collection(db, 'items'), metadata)
-      setOpenModal(false)
       setImage(null)
       setType('')
       setCategory(null)
       setExplain('')
-      setGetLinkDownload('')
     }
 
 
