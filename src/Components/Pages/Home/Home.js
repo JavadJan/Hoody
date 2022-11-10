@@ -225,12 +225,12 @@ opacity:0
             <div id="content">
 
             <h1 id="hText">Let's build a better world</h1>
-          <p>“There is no exercise better for the heart
-            than reaching down and lifting people up.”
-            ― John Holmes
+          <p className='quote'><q>There is no exercise better for the heart
+              than reaching down and lifting people up. </q><span>― John Holmes</span></p>
+              
 
 
-          </p>
+         
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium perferendis, dolorum temporibus modi quis minus natus voluptatem possimus, blanditiis dolorem ex ipsum expedita ratione praesentium ab. Ipsam quasi libero blanditiis.</p>
 
           <div className="btn-group">

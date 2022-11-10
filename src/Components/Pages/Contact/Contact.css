@@ -19,6 +19,7 @@
 }
 
 
+
 .contact-section{
     display: flex;
     flex-direction: column;
@@ -43,11 +44,11 @@
     text-transform: capitalize;
     letter-spacing: .2em;
 }
-.form{
+.section1-contact .form{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
-   padding-top: 2rem;
+    padding-top: 2rem;
 }
 
 .form label{
@@ -57,9 +58,10 @@
 }
 .form .contact-div{
     display: flex;
+    width: 100%;
     flex-direction: column-reverse;
     align-items: flex-start;
-position: relative;
+    position: relative;
 }
 .contact-div input{
 
@@ -172,7 +174,7 @@ transform: translate(-120%,80%);
 
 
 .logo{
-    font-family: 'Marck Script', cursive;
+    font-family:var(--font-logo);
     font-size: 1.8rem;
 }
 
@@ -203,6 +205,8 @@ transform: translate(-120%,80%);
         box-shadow:none;
     }
 }
+
+
 @media screen and (max-width:600px){
     .contact{
         padding: 4% 3%;
@@ -216,7 +220,7 @@ transform: translate(-120%,80%);
         text-transform: capitalize;
         letter-spacing: 2px;
     }
-    .form{
+    .section1-contact .form{
        grid-template-columns: 1fr;
        width: 100%;
     }

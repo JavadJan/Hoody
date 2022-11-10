@@ -10,6 +10,7 @@
 
 body{
   overflow-x: hidden;
+
 }
 
 /* .contain{
@@ -18,17 +19,21 @@ body{
 
 /* width */
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #0000004c; 
+  background:var(--color-dark-green); 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:black; 
+  
+  background: var(--color-light-green);
+  
+  border-radius: 50px;
+
 }
 
 /* Handle on hover */

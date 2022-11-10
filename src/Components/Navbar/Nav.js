@@ -70,7 +70,9 @@ export const Nav = () => {
     <header className={color ? "header-scroll" : `header ${location.pathname === '/Login' ? 'forLogin' : ''}`}>
       <div className={`navbar  ${showMenu ? "open" : "hide"}`}>
         <NavLink to="/" className="logo">
-          <img src={logo1} alt=""></img></NavLink>
+          {/* <img src={logo1} alt=""></img> */}
+          <span>Hoody</span>
+          </NavLink>
         <nav className='List' >
 
           <Link to="home" exact={exact.toString()}

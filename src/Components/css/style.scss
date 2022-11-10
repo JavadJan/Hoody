@@ -5,6 +5,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 :root{
     --color-bg1:#266453;
     --color-btn2:#008fff;
@@ -34,13 +35,18 @@
 
     --font-header:'Montserrat', sans-serif;
     --font-family:'Josefin Sans', sans-serif;
+    --font-logo: 'Marck Script', cursive;
 
     --font-weight:300;
     --font-size:16px;
 
 }
 body{
-    background: var(--color-white);
+    background:  rgb(237, 237, 237);
+    background-image: url('../../assets/pattern-back.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
   
 }
 

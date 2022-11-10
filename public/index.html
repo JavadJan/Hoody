@@ -27,12 +27,29 @@
   <title>Hoody</title>
   <script src="https://kit.fontawsome.com/64d58efce2.js"></script>
 
+
 </head>
 
 <body>
   <style>
   </style>
   <div id="root"></div>
+  <div id="paypal-donate-button-container"></div>
+
+  <script>
+      PayPal.Donation.Button({
+    env:'sandbox',
+    hosted_button_id:'B27DBKY8CJT98',
+    image: {
+    src:'https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif',
+    alt:'Donate with PayPal button',
+    title:'PayPal - The safer, easier way to pay online!',
+    }
+    }).render('#donate-button');
+</script>
+
+
+  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
 </body>
 
 </html>
