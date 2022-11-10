@@ -9,7 +9,7 @@ export async function getItemsByCategory(id, category , coordination) {
 
     const q = query(collection(db, 'items'), where('category', '==', category))
     const snapshot = await getDocs(q)
-    const items = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })).filter((prof) => prof.userDocId !== id && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1 );
+    const items = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })).filter((prof) => prof.userDocId !== id && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1);
    
     console.log('get-items-by-category', items)
     return items

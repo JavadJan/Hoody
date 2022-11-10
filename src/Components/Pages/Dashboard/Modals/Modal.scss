@@ -140,9 +140,15 @@
           justify-content: center;
           align-items: center;
           gap: 5px;
+          
           input{
             width: 15px;
             height: 15px;
+          }
+          .price{
+            width: 35px;
+            padding: 5px;
+            height: 20px;
           }
         }
       }

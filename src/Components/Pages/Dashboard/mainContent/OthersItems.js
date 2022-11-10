@@ -23,7 +23,7 @@ export const OthersItems = ({ id }) => {
             console.log("Geolocation is not supported by this browser.");
         }
 
-        function showPosition(position) {
+         function showPosition(position) {
             setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude });
         }
         await console.log('coordination0000000000000' , coordination)
@@ -35,9 +35,16 @@ export const OthersItems = ({ id }) => {
         })
     }
 
+    //home 
     const a = { latitude: 40.6477262, longitude: 22.9393645 }
+
+    // masoom's home
+    const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
+
     // const b = { latitude:37.9838096, longitude: 23.7275388}
-    const b = { latitude: 50.0981675, longitude: 8.6449389 }
+    
+    //reza's home
+    // const b = { latitude: 50.0981675, longitude: 8.6449389 }
 
     console.log('dissssssssstance', Number((haversine(a, b) / 1000).toFixed(2)))
 
