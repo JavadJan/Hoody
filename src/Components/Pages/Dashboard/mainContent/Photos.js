@@ -6,6 +6,7 @@ import { formatDistance } from 'date-fns'
 
 export const Photos = ({ item }) => {
 
+  
   return (
     <>
       <div className='post'>
