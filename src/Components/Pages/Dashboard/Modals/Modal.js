@@ -14,8 +14,9 @@ import { DbContext } from '../../../../Context/DBContext'
 import { getDownloadURL, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { getUserById } from '../../../../DB/DoesUserExist'
 import { setPersistence } from 'firebase/auth'
+import { getItemsById } from '../../../../DB/getItems'
 
-export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => {
+export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setItems }) => {
 
   const { db, storage } = useContext(DbContext)
   const [image, setImage] = useState(null)
@@ -28,7 +29,12 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
 
   //close modal
   if (!open) return null
-  function closeModal() {
+  async function closeModal() {
+
+    //when close the modal userItem component should refresh
+    await getItemsById(id).then((data) => {
+      setItems(data)
+    })
     setOpenModal(false)
     setImage(null)
     setType('')

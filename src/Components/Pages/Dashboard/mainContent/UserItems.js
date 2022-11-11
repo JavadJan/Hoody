@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { getItemsById } from '../../../../DB/getItems'
 import { Photos } from './Photos'
 
-export const UserItems = ({ id }) => {
+export const UserItems = ({ id ,items ,  setItems }) => {
 
-  const [items, setItems] = useState(null)
+  // const [itemss, setItems] = useState(null)
 
     //3. third way with using useEffect
     useEffect(() => {
@@ -19,7 +19,7 @@ export const UserItems = ({ id }) => {
     <div className='user-items'>
       {
         items && items.map((item) =>{ return (
-          item.linkImage && <Photos item={item} />
+          item.linkImage && <Photos item={item} it />
         )})
       }
       

@@ -31,17 +31,19 @@ export const OthersItems = ({ id }) => {
         //get items by filter category
         await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
             setItems(data)
-            console.log('eeeeeeeeeeeeeeeeeeee', data, items)
+            console.log('eeeeeeeeeeeeeeeeeeee', data.map((d)=>{console.log(d.coordination)}), items)
         })
+        // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
     }
 
     //home 
     const a = { latitude: 40.6477262, longitude: 22.9393645 }
 
     // masoom's home
-    const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
+    // const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
 
-    // const b = { latitude:37.9838096, longitude: 23.7275388}
+    //Red cross
+    const b = { latitude:40.6380324, longitude: 22.9412795}
     
     //reza's home
     // const b = { latitude: 50.0981675, longitude: 8.6449389 }
