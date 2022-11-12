@@ -13,6 +13,7 @@ import { UilMap } from '@iconscout/react-unicons'
 import swal from 'sweetalert'
 import { ModalMap } from '../Modals/ModalMap'
 import { set } from 'date-fns'
+import { da } from 'date-fns/locale'
 
 export const OthersItems = ({ id }) => {
     const [category, setICategoty] = useState(null)
@@ -37,14 +38,19 @@ export const OthersItems = ({ id }) => {
         function showPosition(position) {
             setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude });
         }
-        await console.log('coordination0000000000000', coordination)
+
+        console.log('coordination0000000000000', coordination)
 
         //get items by filter category
         await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
-            setItems(data)
-            console.log('eeeeeeeeeeeeeeeeeeee', data.map((d) => { console.log(d.coordination) }), items)
+          setItems(data)
         })
+        await console.log('eeeeeeeeeeeeeeeeeeee',  items)
         // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
+
+        //this test worked well
+        // data.filter((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))>0.41) ,
+            // data.map((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))),
     }
 
     //home 
@@ -52,14 +58,14 @@ export const OthersItems = ({ id }) => {
 
     // masoom's home
     // const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
-
+    const tm = [{ latitude: 40.6500294, longitude: 22.9365368 }, { latitude: 40.6380324, longitude: 22.9412795 } , { latitude: 50.0981675, longitude: 8.6449389 }]
     //Red cross
     const b = { latitude: 40.6380324, longitude: 22.9412795 }
 
     //reza's home
     // const b = { latitude: 50.0981675, longitude: 8.6449389 }
 
-    console.log('dissssssssstance', Number((haversine(a, b) / 1000).toFixed(2)))
+    console.log('dissssssssstance', tm.map((dt)=> Number((haversine(a, dt)/1000).toFixed(2))))
 
     return (
         <div className='others-items'>
@@ -72,14 +78,14 @@ export const OthersItems = ({ id }) => {
                     {/* <div className='flash-down'>
                         <i className="uil uil-angle-down"></i>
                     </div> */}
-                    <div className="search-box-loc">
+                    {/* <div className="search-box-loc"> */}
                         {/* <input type="text" placeholder='Search location ...' /> */}
                         {/* style="font-family:Arial, FontAwesome" */}
                         {/* placeholder="&#xF002;" */}
                         {/* <span htmlFor="" className="search-icon">
                             <i className="fas fa-search"></i>
                         </span> */}
-                    </div>
+                    {/* </div> */}
                     <UilMap onClick={handleMap} className='map-modal' />
                 </div>
 
