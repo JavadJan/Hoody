@@ -9,11 +9,19 @@ import img3 from '../../../../assets/img3.jpg'
 import { getItemsByCategory } from '../../../../DB/getItemsByCategory'
 import { Iframe } from './Iframe'
 import haversine from 'haversine-distance'
+import { UilMap } from '@iconscout/react-unicons'
+import swal from 'sweetalert'
 
 export const OthersItems = ({ id }) => {
     const [category, setICategoty] = useState(null)
     const [items, setItems] = useState(null)
     const [coordination, setCoordination] = useState({ latitude: null, longitude: null })
+
+    //open map
+    function openMap(params) {
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12109.26968137635!2d22.9416259!3d40.64493285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1668249436974!5m2!1sen!2sgr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+    }
 
     async function GetItemsByCategory(e) {
         //getting location
@@ -23,15 +31,15 @@ export const OthersItems = ({ id }) => {
             console.log("Geolocation is not supported by this browser.");
         }
 
-         function showPosition(position) {
+        function showPosition(position) {
             setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude });
         }
-        await console.log('coordination0000000000000' , coordination)
+        await console.log('coordination0000000000000', coordination)
 
         //get items by filter category
         await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
             setItems(data)
-            console.log('eeeeeeeeeeeeeeeeeeee', data.map((d)=>{console.log(d.coordination)}), items)
+            console.log('eeeeeeeeeeeeeeeeeeee', data.map((d) => { console.log(d.coordination) }), items)
         })
         // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
     }
@@ -43,8 +51,8 @@ export const OthersItems = ({ id }) => {
     // const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
 
     //Red cross
-    const b = { latitude:40.6380324, longitude: 22.9412795}
-    
+    const b = { latitude: 40.6380324, longitude: 22.9412795 }
+
     //reza's home
     // const b = { latitude: 50.0981675, longitude: 8.6449389 }
 
@@ -62,13 +70,14 @@ export const OthersItems = ({ id }) => {
                         <i className="uil uil-angle-down"></i>
                     </div> */}
                     <div className="search-box-loc">
-                        <input type="text" placeholder='Search location ...' />
+                        {/* <input type="text" placeholder='Search location ...' /> */}
                         {/* style="font-family:Arial, FontAwesome" */}
                         {/* placeholder="&#xF002;" */}
-                        <span htmlFor="" className="search-icon">
+                        {/* <span htmlFor="" className="search-icon">
                             <i className="fas fa-search"></i>
-                        </span>
+                        </span> */}
                     </div>
+                    <UilMap onClick={openMap} />
                 </div>
 
                 <div className="item-categories">

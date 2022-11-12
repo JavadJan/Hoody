@@ -12,7 +12,7 @@ import { deleteObject, ref } from 'firebase/storage'
 import { useUser } from '../../../../DB/useUser'
 
 
-export const Photos = ({ item }) => {
+export const Photos = ({ item , setUpdateModalOpen , setUpdateItem}) => {
   const [toggle, setToggle] = useState(false)
   const { db, storage } = useContext(DbContext)
   const { user: { id } } = useUser()
@@ -22,7 +22,7 @@ export const Photos = ({ item }) => {
     setToggle(!toggle)
   }
 
-  //handleDelete
+  //-------->handleDelete
   async function handleDelete(params) {
     swal({
       title: "Are you sure?",
@@ -55,6 +55,22 @@ export const Photos = ({ item }) => {
         }
       });
   }
+
+  //-------------->handleUpdate
+  function handleUpdate(params) {
+    setUpdateModalOpen(true)
+    console.log(params.target.parentElement.parentElement.parentElement.children[1].children[0].src)
+    console.log(params.target.parentElement.parentElement.parentElement.children[2].children[1].textContent)
+
+    const updateItem = {
+      link:params.target.parentElement.parentElement.parentElement.children[1].children[0].src , 
+
+      price:params.target.parentElement.parentElement.parentElement.children[2].children[1].textContent , 
+
+      description: params.target.parentElement.parentElement.parentElement.children[2].children[2].textContent
+    }
+    setUpdateItem(updateItem)
+  }
   return (
     <>
       <div className='post' >
@@ -63,16 +79,19 @@ export const Photos = ({ item }) => {
           <UilEllipsisH className="icon-list" onClick={handleToggle}
           />
           {toggle ? (<ul className='modify' >
-            <li onClick={handleDelete} name={`${item.imageInfo.name}`} id={`${item.id}`}>Delete</li>
-            <li>Update</li>
+            <li onClick={handleDelete} id={`${item.id}`}>Delete</li>
+            <li onClick={handleUpdate}>Update</li>
           </ul>) : ''}
         </div>
+
+
         <div className='photo-post'>
           <img width="280px" height='250px' src={item.linkImage} alt={item.imageInfo.name} />
         </div>
 
         <div className="details-post">
           <p className='time'>{formatDistance(item.dateCreated, new Date())} ago</p>
+          <p className='price'>{item.price ? item.price : 'free'}</p>
           <p>Lorem ipsum dolor sit amet</p>
         </div>
 
