@@ -84,6 +84,9 @@
   padding: 5px;
   width: 100%;
 }
+.dashboard .main-profile .main-profileContent .others-items .map .location .map-modal {
+  cursor: pointer;
+}
 .dashboard .main-profile .main-profileContent .others-items .map .location .search-box-loc {
   position: relative;
   height: 40px;

@@ -11,16 +11,19 @@ import { Iframe } from './Iframe'
 import haversine from 'haversine-distance'
 import { UilMap } from '@iconscout/react-unicons'
 import swal from 'sweetalert'
+import { ModalMap } from '../Modals/ModalMap'
+import { set } from 'date-fns'
 
 export const OthersItems = ({ id }) => {
     const [category, setICategoty] = useState(null)
     const [items, setItems] = useState(null)
     const [coordination, setCoordination] = useState({ latitude: null, longitude: null })
+    const [openMap, setOpenMap] = useState(false)
 
     //open map
-    function openMap(params) {
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12109.26968137635!2d22.9416259!3d40.64493285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1668249436974!5m2!1sen!2sgr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-       
+    function handleMap(params) {
+        setOpenMap(true)
+
     }
 
     async function GetItemsByCategory(e) {
@@ -60,7 +63,7 @@ export const OthersItems = ({ id }) => {
 
     return (
         <div className='others-items'>
-
+            <ModalMap openMap={openMap} setOpenMap={setOpenMap} />
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
@@ -77,7 +80,7 @@ export const OthersItems = ({ id }) => {
                             <i className="fas fa-search"></i>
                         </span> */}
                     </div>
-                    <UilMap onClick={openMap} />
+                    <UilMap onClick={handleMap} className='map-modal' />
                 </div>
 
                 <div className="item-categories">
