@@ -6,7 +6,6 @@ import { Photos } from './Photos'
 
 export const UserItems = ({ id ,items ,  setItems }) => {
 
-  // const [itemss, setItems] = useState(null)
 
     //3. third way with using useEffect
     useEffect(() => {
@@ -19,7 +18,7 @@ export const UserItems = ({ id ,items ,  setItems }) => {
     <div className='user-items'>
       {
         items && items.map((item) =>{ return (
-          item.linkImage && <Photos item={item} it />
+          item.linkImage && <Photos item={item} />
         )})
       }
       

@@ -13,6 +13,35 @@
   display: flex;
   align-items: center;
   align-self: flex-end;
+  position: relative;
+}
+.post .header-post .modify {
+  background: rgb(193, 193, 193);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 1;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-family);
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.post .header-post .modify li {
+  padding: 10px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+.post .header-post .modify li:hover {
+  background-color: var(--color-btn2);
 }
 .post .header-post .icon-list {
   margin-right: 35px;

@@ -58,9 +58,9 @@ export const OthersItems = ({ id }) => {
                     <div className='your-location'>
                         <i className="fas fa-location"></i>
                     </div>
-                    <div className='flash-down'>
+                    {/* <div className='flash-down'>
                         <i className="uil uil-angle-down"></i>
-                    </div>
+                    </div> */}
                     <div className="search-box-loc">
                         <input type="text" placeholder='Search location ...' />
                         {/* style="font-family:Arial, FontAwesome" */}
@@ -216,10 +216,6 @@ export const OthersItems = ({ id }) => {
 
                 </div>
             </div>
-
-
-
-
         </div>
     )
 }
