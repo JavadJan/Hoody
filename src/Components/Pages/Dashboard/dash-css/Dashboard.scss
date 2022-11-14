@@ -62,71 +62,37 @@
         .main-profileContent{
             background-color: var(--color-white);
             position: relative;
-            // top: 5px;
             margin-top: 2px;
             padding:5px 1rem ;
             padding-right: 2px;
             height: calc(100vh - 4.2rem);
-            display: flex;
-            // grid-template-columns: 70% 30%;
+            display: grid;
+            grid-template-columns: 70% 30%;
             column-gap: 5px;
             .others-items{
-                flex: 6;
-                // background: linear-gradient(45deg,rgb(0, 0, 0),rgba(1, 19, 18, 0.614),rgb(0, 0, 0)),url('https://media.istockphoto.com/photos/technology-network-data-with-icons-connection-digital-datanetwork-and-picture-id1211772593?k=20&m=1211772593&s=612x612&w=0&h=P5gTxKWdcoDrWb2lfJuUaAwX_iAltEbiwOhkesLRXnc=');
                 background-color: rgba(184, 184, 184, 0.399);
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: fixed;
-                background-position: center;
-                background-repeat: no-repeat;
-                overflow-x: auto;
-                height: 92vh;
-                position: relative;
-                              
-                .google-map{
-                    width: 100%;
-                    height: 100%;
-                    position: relative;
-                    
-                    // iframe {
-                    //     margin: auto;
-                    //     // background: gray;
-                    // }  
-                }
-               
-                
                .map{
-                position: absolute;
-                bottom: 2.3rem;
-                height: 400px;
-                width: 100%;
                 border-top: 1px solid #dddddd;
-                // padding: 5px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                height: fit-content;
+                
                 .location{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     border-bottom: 1px solid #dddddd;
                     padding: 5px;
-                    .flash-down{
-                        width: 200px;
-                        display: flex;
-                        align-items: flex-end;
-                        justify-content: end;
-                        i{
-                            color: black;
-                            font-size: 20px;
-    
-                        }
+                    width: 100%;
+                    .map-modal{
+                        cursor: pointer;
                     }
                 .search-box-loc{
                     position: relative;
                     height: 40px;
-                    width: 270px;
-                    min-width: 250px;
-                    
-                    // margin: auto;
+                    width: 30%;
+                    min-width: 170px;
                     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
                     border-radius: 26px;
                     input{
@@ -137,7 +103,7 @@
                         border: none;
                         outline: none;
                         background: #feffff;
-                        padding-left: 30px;
+                        padding-left: 15px;
                         font-size: 14px;
                     }
                     .search-icon{
@@ -158,27 +124,19 @@
                 .fa-location{
                     color: black;
                 }
+
+
                }
                 .item-categories{
-                    // background-color: var(--color-white);
                     padding: 4px;
                     ul{
                         border-bottom: 1px solid #dddddd;
                         display: flex;
                         gap: 1rem;
-                        overflow-x: scroll;
-                        overflow-y: hidden;
-                        white-space: nowrap;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        overflow-x: auto;
-                        -webkit-overflow-scrolling: touch;
-                        padding: 0.7rem;
                         li{
                             border-right: 1px solid #cccccc;
-                            padding: 0 1rem;
+                            padding: 5px 5px;
                             cursor: pointer;
-                            // display: inline-block;
                             flex: 0 0 auto;
                             color: black;
                         }
@@ -190,25 +148,15 @@
 
                 .items-box{
                     position: relative;
-                    height: 330px;
                     top: 10px;
                     background: transparent;
-                    // overflow-x: hidden;
                     display: grid;
-                    grid-gap: 1rem;
-                    grid-auto-flow: column;
-
-                    white-space: nowrap;
-                    overflow-x: scroll;
-                    // overflow-y: hidden;
-                    
-                    // touch-action: auto;
-                    // border: 2px solid green;
+                    grid-template-columns: 33% 33% 33%;
+                    row-gap: 10px;
                     .item-card{
                         // border: 2px solid green;
-                        
-                        width: 200px;
-                        height: 280px;
+                        // width: 300px;
+                        // height: 380px;
                         background-color: white;
                         border-radius: 15px;
                         margin-left: 10px;
@@ -221,7 +169,7 @@
                         border: 2px solid #dddddd;
                         img {
                             width: 100%;
-                            height: 120px;
+                            height: 100%;
                             border-radius:15px ;
                             box-shadow:1px 1px 4px 4px rgba(0, 0, 0, 0.129);
                             transition: transform .5s 1.5s ease-in-out;
@@ -262,7 +210,7 @@
             
             .user-items{
                 // border: 2px solid green;
-                flex: 2;
+                // flex: 2;
                 background-color: #eae8e8;
                 overflow-y: auto;
             }
@@ -350,16 +298,63 @@
     }
 }
 
+@media screen and (max-width:1024px) {
+    .dashboard .main-profile .main-profileContent{
+
+        .others-items {
+            
+            height: fit-content;
+            .map
+             {  
+                .location .search-box-loc{
+                    width: 30%;
+                }
+                .items-box{
+             grid-template-columns: 50% 50%;
+            }
+            
+        }
+    }
+    }
+}
+
 @media screen and (max-width:780px) {
     .dashboard{
         grid-template-columns: 15% 85%;
     }
-
-    
     .dashboard .main-profile .main-profileContent{
-        display: flex;
-        flex-direction: column;
-
+        grid-template-columns: 50% 50%;
+        .others-items {
+            
+            height: fit-content;
+            .map  {
+                .location .search-box-loc{
+                    width: 30%;
+                }
+                .item-categories{
+                    ul{
+                        border-bottom: 1px solid #dddddd;
+                        display: none;
+                        gap: 5px;
+                        
+                        -webkit-overflow-scrolling: touch;
+                        padding: 0.7rem;
+                        li{
+                            border-right: 1px solid #cccccc;
+                            padding: 0 5px;
+                            cursor: pointer;
+                            // display: inline-block;
+                            flex: 0 0 auto;
+                            color: black;
+                        }
+                       
+                    }
+                }
+                .items-box{
+             grid-template-columns: 100%;
+            }
+        }
+    }
     }
     .dashboard .sidebar-profile .sidebar-content .user-pic{
         justify-content: center;

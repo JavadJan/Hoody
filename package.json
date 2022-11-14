@@ -20,6 +20,7 @@
     "firebase": "^9.9.2",
     "formik": "^2.2.9",
     "gsap": "^3.11.3",
+    "haversine-distance": "^1.2.1",
     "history": "^5.3.0",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
@@ -37,9 +38,14 @@
     "react-scroll": "^1.8.8",
     "react-scroll-to-bottom": "^4.2.0",
     "react-toastify": "^9.0.8",
+<<<<<<< HEAD
     "socket.io-client": "^4.5.3",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
+=======
+    "sweetalert": "^2.1.2",
+    "web-vitals": "^2.1.4"
+>>>>>>> 10d5748744345ce362e051cd415e46891e0a4661
   },
   "scripts": {
     "start": "react-scripts start",

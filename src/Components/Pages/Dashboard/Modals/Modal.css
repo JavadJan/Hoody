@@ -140,6 +140,11 @@
   width: 15px;
   height: 15px;
 }
+.content-form .info .get-info .choose-type span .price {
+  width: 35px;
+  padding: 5px;
+  height: 20px;
+}
 .content-form .info .get-info .categories, .content-form .info .get-info .current-location {
   display: flex;
   justify-content: space-between;

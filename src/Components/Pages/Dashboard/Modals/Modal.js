@@ -13,28 +13,33 @@ import { addDoc, collection } from 'firebase/firestore'
 import { DbContext } from '../../../../Context/DBContext'
 import { getDownloadURL, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { getUserById } from '../../../../DB/DoesUserExist'
+import { setPersistence } from 'firebase/auth'
+import { getItemsById } from '../../../../DB/getItems'
 
-export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => {
+export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setItems }) => {
 
   const { db, storage } = useContext(DbContext)
   const [image, setImage] = useState(null)
   const [type, setType] = useState('donate')
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
-  const [getLinkDownload , setGetLinkDownload] = useState('')
-    
-  const { user: { username, fullName, userId, id } } = useUser()
+  const [price, setPrice] = useState(0)
+
+  const { user: { username, userId, id } } = useUser()
 
   //close modal
   if (!open) return null
-  function closeModal() {
+  async function closeModal() {
+
+    //when close the modal userItem component should refresh
+    await getItemsById(id).then((data) => {
+      setItems(data)
+    })
     setOpenModal(false)
     setImage(null)
     setType('')
     setCategory(null)
     setExplain('')
-    setGetLinkDownload('')
-
   }
 
   console.log(image, id, userId)
@@ -42,83 +47,88 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
   //for saving image
   async function handleSaveImage(e) {
     e.preventDefault()
-    const item = {
-      imageInfo: { name: image.name, size: image.size },
-      type: type,
-      category: category,
-      explain: explain,
-      coordination: coordination,
-      userDocId: id,
-      dateCreated : Date.now(),
-    }
-    console.log(item)
-    // console.log(`${category}/` + image.name , id)
 
-    
-    
-
-    //---------------------add picture in storage 
-
-    // Upload file and metadata to the object 'images/mountains.jpg'
-    const storageRef = ref(storage, `${id}/` + image.name);
-    const uploadTask = uploadBytesResumable(storageRef, image)
-    
-    // Listen for state changes, errors, and completion of the upload.
-    uploadTask.on('state_changed',
-      (snapshot) => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-
-        switch (snapshot.state) {
-          case 'paused':
-            console.log('Upload is paused');
-            break;
-          case 'running':
-            console.log('Upload is running');
-            break;
-        }
-      },
-      (error) => {
-        // A full list of error codes is available at
-        // https://firebase.google.com/docs/storage/web/handle-errors
-        switch (error.code) {
-          case 'storage/unauthorized':
-            // User doesn't have permission to access the object
-            break;
-          case 'storage/canceled':
-            // User canceled the upload
-            break;
-
-          // ...
-
-          case 'storage/unknown':
-            // Unknown error occurred, inspect error.serverResponse
-            break;
-        }
-      },
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-          setGetLinkDownload(downloadURL)
-          console.log('adding link!' , downloadURL)
-          const metadata = {...item , uid : userId ,linkImage:downloadURL}
-          addItem(metadata)
-        });
+    // if category !=null the user can store
+    if (category) {
+      const item = {
+        imageInfo: { name: image.name, size: image.size },
+        type: type,
+        category: category,
+        explain: explain,
+        coordination: coordination,
+        userDocId: id,
+        dateCreated: Date.now(),
+        owner: username,
+        price: price
       }
-    );
+      console.log(item)
 
-    //add items in fireStore
-    async function addItem(metadata) {
-      console.log('addinggggggggggggggggg!')
-      await addDoc(collection(db, 'items'), metadata)
-      setOpenModal(false)
-      setImage(null)
-      setType('')
-      setCategory(null)
-      setExplain('')
-      setGetLinkDownload('')
+
+
+      //---------------------add picture in storage 
+
+      const storageRef = ref(storage, `${id}/` + image.name);
+      const uploadTask = uploadBytesResumable(storageRef, image)
+
+      // Listen for state changes, errors, and completion of the upload.
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+          }
+        },
+        (error) => {
+          // A full list of error codes is available at
+          // https://firebase.google.com/docs/storage/web/handle-errors
+          switch (error.code) {
+            case 'storage/unauthorized':
+              // User doesn't have permission to access the object
+              break;
+            case 'storage/canceled':
+              // User canceled the upload
+              break;
+
+            // ...
+
+            case 'storage/unknown':
+              // Unknown error occurred, inspect error.serverResponse
+              break;
+          }
+        },
+        () => {
+          // Upload completed successfully, now we can get the download URL
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log('File available at', downloadURL);
+            console.log('adding link!', downloadURL)
+            const metadata = { ...item, uid: userId, linkImage: downloadURL }
+            addItem(metadata)
+          });
+        }
+      );
+
+      //add items in fireStore
+      async function addItem(metadata) {
+        console.log('addinggggggggggggggggg!')
+        await addDoc(collection(db, 'items'), metadata)
+        setImage(null)
+        setType('')
+        setCategory(null)
+        setExplain('')
+      }
+
+
+    }
+    else {
+      return null
     }
 
 
@@ -164,21 +174,29 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
 
                 <div className='get-info'>
 
+                  {/* choose the type of donating or selling */}
                   <div className='choose-type'>
                     <span><h5 className='title'>Are you going to? </h5></span>
                     <span>
                       <input type="radio" id='sell' value="sell" name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="sell">Sell</label>
+
+                      {/* by choosing selling radio display the price   */}
+                      <input value={price} className='price' type="number" onChange={({ target }) => { setPrice(target.value) }} />
                     </span>
                     <span>
                       <input type="radio" id='donate' value="Donate" name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="donate">Donate</label>
+
+
                     </span>
                   </div>
 
+                  {/* choose your category of your items */}
                   <div className='categories'>
-                    <h5 className='title'>what is kind of?</h5>
-                    <select name="categories" id="category" value="Select Category" onChange={({ target }) => { setCategory(target.value) }}>
+
+                    <label className='title' for="category">what is kind of?</label>
+                    <select id="category" onChange={({ target }) => { setCategory(target.value) }}>
                       <option value="Costume">Costume</option>
                       <option value="Sports">Sports</option>
                       <option value="Appliance Home">Appliance Home</option>
@@ -186,9 +204,11 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination }) => 
                       <option value="Electronic">Electronic</option>
                       <option value="Gaming">Gaming</option>
                       <option value="Discount">Discount</option>
+                      <option value="Select Category" selected>Select Category</option>
                     </select>
                   </div>
 
+                  {/* turn on your location */}
                   <div className='current-location'>
                     <h5 className='title'>Find items in your neighborhood!</h5>
                     <input type="checkbox" className='turn-location' onChange={({ target }) => { setTurnLocation(target.checked) }} />

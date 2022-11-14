@@ -69,14 +69,14 @@ export const OthersItems = () => {
                     </div>
                 </div>
                 {!showChat ? (
-                    <div className="joinChatContainer">
-                    <h3>Join A Chat</h3>
-                    <input
-                        type="text"
-                        placeholder="John..."
-                        onChange={(event) => {
-                        setUsername(event.target.value);
-                        }}
+                <div className="joinChatContainer">
+                <h3>Join A Chat</h3>
+                <input
+                    type="text"
+                    placeholder="John..."
+                    onChange={(event) => {
+                    setUsername(event.target.value);
+                    }}
           />
           <input
             type="text"

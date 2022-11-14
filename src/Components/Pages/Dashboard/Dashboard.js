@@ -20,6 +20,8 @@ export const Dashboard = () => {
   console.log(openModal)
   const [turnLocation, setTurnLocation] = useState(false)
   const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
+  const [items, setItems] = useState(null)
+
 
 
   //get current location 
@@ -47,9 +49,10 @@ export const Dashboard = () => {
     <div className='dashboard'>
       <Sidebar setOpenModal={setOpenModal} />
       <div className='main-profile'>
-        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} />
+        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}  setItems={setItems}/>
+        
         <Header />
-        <MainContent />
+        <MainContent coordination={coordination} items={items} setItems={setItems}/>
       </div>
     </div>
   )
