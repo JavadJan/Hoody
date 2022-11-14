@@ -41,11 +41,13 @@ export const OthersItems = ({ id }) => {
 
         console.log('coordination0000000000000', coordination)
 
+        let itemss = []
         //get items by filter category
         await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
-          setItems(data)
+            itemss.push(data)
         })
-        await console.log('eeeeeeeeeeeeeeeeeeee',  items)
+        setItems(itemss)
+        console.log('eeeeeeeeeeeeeeeeeeee',  items)
         // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
 
         //this test worked well
