@@ -16,12 +16,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import logo1 from '../../assets/logo1.png';
 import { NavLink } from "react-router-dom";
 import { Nav } from "../Navbar/Nav";
-
+import { useFormik,Formik } from "formik";
+import { Schema } from "./Schema";
 
 import Loader from "../Loader/Loader";
+
+
 export function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,7 +44,30 @@ export function Login() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+
+
+
+/****-------------Test valid inputs--------------*****/
+
+ 
+  //test inputs validation
+
+ const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } =
+  useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: Schema,
+    
+  
+});
+
+
+
+
 
   console.log('user', user)
 
@@ -121,6 +148,12 @@ export function Login() {
   //handle sign up
   const handleSignup = async (event) => {
     event.preventDefault();
+
+    if(username==='' && email==='' && password===''){
+      notifyError('Please fill all the fields')
+    }else{
+
+  
     //does username exist?
     const userExist = await DoesUserExist(email)
 
@@ -144,7 +177,8 @@ export function Login() {
           email: email.toLowerCase(),
           password: password
         })
-        console.log('sign up done!')
+        notifySuccess('Successfully registered!')
+    
         navigate(ROUTES.Login)
       } catch (error) {
         setUsername('')
@@ -156,10 +190,11 @@ export function Login() {
       }
     }
     else {
-      setError('username already exist!')
+      notifyError('username already exist!')
 
     }
     //go to login mode
+   } 
   }
 
   //handle google sign up
@@ -217,6 +252,9 @@ export function Login() {
     setSignUpMode(false)
 
   }
+
+
+
   //handle tweeter sign up
   const handleTwitterSignUp = async () => {
     const provider = new TwitterAuthProvider()
@@ -261,6 +299,9 @@ export function Login() {
 
   }
 
+
+
+
   return (
     <>
 
@@ -300,30 +341,66 @@ export function Login() {
                 <Link href="#" className="social-icon">
                   <i className="fab fa-twitter"></i>
                 </Link>
-                <Link href="#" className="social-icon">
+                {/* <Link href="#" className="social-icon">
                   <i className="fab fa-apple"></i>
-                </Link>
+                </Link> */}
               </div>
             </form>
 
             {/* to sign up mode from */}
+            {/* <Formik  
 
+          
+          validationSchema={Schema}
+          onSubmit={values => {
+            console.log(values)
+}}
+
+> */}
             <form action="#" className="form sign-up-form" onSubmit={handleSignup}>
               <h2 className="title">Sign up</h2>
 
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input value={username} onChange={({ target }) => { setUsername(target.value) }} type="text" placeholder="Username" required />
+                <input 
+                // value={username} 
+                name="username"
+                value={values.username}
+                onChange={handleChange}
+                 type="text" placeholder="Username"
+                 onBlur={handleBlur}
+               
+                 />
+                  {errors.username && touched.username && (
+                    <small className="errorMessage">{errors.username}</small>
+                    )}
+              
               </div>
 
               <div className="input-field">
                 <i className="fas fa-envelope"></i>
-                <input value={email} onChange={({ target }) => { setEmail(target.value) }} type="email" placeholder="Email" required />
+                <input value={values.email} 
+                name="email"
+                onChange={handleChange}
+                // onChange={({ target }) => { setEmail(target.value) }} 
+                type="email" placeholder="Email" 
+                onBlur={handleBlur}
+                />
+               {errors.email && touched.email && (
+                    <small className="errorMessage">{errors.email}</small>
+                    )}
               </div>
 
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input value={password} onChange={({ target }) => { setPassword(target.value) }} type="password" placeholder="Password" required />
+                <input value={values.password}
+                 name="password"
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+                 type="password" placeholder="Password"  />
+                 {errors.password && touched.password && (
+                    <small className="errorMessage">{errors.password}</small>
+                    )}
               </div>
 
 
@@ -345,6 +422,7 @@ export function Login() {
                 </Link>
               </div>
             </form>
+            {/* </Formik> */}
           </div>
           <ToastContainer />
         </div>

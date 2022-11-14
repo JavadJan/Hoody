@@ -2,7 +2,7 @@
   .scrollTop {
     position: fixed; 
     font-size: 3rem;
-    right: 50px;
+    right: 10px;
     bottom: 30px;
     align-items: center;
     height: 20px;
@@ -10,8 +10,8 @@
     z-index: 1000;
     cursor: pointer;
     animation: fadeIn 1s forwards ease-in-out 1;
-
-    transition: opacity 0.4s;
+   
+    transition:transform opacity 0.4s;
     opacity: 0.7;
     color:  #28877f;
    
@@ -20,6 +20,7 @@
 
   .scrollTop:hover{
     opacity: 1;
+
     /* animation: pulse 1s ease infinite forwards; */
   }
   
@@ -30,6 +31,7 @@
     }
     100%{
       transform: translateY(0%);
+
     }
   }
   

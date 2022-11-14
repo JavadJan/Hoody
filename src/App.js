@@ -29,14 +29,21 @@ import { Admin } from "./Components/Pages/Admin"
 
 import Profile from './Components/Pages/ProfilePage/Profile'
 import Donation from "./Components/Pages/Donation/Donation";
+import ChatBox from "./Components/Pages/ChatBox/ChatBox";
 
 import { useContext } from "react";
 import { DbContext } from "./Context/DBContext";
 
 
+
+// import io from "socket.io-client";
+// const socket = io.connect("http://localhost:3001");
+
+
 function App() {
   const { user } = UserListener();
   const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -71,8 +78,11 @@ function App() {
       // />
       ) : (
         <>
+      
           <userContext.Provider value={{ user }}>
+            
             <Router>
+      
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Nav /> : ''} */}
               <Routes>
                 <Route index element={<Home />} />
@@ -85,9 +95,12 @@ function App() {
                 <Route path='/Profile' element={<Profile/>} />
                 <Route path='*' element={<NotFound />} />
                 <Route path='/DOnation' element={<Donation />} />
+                <Route path='/ChatBox' element={<ChatBox/>}/>
               </Routes>
               {/* {Object.values(ROUTES).some((p) => p === window.location.pathname) ? <Footer /> : ""} */}
-            </Router>
+        
+             </Router>
+           
             <ScrollUp/>
           </userContext.Provider>
         </>

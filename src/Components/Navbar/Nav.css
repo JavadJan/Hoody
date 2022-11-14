@@ -106,15 +106,15 @@
   color: black;
 }
 .navbar .logo {
-  color: #1f1f1f;
+  color: var(--color-font-orange1);
   font-weight: 600;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
 }
 .navbar .logo span {
   position: relative;
   display: block;
   z-index: 0;
-  text-shadow: 1px 1px 2px rgba(19, 19, 18, 0.695);
+  text-shadow: 1px 1px 5px rgba(30, 14, 2, 0.4980392157), 1px 1px 1px rgba(30, 14, 2, 0.6431372549), 1px 1px 8px rgba(30, 14, 2, 0.631372549);
 }
 .navbar .logo span::before {
   content: "";
@@ -126,9 +126,9 @@
   left: 0;
   z-index: -1;
   border-radius: 100% 0% 100% 0%/100% 0% 100% 0%;
-  transform: rotate(8deg) scale(1.2);
+  transform: scale(1.2);
   transition: transform 1s ease;
-  animation: lay 2s ease forwards reverse;
+  animation: lay1 2s ease forwards reverse;
 }
 .navbar .logo span::after {
   content: "";
@@ -160,6 +160,22 @@
   }
   100% {
     transform: rotate(-5deg);
+  }
+}
+@-webkit-keyframes lay1 {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes lay1 {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
   }
 }
 .navbar .List {

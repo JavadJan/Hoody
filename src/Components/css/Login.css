@@ -305,6 +305,19 @@ input {
   pointer-events: all;
 }
 
+
+
+.errorMessage{
+  color: red;
+  position: absolute;
+  bottom: -19px;
+  left: 10px;
+  font-size: 12px;
+}
+.errorMessage input{
+  border: 1px solid red;
+}
+
 @media (max-width: 870px) {
   .container {
     min-height: 800px;
