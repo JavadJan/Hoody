@@ -147,7 +147,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
       <div className="modal-content">
 
         <div className='modal-head'>
-          <img src={logo1} alt="" />
+          <span className='logo'>Hoody</span>
           <span className="close" onClick={closeModal}>&times;</span>
         </div>
 

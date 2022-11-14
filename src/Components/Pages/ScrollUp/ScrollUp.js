@@ -10,6 +10,7 @@ const ScrollUp=() =>{
       } else if (showScroll && window.pageYOffset <= 400 ){
         setShowScroll(false)
       }
+    
     };
   console.log(window.pageYOffset)
     const scrollTop = () =>{

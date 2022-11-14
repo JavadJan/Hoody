@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 // import {NavHashLink as Link} from 'react-router-hash-link'
+
 import { Link } from "react-scroll";
 import './Nav.css'
 
@@ -31,7 +32,7 @@ export const Nav = () => {
 
   const handleMenu = () => {
     console.log('clicked')
-    setShow(!showMenu)
+    setShow(showMenu)
   }
 
 

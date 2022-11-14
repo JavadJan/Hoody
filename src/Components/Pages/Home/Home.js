@@ -10,17 +10,16 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 import {BsMouse} from 'react-icons/bs'
 
+// import polygon from '../../../assets/test/hexagon.png'
+// import dots from '../../../assets/test/hexagon.png'
+// import dots1 from '../../../assets/test/cell.png'
 
-
-import polygon from '../../../assets/test/hexagon.png'
-import dots from '../../../assets/test/hexagon.png'
-import dots1 from '../../../assets/test/cell.png'
-
-import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
+// import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { Contact } from '../Contact/Contact'
 import { Link } from 'react-router-dom'
 import { Footer } from '../../Footer/Footer'
 import { Nav } from '../../Navbar/Nav'
+import Services from '../Services/Services'
 
 
 
@@ -186,8 +185,9 @@ opacity:0
   return (
 
     <>
-      <Nav/>
+     <Nav/>
       <div className='home' id='home'>
+    
       <div className="circlesHome" ref={parallaxRef}>
       {/* <MouseParallaxContainer   containerStyles={{
               width: "100%",
@@ -253,8 +253,9 @@ opacity:0
  
 
       </div>
-
+   
       <About />
+      <Services/>
       <Contact/>
       <Footer />
     </>

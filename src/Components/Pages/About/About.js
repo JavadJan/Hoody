@@ -13,12 +13,11 @@ import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-
-
+import {FiTriangle} from 'react-icons/fi'
 
 import { founders } from './founders';
 
-
+import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -31,7 +30,7 @@ export const About = () => {
       elem,
       {
         opacity: 0,
-        y: 200,
+        y: 40,
       }, {
       opacity: 1,
       y: 0,
@@ -57,6 +56,8 @@ export const About = () => {
 
   //  },[])
 
+
+
   return (
 
     <div className='about-main contain' id='about'>
@@ -72,17 +73,31 @@ export const About = () => {
              starting with those who are closest to them.
               offer a variety of options to make charitable giving convenient in various ways
             </p>
-            <Link to="#services" className='learn'>explore</Link>
+            <a href="#service" className='learn'>explore</a>
           </div>
+               
 
         </div>
         <div className="section-right">
+        <MouseParallaxContainer   
+        containerStyles={{
+              width: "100%",
+              display: "grid",
+              position:"relative",
+              gridTemplateColumns: "auto",
+              overflow:"visible",
+            
+            }}
+          >
+   <MouseParallaxChild factorX={0.1} factorY={0.1} >
+   <div className="blackImg"> <img src={black} alt="" /></div>
+    </MouseParallaxChild>
 
-          <div className="blackImg"> <img src={black} alt="" /></div>
-
+</MouseParallaxContainer>
 
 
         </div>
+        <FiTriangle className='triangle'></FiTriangle>
       </div>
 
       <div className="about-sections2">
@@ -144,7 +159,9 @@ export const About = () => {
 
                     </ul>
                   </div>
+                  
                 </div>
+                
               );
             })}
 

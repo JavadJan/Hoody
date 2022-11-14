@@ -348,6 +348,8 @@ background: linear-gradient(60deg, rgba(249,222,172,1) 36%, rgba(244,162,97,1) 5
 }
 
 
+
+
 @media screen and (max-width:1024px){
   .home{
     width: 100%;
@@ -396,6 +398,7 @@ background: linear-gradient(60deg, rgba(249,222,172,1) 36%, rgba(244,162,97,1) 5
     
 }
 
+
 @media screen and (max-width:750px){
     .home {
         width: 100%;
@@ -414,13 +417,13 @@ background: linear-gradient(60deg, rgba(249,222,172,1) 36%, rgba(244,162,97,1) 5
  
     
 
-
 }
+
+
 
 @media screen and (max-width:475px){
 
     
- 
    #content h1{
     
        font-size:2.2rem;

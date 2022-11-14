@@ -173,3 +173,12 @@ npm install emailjs-com --save
 ```bash
 npm i @iconscout/react-unicons
 ```
+
+
+```bash
+npm install react-chat-engine --legacy-peer-deps
+
+
+npm i axios
+
+```

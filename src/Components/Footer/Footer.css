@@ -53,7 +53,7 @@ footer .footer1 .logo span::before {
   left: 0;
   z-index: -1;
   border-radius: 100% 0% 100% 0%/100% 0% 100% 0%;
-  transform: rotate(8deg) scale(1.2);
+  transform: rotate(-14deg) scale(1.2);
   transition: transform 1s ease;
 }
 footer .footer1 .logo span::after {
@@ -80,7 +80,7 @@ footer .footer2 {
 }
 footer .footer2 h3 {
   grid-column: 1/-1;
-  place-self: center;
+  place-self: left;
 }
 footer .footer2 a {
   color: var(--colo-bg-gray);
@@ -135,6 +135,10 @@ footer .footer-copyRight {
   justify-content: center;
   border-top: 1px solid rgba(128, 128, 128, 0.163);
   width: 100%;
+}
+footer .footer-copyRight span {
+  color: var(--color-font-orange2);
+  font-weight: 600;
 }
 footer h3 {
   color: var(--color-light-green);
