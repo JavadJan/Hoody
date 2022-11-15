@@ -49,8 +49,7 @@ function ChatBox({ socket, username, room }) {
     <div className="chat-window">
       <div className="chat-header">
         <span className="logo">Hoody</span>
-        <AiOutlineClose className="AiOutlineClose" onClick={
-          handleClose}></AiOutlineClose>
+        <AiOutlineClose className="AiOutlineClose" onClick={handleClose}></AiOutlineClose>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
@@ -104,7 +103,7 @@ function ChatBox({ socket, username, room }) {
           placeholder="Type a message"
         /> */}
          
-        <button onClick={sendMessage}><IoSendSharp></IoSendSharp></button>
+        <button onClick={(sendMessage)}><IoSendSharp></IoSendSharp></button>
       </div>
     </div>
   );

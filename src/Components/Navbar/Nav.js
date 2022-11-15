@@ -32,7 +32,7 @@ export const Nav = () => {
 
   const handleMenu = () => {
     console.log('clicked')
-    setShow(showMenu)
+    setShow(!showMenu)
   }
 
 
@@ -121,7 +121,7 @@ export const Nav = () => {
               routeChange('/Products')
             }}
             end
-          >Products</NavLink>
+          >Explore</NavLink>
 
 
           <Link to="contact"

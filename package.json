@@ -38,14 +38,10 @@
     "react-scroll": "^1.8.8",
     "react-scroll-to-bottom": "^4.2.0",
     "react-toastify": "^9.0.8",
-<<<<<<< HEAD
     "socket.io-client": "^4.5.3",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
-=======
-    "sweetalert": "^2.1.2",
-    "web-vitals": "^2.1.4"
->>>>>>> 10d5748744345ce362e051cd415e46891e0a4661
   },
   "scripts": {
     "start": "react-scripts start",

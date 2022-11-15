@@ -1,9 +1,9 @@
 import React,{ useContext ,useEffect,useState} from 'react'
 import image1 from '../../../../assets/image1.jpg'
-import img1 from '../../../../assets/img1.jpg'
-import img2 from '../../../../assets/img2.jpg'
-import img3 from '../../../../assets/img3.jpg'
-import { Iframe } from './Iframe'
+// import img1 from '../../../../assets/img1.jpg'
+// import img2 from '../../../../assets/img2.jpg'
+// import img3 from '../../../../assets/img3.jpg'
+// import { Iframe } from './Iframe'
 import { userContext } from '../../../../Context/userContext'
 
 import ChatBox from '../../ChatBox/ChatBox';
@@ -79,7 +79,7 @@ export const OthersItems = () => {
                     }}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Room ID..."
             onChange={(event) => {
               setRoom(event.target.value);
