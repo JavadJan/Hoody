@@ -9,7 +9,7 @@ import { UilCloudUpload } from '@iconscout/react-unicons'
 import { useUser } from '../../../../DB/useUser'
 import { userContext } from '../../../../Context/userContext'
 import { useContext } from 'react'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, setDoc, doc } from 'firebase/firestore'
 import { DbContext } from '../../../../Context/DBContext'
 import { getDownloadURL, ref, updateMetadata, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { getUserById } from '../../../../DB/DoesUserExist'
@@ -25,14 +25,15 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
   const [explain, setExplain] = useState('')
   const [price, setPrice] = useState(0)
 
-  const { user: { username, userId, id } } = useUser()
+
+  const { user: { displayName, uid } } = useUser()
 
   //close modal
   if (!open) return null
   async function closeModal() {
 
     //when close the modal userItem component should refresh
-    await getItemsById(id).then((data) => {
+    await getItemsById(uid).then((data) => {
       setItems(data)
     })
     setOpenModal(false)
@@ -42,7 +43,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
     setExplain('')
   }
 
-  console.log(image, id, userId)
+  console.log(image, uid)
 
   //for saving image
   async function handleSaveImage(e) {
@@ -56,9 +57,9 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
         category: category,
         explain: explain,
         coordination: coordination,
-        userDocId: id,
+        uid: uid,
         dateCreated: Date.now(),
-        owner: username,
+        owner: displayName,
         price: price
       }
       console.log(item)
@@ -67,7 +68,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
 
       //---------------------add picture in storage 
 
-      const storageRef = ref(storage, `${id}/` + image.name);
+      const storageRef = ref(storage, `${uid}/` + image.name);
       const uploadTask = uploadBytesResumable(storageRef, image)
 
       // Listen for state changes, errors, and completion of the upload.
@@ -106,25 +107,20 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
         },
         () => {
           // Upload completed successfully, now we can get the download URL
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             console.log('File available at', downloadURL);
             console.log('adding link!', downloadURL)
-            const metadata = { ...item, uid: userId, linkImage: downloadURL }
-            addItem(metadata)
+            const metadata = { ...item, linkImage: downloadURL }
+            await addDoc(collection(db, 'items'), metadata)
+            setImage(null)
+            setType('')
+            setCategory(null)
+            setExplain('')
           });
         }
       );
 
       //add items in fireStore
-      async function addItem(metadata) {
-        console.log('addinggggggggggggggggg!')
-        await addDoc(collection(db, 'items'), metadata)
-        setImage(null)
-        setType('')
-        setCategory(null)
-        setExplain('')
-      }
-
 
     }
     else {

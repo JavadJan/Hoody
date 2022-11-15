@@ -25,7 +25,7 @@ export const UpdateModal = ({ updateModalOpen, setUpdateModalOpen, setTurnLocati
     const [explain, setExplain] = useState('')
     const [price, setPrice] = useState(0)
 
-    const { user: { username, userId, id } } = useUser()
+    const { user: { displayName, userId, id } } = useUser()
 
     console.log('updateItem' , updateItem)
 
@@ -61,7 +61,7 @@ export const UpdateModal = ({ updateModalOpen, setUpdateModalOpen, setTurnLocati
                 coordination: coordination,
                 userDocId: id,
                 dateCreated: Date.now(),
-                owner: username,
+                owner: displayName,
                 price: price
             }
             console.log('item ,' , item)

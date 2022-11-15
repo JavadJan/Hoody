@@ -5,7 +5,7 @@ import RegisterImg from "../../assets/rocket.svg";
 import { DbContext } from "../../Context/DBContext";
 import { DoesUserExist } from "../../DB/DoesUserExist";
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, OAuthProvider, signInWithRedirect, signInWithCredential, signInWithEmailAndPassword } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import {doc, setDoc } from "firebase/firestore";
 import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from "../../Context/userContext";
@@ -113,8 +113,8 @@ export function Login() {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userConditional) => {
 
-        navigate(`/p/${user.displayName}`)
-        console.log(userConditional.user)
+        navigate(`/dashboard/${userConditional.user.displayName}`)
+        console.log(userConditional.user.displayName)
       }).catch((error) => {
         setEmail('');
         setPassword('');
@@ -128,17 +128,17 @@ export function Login() {
   //-------------------Login with google
   const handleLoginGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider)
+   const res = await signInWithPopup(auth, provider)
 
-    navigate(`/p/${user.displayName}`)
+    navigate(`/dashboard/${res.user.displayName}`)
   }
 
   // --------------------------Login with Facebook
   const handleLoginFacebook = async () => {
     try {
       const provider = new FacebookAuthProvider()
-      await signInWithPopup(auth, provider)
-      navigate(`/p/${user.displayName}`)
+      const res =await signInWithPopup(auth, provider)
+      navigate(`/dashboard/${res.user.displayName}`)
     } catch (error) {
       setError("this user is not registered")
     }
@@ -161,25 +161,27 @@ export function Login() {
     if (userExist.length === 0) {
       console.log("userExist: ", { username, email, password }, userExist, auth)
       try {
-        const createdResult = await createUserWithEmailAndPassword(auth, email, password)
+        const response = await createUserWithEmailAndPassword(auth, email, password)
           .catch((err) => {
             setError(err)
           })
-        console.log('added user with email and pass!', createdResult.user.uid)
+        console.log('added user with email and pass!', response.user.uid)
         // after created the display name of user will update with user name
-        await updateProfile(createdResult.user, {
+        await updateProfile(response.user, {
           displayName: username
         })
         //add to firestore
-        addDoc(collection(db, 'users'), {
-          userId: createdResult.user.uid,
-          username: username.toLowerCase(),
-          email: email.toLowerCase(),
+        await setDoc(doc(db, 'users', response.user.uid), {
+          uid: response.user.uid,
+          displayName:username,
+          email:email,
           password: password
-        })
+      })      
+        await setDoc(doc(db, 'userChats', response.user.uid), {});
+
         notifySuccess('Successfully registered!')
     
-        navigate(ROUTES.Login)
+        setSignUpMode(false)
       } catch (error) {
         setUsername('')
         setEmail('')
@@ -191,7 +193,6 @@ export function Login() {
     }
     else {
       notifyError('username already exist!')
-
     }
     //go to login mode
    } 
@@ -200,54 +201,33 @@ export function Login() {
   //handle google sign up
   const handleGoogleSignUp = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider)
+    const response = await signInWithPopup(auth, provider)
 
     console.log('provider : ', user)
-    await addDoc(collection(db, 'users'), {
-      userId: user.uid,
-      username: user.displayName,
-      email: user.email
-
-    })
-    navigate(ROUTES.Login)
+    await setDoc(doc(db, 'users', response.user.uid), {
+      uid: response.user.uid,
+      displayName:response.user.displayName,
+      email:response.user.email,
+      photoURL: response.user.photoURL
+  })
+    await setDoc(doc(db, 'userChats', response.user.uid), {});
+    setSignUpMode(false)
   }
 
   //handle facebook sign up
   const handleFacebookSignUp = async (event) => {
     event.preventDefault()
     const provider = new FacebookAuthProvider()
-    await signInWithPopup(auth, provider)
-      .then((result) => {
-        // The signed-in user info.
-        // setUserr(result.user);
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
-        console.log(accessToken)
+    const response = await signInWithPopup(auth, provider)
+          
 
-
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        console.log(error.message, errorMessage)
-        // ...
-      });
-
-    
-      const currentUser = JSON.parse(localStorage.getItem('authUser'))
-
-   await addDoc(collection(db, 'users'), {
-      userId: currentUser.uid,
-      username: currentUser.displayName,
-      email: currentUser.email,
-      itemId: []
-    })
+    await setDoc(doc(db, 'users', response.user.uid), {
+      uid: response.user.uid,
+      displayName:response.user.displayName,
+      email:response.user.email,
+      photoURL: response.user.photoURL
+  })
+    await setDoc(doc(db, 'userChats', response.user.uid), {});
     // console.log(user.uid)
     setSignUpMode(false)
 
@@ -258,26 +238,30 @@ export function Login() {
   //handle tweeter sign up
   const handleTwitterSignUp = async () => {
     const provider = new TwitterAuthProvider()
-    await signInWithPopup(auth, provider)
+    const response =await signInWithPopup(auth, provider)
     console.log('sign up with twitter')
 
-    await addDoc(collection(db, 'users'), {
-      userId: user.uid,
-      username: user.displayName,
-      email: user.email
-    })
-    navigate(ROUTES.Login)
+    await setDoc(doc(db, 'users', response.user.uid), {
+      uid: response.user.uid,
+      displayName:response.user.displayName,
+      email:response.user.email,
+      photoURL: response.user.photoURL
+  })
+    await setDoc(doc(db, 'userChats', response.user.uid), {});
+    setSignUpMode(false)
   }
   //handle linkedin sign up
   const handleAppleSignUp = async () => {
     const provider = new OAuthProvider('apple.com')
-    await signInWithPopup(auth, provider)
-    await addDoc(collection(db, 'users'), {
-      userId: user.uid,
-      username: user.displayName,
-      email: user.email
-    })
-
+    const response =await signInWithPopup(auth, provider)
+    await setDoc(doc(db, 'users', response.user.uid), {
+      uid: response.user.uid,
+      displayName:response.user.displayName,
+      email:response.user.email,
+      photoURL: response.user.photoURL
+  })
+    await setDoc(doc(db, 'userChats', response.user.uid), {});
+    setSignUpMode(false)
   }
 
   const style = {

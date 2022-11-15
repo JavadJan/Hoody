@@ -15,7 +15,7 @@ const socket = io.connect("http://localhost:3001/");
 
 
 
-export const OthersItems = ({id}) => {
+export const OthersItems = ({uid}) => {
     const { user } = useContext(userContext);
     const [category, setICategoty] = useState(null)
     const [items, setItems] = useState(null)
@@ -60,7 +60,7 @@ export const OthersItems = ({id}) => {
         console.log('coordination0000000000000', coordination)
 
         //get items by filter category
-        await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
+        await getItemsByCategory(uid, e.target.innerText, coordination).then((data) => {
           setItems(data)
         })
         await console.log('eeeeeeeeeeeeeeeeeeee',  items)
