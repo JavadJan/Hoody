@@ -5,7 +5,7 @@ import { getItemsById } from '../../../../DB/getItems'
 import { Photos } from './Photos'
 import {UpdateModal} from '../Modals/updateModal'
 
-export const UserItems = ({ id ,items ,  setItems }) => {
+export const UserItems = ({ uid ,items ,  setItems }) => {
     const [updateModalOpen , setUpdateModalOpen] = useState(false)
     const [updateItem , setUpdateItem] = useState({})
     const [turnLocation, setTurnLocation] = useState(false)
@@ -32,16 +32,15 @@ export const UserItems = ({ id ,items ,  setItems }) => {
 
     //3. third way with using useEffect
     useEffect(() => {
-        getItemsById(id).then((data) => {
-            setItems(data)
+        getItemsById(uid).then(async (data) => {
+            await setItems(data)
         })
-    }, [id])
+    }, [uid])
   
   return (
     <div className='user-items'>
       <UpdateModal updateModalOpen={updateModalOpen} setUpdateModalOpen = {setUpdateModalOpen} coordination={coordination} updateItem = {updateItem} setCoordination={setCoordination} setTurnLocation/>
       {
-
         items && items.map((item) =>{ return (
           item.linkImage && <Photos item={item} setUpdateModalOpen={setUpdateModalOpen}  updateModalOpen={updateModalOpen} setUpdateItem={setUpdateItem}/>
         )})
