@@ -1,23 +1,28 @@
-import React,{ useContext ,useEffect,useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import image1 from '../../../../assets/image1.jpg'
 // import img1 from '../../../../assets/img1.jpg'
 // import img2 from '../../../../assets/img2.jpg'
 // import img3 from '../../../../assets/img3.jpg'
 // import { Iframe } from './Iframe'
 import { userContext } from '../../../../Context/userContext'
-
+import haversine from 'haversine-distance'
 import ChatBox from '../../ChatBox/ChatBox';
 
 
 import io from "socket.io-client";
+import { getItemsByCategory } from '../../../../DB/getItemsByCategory'
 const socket = io.connect("http://localhost:3001/");
 
 
 
-export const OthersItems = () => {
-
+export const OthersItems = ({id}) => {
     const { user } = useContext(userContext);
-    const[room,setRoom]=useState('');
+    const [category, setICategoty] = useState(null)
+    const [items, setItems] = useState(null)
+    const [coordination, setCoordination] = useState({ latitude: null, longitude: null })
+    const [openMap, setOpenMap] = useState(false)
+
+    const [room, setRoom] = useState('');
     const [showChat, setShowChat] = useState(false);
     const [username, setUsername] = useState("");
     const style = { border: 0 }
@@ -27,21 +32,65 @@ export const OthersItems = () => {
     const load = 'lazy'
     const referrerPolicy = "no-referrer-when-downgrade"
 
-    const joinChat=()=>{
-        if(user && room!==''){
+    const joinChat = () => {
+        if (user && room !== '') {
             console.log("a user exist")
-            socket.emit("join-chat",room);
+            socket.emit("join-chat", room);
             setShowChat(true)
         }
     };
 
+    //open map
+    function handleMap(params) {
+        setOpenMap(true)
+
+    }
+    async function GetItemsByCategory(e) {
+        //getting location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+
+        function showPosition(position) {
+            setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude });
+        }
+
+        console.log('coordination0000000000000', coordination)
+
+        //get items by filter category
+        await getItemsByCategory(id, e.target.innerText, coordination).then((data) => {
+          setItems(data)
+        })
+        await console.log('eeeeeeeeeeeeeeeeeeee',  items)
+        // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
+
+        //this test worked well
+        // data.filter((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))>0.41) ,
+            // data.map((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))),
+    }
+
+    //home 
+    const a = { latitude: 40.6477262, longitude: 22.9393645 }
+
+    // masoom's home
+    // const b = { latitude: 40.6500294, longitude: 22.9365368 }                   
+    const tm = [{ latitude: 40.6500294, longitude: 22.9365368 }, { latitude: 40.6380324, longitude: 22.9412795 }, { latitude: 50.0981675, longitude: 8.6449389 }]
+    //Red cross
+    const b = { latitude: 40.6380324, longitude: 22.9412795 }
+
+    //reza's home
+    // const b = { latitude: 50.0981675, longitude: 8.6449389 }
+
+    console.log('dissssssssstance', tm.map((dt) => Number((haversine(a, dt) / 1000).toFixed(2))))
 
     return (
         <div className='others-items'>
 
             {/* <div className='google-map'> */}
-            
-                  {/* <Iframe
+
+            {/* <Iframe
                     src={src}
                     width={width}
                     height={height}
@@ -50,7 +99,7 @@ export const OthersItems = () => {
                     load={load}
                     referrerPolicy={referrerPolicy} />   */}
             {/* </div> */}
-            
+
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
@@ -90,15 +139,16 @@ export const OthersItems = () => {
     ) : ( 
         <ChatBox socket={socket} username={username} room={room} />
       )}
+                
                 <div className="item-categories">
-                    <ul>
-                        <li>Costume</li>
-                        <li>Sports</li>
-                        <li>Appliance Home</li>
-                        <li>Toys</li>
-                        <li>Electronic</li>
-                        <li>Gaming</li>
-                        <li>Discount</li>
+                <ul>
+                        <li onClick={GetItemsByCategory}>Costume</li>
+                        <li onClick={GetItemsByCategory}>Sports</li>
+                        <li onClick={GetItemsByCategory}>Appliance Home</li>
+                        <li onClick={GetItemsByCategory}>Toys</li>
+                        <li onClick={GetItemsByCategory}>Electronic</li>
+                        <li onClick={GetItemsByCategory}>Gaming</li>
+                        <li onClick={GetItemsByCategory}>Discount</li>
                     </ul>
                 </div>
 
@@ -115,7 +165,7 @@ export const OthersItems = () => {
                             <p>
                                 <i className="uil uil-map-marker"></i> 500 m
                             </p>
-                            <p onClick={()=>{
+                            <p onClick={() => {
                                 console.log('clicked')
                             }}>
                                 <i className="fa-regular fa-comment-dots"></i> message
@@ -125,7 +175,7 @@ export const OthersItems = () => {
                     </div>
                     {/* 1 */}
 
-           
+
                     <div className="item-card">
                         <div className='item-img'>
                             <img src={image1} alt="" />
