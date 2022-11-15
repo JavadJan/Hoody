@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { userContext } from '../../../Context/userContext'
 import Najla from './dash-css/Najla.jpg';
 // import '../../Navbar/Nav.scss'
+import {BsFillPencilFill} from 'react-icons/bs'
+// import 'antd/dist/antd.css';
 
 export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
@@ -13,15 +15,24 @@ export const Sidebar = ({setOpenModal}) => {
     setOpenModal(true)
   }
   
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
   return (
     
     <div className='sidebar-profile'>
+      <div className="logo"><span>Hoody</span></div>
       <div className="sidebar-content">
-        <div className="logo"><span>Hoody</span></div>
+        
         <div className='user-pic'>
-          <img src={Najla} alt="" />
-          <div className='username'>{user ? user.displayName : 'username'}</div>
-          <button>Edit</button>
+          <div>
+            <img src={Najla} alt="" />
+            <BsFillPencilFill className='edit'></BsFillPencilFill></div>
+         <div className="infoUser"><span className='username'>{user ? user.displayName : 'username'}</span>
+          <span className='emailUser'><strong>Email:</strong> {user ? user.email : 'email'}</span></div>
+    
+          
+          {/* <button>Edit</button> */}
         </div>
         <ul>
           <li>

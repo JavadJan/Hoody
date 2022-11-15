@@ -46,13 +46,15 @@ export const Dashboard = () => {
 
 
   return (
-    <div className='dashboard'>
-      <Sidebar setOpenModal={setOpenModal} />
-      <div className='main-profile'>
-        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}  setItems={setItems}/>
-        
-        {/* <Header /> */}
-        <MainContent coordination={coordination} items={items} setItems={setItems}/>
+    <div className="all-container">
+      <div className='dashboard'>
+        <Sidebar setOpenModal={setOpenModal} />
+        <div className='main-profile'>
+          <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}  setItems={setItems}/>
+          
+          {/* <Header /> */}
+          <MainContent coordination={coordination} items={items} setItems={setItems}/>
+        </div>
       </div>
     </div>
   )
