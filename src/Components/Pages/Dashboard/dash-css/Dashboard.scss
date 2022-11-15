@@ -280,6 +280,7 @@
                     filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.25));
 
                 }
+        
                 .edit{
                  
                     position: relative;
@@ -293,9 +294,12 @@
 
                     &:hover{
                         opacity: 1;
+                        
                     }
 
+                    
                 }
+            
                 // .username{
                 //     top: 50%;
                 // }
@@ -318,12 +322,13 @@
                     font-family:var(--font-header);
                     font-weight: 700;
                     text-transform: uppercase;
-                    font-size: 18px;
+                    font-size: 16px;
                     color:#1f1f1f;
                 }
                 .emailUser{
                     font-family:var(--font-family);
                     color:#1f1f1fd0;
+                    font-size: 12px;
                 }    
             }
             }

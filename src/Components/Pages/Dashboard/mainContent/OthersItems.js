@@ -105,7 +105,7 @@ export const OthersItems = ({uid}) => {
                         </span>
                     </div>
                 </div>
-                {!showChat ? (
+                {/* {!showChat ? (
                 <div className="joinChatContainer">
                 <h3>Join A Chat</h3>
                 <input
@@ -126,7 +126,7 @@ export const OthersItems = ({uid}) => {
         </div>
     ) : ( 
         <ChatBox socket={socket} username={username} room={room} />
-      )}
+      )} */}
                 
                 <div className="item-categories">
                 <ul>

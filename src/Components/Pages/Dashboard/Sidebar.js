@@ -5,13 +5,11 @@ import { useNavigate } from 'react-router';
 import { DbContext } from '../../../Context/DBContext';
 import { userContext } from '../../../Context/userContext'
 import { useUser } from '../../../DB/useUser';
-import Najla from './dash-css/Najla.jpg';
-
-// import '../../Navbar/Nav.scss'
 import {BsFillPencilFill} from 'react-icons/bs'
 // import 'antd/dist/antd.css';
 
-export const Sidebar = ({setOpenModal,setOpenModalChat}) => {
+export  const Sidebar = ({setOpenModal,setOpenModalChat}) => {
+
   const {user} =  useContext(userContext)
   // console.log('user.photoURL' ,user.photoURL )
   const { user: { displayName, userId, id } } = useUser()
@@ -22,15 +20,10 @@ export const Sidebar = ({setOpenModal,setOpenModalChat}) => {
     setOpenModal(true)
   }
 
-  
-
   function openChat() {
     setOpenModalChat(true)
   }
   
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-
   return (
     
     <div className='sidebar-profile'>
@@ -39,13 +32,15 @@ export const Sidebar = ({setOpenModal,setOpenModalChat}) => {
         
         <div className='user-pic'>
           <div>
-            <img src={Najla} alt="" />
-            <BsFillPencilFill className='edit'></BsFillPencilFill></div>
-                <div className="infoUser"><span className='username'>{user ? user.displayName : 'username'}</span>
-                  <span className='emailUser'><strong>Email:</strong> {user ? user.email : 'email'}</span></div>
-            
+          <img src={user.photoURL} alt="" />
+          <BsFillPencilFill className='edit'></BsFillPencilFill>
+          </div>
+          <div className="infoUser">  
+          <span className='username'>{user && (user.displayName ? user.displayName : displayName)}</span>
+
+          <span className='emailUser'><strong>Email: </strong>{user && (user.email ? user.email : displayName)}</span></div>
+
           
-          {/* <button>Edit</button> */}
         </div>
         <ul>
           <li>
