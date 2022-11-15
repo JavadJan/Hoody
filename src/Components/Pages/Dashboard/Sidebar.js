@@ -22,6 +22,8 @@ export const Sidebar = ({setOpenModal,setOpenModalChat}) => {
     setOpenModal(true)
   }
 
+  
+
   function openChat() {
     setOpenModalChat(true)
   }
@@ -39,9 +41,9 @@ export const Sidebar = ({setOpenModal,setOpenModalChat}) => {
           <div>
             <img src={Najla} alt="" />
             <BsFillPencilFill className='edit'></BsFillPencilFill></div>
-         <div className="infoUser"><span className='username'>{user ? user.displayName : 'username'}</span>
-          <span className='emailUser'><strong>Email:</strong> {user ? user.email : 'email'}</span></div>
-    
+                <div className="infoUser"><span className='username'>{user ? user.displayName : 'username'}</span>
+                  <span className='emailUser'><strong>Email:</strong> {user ? user.email : 'email'}</span></div>
+            
           
           {/* <button>Edit</button> */}
         </div>
