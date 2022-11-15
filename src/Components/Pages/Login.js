@@ -309,7 +309,8 @@ export function Login() {
       {isLoading ? (
       <Loader/>
       ) : (
-        <>
+    
+        <div className="all-container">
       {/* <NavLink to="/" className="logoLogin">
     <img src={logo1} alt=""></img></NavLink> */}
       <div className={`container${toggleClassCheck}`}>
@@ -456,7 +457,7 @@ export function Login() {
           </div>
         </div>
       </div> 
-      </>
+      </div>
       )}
     </>
   );

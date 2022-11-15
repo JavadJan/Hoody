@@ -6,6 +6,11 @@
   flex-direction: column;
   text-align: center;
 /* display: none; */
+position: absolute;
+bottom: 0;
+right: inherit;
+background-color: red;
+z-index: 999;
 }
 
 .joinChatContainer h3 {
@@ -260,6 +265,6 @@ border-bottom-left-radius: 35px;
 .chat-window .chat-footer button:hover {
   color: var(--color-font-orange2);
 }
-/* .hide {
+.hideChat {
   opacity: 0 !important;
-} */
+}

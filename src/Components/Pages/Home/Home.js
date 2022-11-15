@@ -186,6 +186,8 @@ opacity:0
 
     <>
      <Nav/>
+
+     <div className="all-container">
       <div className='home' id='home'>
     
       <div className="circlesHome" ref={parallaxRef}>
@@ -258,6 +260,7 @@ opacity:0
       <Services/>
       <Contact/>
       <Footer />
+      </div>
     </>
   )
 

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
 import { userContext } from '../../../Context/userContext'
-import Najla from './dash-css/Najla.jpg'
+import Najla from './dash-css/Najla.jpg';
+// import '../../Navbar/Nav.scss'
 
 export const Sidebar = ({setOpenModal}) => {
   const {user} =  useContext(userContext)
@@ -16,6 +17,7 @@ export const Sidebar = ({setOpenModal}) => {
     
     <div className='sidebar-profile'>
       <div className="sidebar-content">
+        <div className="logo"><span>Hoody</span></div>
         <div className='user-pic'>
           <img src={Najla} alt="" />
           <div className='username'>{user ? user.displayName : 'username'}</div>

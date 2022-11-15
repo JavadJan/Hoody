@@ -87,19 +87,7 @@ export const OthersItems = ({id}) => {
 
     return (
         <div className='others-items'>
-
-            {/* <div className='google-map'> */}
-
-            {/* <Iframe
-                    src={src}
-                    width={width}
-                    height={height}
-                    style={style}
-                    allowFullScreen={""}
-                    load={load}
-                    referrerPolicy={referrerPolicy} />   */}
-            {/* </div> */}
-
+            
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>

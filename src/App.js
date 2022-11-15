@@ -33,6 +33,7 @@ import ChatBox from "./Components/Pages/ChatBox/ChatBox";
 
 import { useContext } from "react";
 import { DbContext } from "./Context/DBContext";
+import Loader from "./Components/Loader/Loader";
 
 
 
@@ -56,19 +57,21 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <MutatingDots 
-        height="100"
-        width="100"
-          color="#264653"
-          wrapperStyle={{}}
-          wrapperClass="Oval"
-          visible={true}
-          ariaLabel='oval-loading'
-          secondaryColor="#4fa94d"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
+        // <MutatingDots 
+        // height="100"
+        // width="100"
+        //   color="#264653"
+        //   wrapperStyle={{}}
+        //   wrapperClass="Oval"
+        //   visible={true}
+        //   ariaLabel='oval-loading'
+        //   secondaryColor="#4fa94d"
+        //   strokeWidth={2}
+        //   strokeWidthSecondary={2}
 
-        />
+        // />
+
+        <Loader/>
       //   <SunspotLoader
       //   gradientColors={["#6366F1", "#E0E7FF"]}
       //   shadowColor={"#3730A3"}

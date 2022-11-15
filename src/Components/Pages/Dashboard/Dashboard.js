@@ -51,7 +51,7 @@ export const Dashboard = () => {
       <div className='main-profile'>
         <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}  setItems={setItems}/>
         
-        <Header />
+        {/* <Header /> */}
         <MainContent coordination={coordination} items={items} setItems={setItems}/>
       </div>
     </div>
