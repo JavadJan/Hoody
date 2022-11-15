@@ -25,7 +25,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
   const [explain, setExplain] = useState('')
   const [price, setPrice] = useState(0)
 
-  const { user: { username, userId, id } } = useUser()
+  const { user: { displayName, userId, id } } = useUser()
 
   //close modal
   if (!open) return null
@@ -58,7 +58,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
         coordination: coordination,
         userDocId: id,
         dateCreated: Date.now(),
-        owner: username,
+        owner: displayName,
         price: price
       }
       console.log(item)

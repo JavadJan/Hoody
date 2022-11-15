@@ -11,7 +11,7 @@ export async function DoesUserExist (email) {
 }
 
 export async function getUserById(uId) {
-    const q = query(collection(db , 'users') , where('userId' , '==' , uId))
+    const q = query(collection(db , 'users') , where('uid' , '==' , uId))
     const result =await getDocs(q)
     const user = result.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return user;

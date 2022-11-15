@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { Modal } from './Modals/Modal'
 import { useEffect } from 'react'
 import { useUser } from '../../../DB/useUser'
+import { ChatRoom } from './ChatRoom/pages'
 
 
 
@@ -21,6 +22,7 @@ export const Dashboard = () => {
   const [turnLocation, setTurnLocation] = useState(false)
   const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
   const [items, setItems] = useState(null)
+  const [openModalChat, setOpenModalChat] = useState(false)
 
 
 
@@ -47,12 +49,13 @@ export const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      <Sidebar setOpenModal={setOpenModal} />
+      <Sidebar setOpenModal={setOpenModal} setOpenModalChat={setOpenModalChat} />
       <div className='main-profile'>
-        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination}  setItems={setItems}/>
-        
+        <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} setItems={setItems} />
+        <ChatRoom openModalChat={openModalChat} setOpenModalChat={setOpenModalChat} />
+
         {/* <Header /> */}
-        <MainContent coordination={coordination} items={items} setItems={setItems}/>
+        <MainContent coordination={coordination} items={items} setItems={setItems} />
       </div>
     </div>
   )

@@ -91,7 +91,7 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path={ROUTES.Sign_Up} element={<SignUp />} />
                 <Route path={ROUTES.Login} element={<Login />} />
-                <Route path={ROUTES.Dashboard} element={<Dashboard />} />
+                <Route path={ROUTES.Dashboard} element={user ? <Dashboard /> : <Login /> } />
                 <Route path={ROUTES.Products} element={<Product/>}/>
                 <Route path={ROUTES.Profile} element={<UserProfile />} />
                 <Route path={ROUTES.Admin} element={<Admin />} />
