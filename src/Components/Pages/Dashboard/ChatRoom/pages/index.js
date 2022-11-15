@@ -1,6 +1,6 @@
 import React from 'react'
-import { Chat } from '../components/Chat'
-import { Sidebar } from '../components/Sidebar'
+import { Chat } from '../com-chat/Chat'
+import { Sidebar } from '../com-chat/Sidebar'
 import { ChatContextProvider } from "../context/chatContext";
 import './style.css'
 
