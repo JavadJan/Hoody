@@ -11,9 +11,10 @@ import { Items } from './Items';
 
 import io from "socket.io-client";
 import { getItemsByCategory } from '../../../../DB/getItemsByCategory'
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { DbContext } from '../../../../Context/DBContext';
 import { async } from '@firebase/util';
+import { CardItems } from './CardItems';
 const socket = io.connect("http://localhost:3001/");
 
 
@@ -48,27 +49,37 @@ export const OthersItems = ({ uid }) => {
         setOpenMap(true)
 
     }
-    async function GetItemsByCategory(e) {
-        //getting location
-        console.log('value --------> ' + e.target.innerText)
+    function onLocation() {
+
+    }
+
+
+    //by default
+    useEffect(() => {
+        //get coordination
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             console.log("Geolocation is not supported by this browser.");
         }
-
         function showPosition(position) {
             setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude });
         }
 
-        console.log('coordination0000000000000', coordination)
+        async function allItems() {
+            await getDocs(collection(db, 'items')).then((data) => {
+                setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            })
+            // console.log('resssssssssss' ,items )
+        }
 
-        //get items by filter category
+        return (() => { allItems() })
 
-        // await getItemsByCategory(uid, e.target.innerText, coordination).then((data) => {
-        //   setItems(data)
-        // })
-        // const unsubscribe =
+    }, [uid])
+
+    //by click on category 
+    async function GetItemsByCategory(e) {
+
         const currentLocation = { latitude: coordination.latitude, longitude: coordination.longitude }
         const q = query(collection(db, "items"), where("category", "==", e.target.innerText));
         onSnapshot(q, async (querySnapshot) => {
@@ -101,18 +112,14 @@ export const OthersItems = ({ uid }) => {
     //reza's home
     // const b = { latitude: 50.0981675, longitude: 8.6449389 }
 
-    console.log('dissssssssstance', tm.map((dt) => Number((haversine(a, dt) / 1000).toFixed(2))))
+    // console.log('dissssssssstance', tm.map((dt) => Number((haversine(a, dt) / 1000).toFixed(2))))
 
     return (
         <div className='others-items'>
-            {items && items.map((item) => {
-                return <p>{item.category}</p>
-            })
-            }
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
-                        <i className="fas fa-location"></i>
+                        <i className="fas fa-location" onClick={onLocation}></i>
                     </div>
                     <div className='flash-down'>
                         <i className="uil uil-angle-down"></i>
@@ -163,36 +170,11 @@ export const OthersItems = ({ uid }) => {
                 </div>
 
                 <div className='items-box'>
-                    {/* 1 */}
-
-                    {Items.map((item) => {
+                    {items && items.map((item, i) => {
                         return (
-                            <div className="item-card">
-                                <div className='item-img'>
-                                    <img src={item.src} alt="" />
-                                </div>
-
-                                <div className='item-content'>
-                                    <h4>{item.name}</h4>
-                                    <h5>{item.price}</h5>
-                                    <p>
-                                        <i className="uil uil-map-marker"></i>{item.distance}
-                                    </p>
-                                    <p onClick={() => {
-                                        console.log('clicked')
-                                    }}>
-                                        {item.message} <i className="fa-regular fa-comment-dots"></i>
-                                    </p>
-                                    {/* <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p> */}
-                                </div>
-                            </div>
+                            <CardItems item={item} key={i} />
                         );
                     })}
-
-                    {/* 1 */}
-
-
-
                 </div>
             </div>
 
