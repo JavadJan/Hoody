@@ -35,7 +35,6 @@ export const OthersItems = ({ uid }) => {
     const height = '100%'
     const load = 'lazy'
     const referrerPolicy = "no-referrer-when-downgrade"
-
     const joinChat = () => {
         if (user && room !== '') {
             console.log("a user exist")
@@ -52,7 +51,12 @@ export const OthersItems = ({ uid }) => {
     function onLocation() {
 
     }
-
+    //GetAllItems
+    async function GetAllItems(params) {
+        await getDocs(collection(db, 'items')).then((data) => {
+            setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        })
+    }
 
     //by default
     useEffect(() => {
@@ -158,7 +162,7 @@ export const OthersItems = ({ uid }) => {
 
                 <div className="item-categories">
                     <ul>
-                        <li onClick={GetItemsByCategory}>All</li>
+                        <li onClick={GetAllItems}>All</li>
                         <li onClick={GetItemsByCategory}>Costume</li>
                         <li onClick={GetItemsByCategory}>Sports</li>
                         <li onClick={GetItemsByCategory}>Appliance Home</li>

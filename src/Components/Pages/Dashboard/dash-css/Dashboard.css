@@ -124,7 +124,7 @@
   display: grid;
   flex-wrap: nowrap;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
 }
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card {
   background-color: white;

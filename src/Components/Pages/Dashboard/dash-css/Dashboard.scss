@@ -176,7 +176,7 @@
                     display: grid;
                     flex-wrap: nowrap;
                     gap: 10px;
-                    grid-template-columns: repeat(auto-fit , minmax(250px , 1fr));
+                    grid-template-columns: repeat(auto-fit , minmax(25% , 1fr));
                     .item-card{
                         // border: 2px solid green;
                         // width: 300px;
