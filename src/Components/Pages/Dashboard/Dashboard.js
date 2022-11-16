@@ -11,6 +11,8 @@ import { useEffect } from 'react'
 import { useUser } from '../../../DB/useUser'
 import { ChatRoom } from './ChatRoom/pages'
 import { UserItems } from './mainContent/UserItems'
+import { UpdateModal } from './Modals/updateModal'
+import { getItemsById } from '../../../DB/getItems'
 
 
 
@@ -24,8 +26,10 @@ export const Dashboard = () => {
   const [coordination, setCoordination] = useState({ latitude: '', longitude: '' })
   const [items, setItems] = useState(null)
   const [openModalChat, setOpenModalChat] = useState(false)
+  const [updateModalOpen, setUpdateModalOpen] = useState(false)
+  const [updateItem, setUpdateItem] = useState({})
 
-  const[openItems,setOpenItems]=useState(false)
+  const [openItems, setOpenItems] = useState(false)
 
 
   //get current location 
@@ -45,14 +49,19 @@ export const Dashboard = () => {
     function showPosition(position) {
       setCoordination({ latitude: position.coords.latitude, longitude: position.coords.longitude })
     }
+    getItemsById(user.uid).then(async (data) => {
+      await setItems(data)
+    })
   }, [turnLocation])
 
 
 
   return (
     <div className='dashboard'>
-      <Sidebar setOpenModal={setOpenModal} setOpenModalChat={setOpenModalChat} />
+      <Sidebar setOpenModal={setOpenModal} setOpenModalChat={setOpenModalChat} setOpenItems={setOpenItems} />
       <div className='main-profile'>
+        <UpdateModal updateModalOpen={updateModalOpen} setUpdateModalOpen={setUpdateModalOpen} coordination={coordination} updateItem={updateItem} setCoordination={setCoordination} setTurnLocation />
+        <UserItems uid={user.uid} items={items} openItems={openItems} setOpenItems={setOpenItems} setUpdateItem={setUpdateItem} />
         <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} setItems={setItems} />
         <ChatRoom openModalChat={openModalChat} setOpenModalChat={setOpenModalChat} />
         {/* <UserItems openItemsModal={setOpenItems}/> */}

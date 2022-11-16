@@ -225,82 +225,94 @@
                }
                
             }
-            
-            .user-items{
-            //     position: absolute;
-            //     z-index: 9;
-            //  left: 0;
-            //  top: 10%;
-                // border: 2px solid green;
-                // flex: 2;
-                background-color: #f8f8f8a1;
-                backdrop-filter: blur(8px);
-                overflow-y: auto;
-                padding: 2rem 3rem;
-                border: 1px black solid;
-                border-radius: 15px;
-                    .post{
-                        border-radius: 15px;
-                        position: relative;
-                        border-radius: 0 0 15px 15px;
-                        overflow: hidden;
-                       .header-post{
-                        background-color: var(--color-dark-green);
-                        color: white;
-                        width: 100%;
-                        display: flex;
-                        justify-content: flex-end;
-                        border-radius:15px 15px 0 0;
-                       }
-                  
-                        .photo-post img{
-                          opacity: 1;
-                          transition: 400ms all ease;
-                          border-radius: 0 0 15px 15px;
-                     transition: 400ms all ease;
-                           
-                        
-                            
-                        }
-                       
-
-                        .details-post{
-                            background: rgba(40, 31, 31, 0.532);
-                            position: absolute;
-                            height: 84%;
-                            width: 100%;
-                            bottom: 0;
-                            backdrop-filter: blur(8px);
+            .main-item{
+                display: block; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                .user-items{
+                //     position: absolute;
+                //     z-index: 9;
+                //  left: 0;
+                //  top: 10%;
+                    // border: 2px solid green;
+                    // flex: 2;
+                    background-color: #f8f8f8a1;
+                    backdrop-filter: blur(8px);
+                    overflow-y: auto;
+                    padding: 2rem 3rem;
+                    border: 1px black solid;
+                    border-radius: 15px;
+    
+                        .post{
+                            border-radius: 15px;
+                            position: relative;
                             border-radius: 0 0 15px 15px;
-                            text-align: center;
-                           padding: 3rem 1rem;
-                           text-transform: capitalize;
-                           font-family: var(--font-header);
-                           transform: translateY(40%);
-                           transition: 400ms transform linear;
-                         
-                           .time{
-                            color: rgba(255, 255, 255, 0.849);
+                            overflow: hidden;
+                           .header-post{
+                            background-color: var(--color-dark-green);
+                            color: white;
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
+                            border-radius:15px 15px 0 0;
                            }
-                           .price{
-                            color: var(--color-font-orange1);
-                            font-weight: 600;
-                            font-size: 18px;
-                           }
-                           p{
-                            color: rgb(209, 208, 208);
-                            font-size: 13px;
+                      
+                            .photo-post img{
+                              opacity: 1;
+                              transition: 400ms all ease;
+                              border-radius: 0 0 15px 15px;
+                         transition: 400ms all ease;
+                               
                             
-                           }
-
-                           &:hover{
-                               transform: translateY(60%);
-                           }
+                                
+                            }
+                           
+    
+                            .details-post{
+                                background: rgba(40, 31, 31, 0.532);
+                                position: absolute;
+                                height: 84%;
+                                width: 100%;
+                                bottom: 0;
+                                backdrop-filter: blur(8px);
+                                border-radius: 0 0 15px 15px;
+                                text-align: center;
+                               padding: 3rem 1rem;
+                               text-transform: capitalize;
+                               font-family: var(--font-header);
+                               transform: translateY(40%);
+                               transition: 400ms transform linear;
+                             
+                               .time{
+                                color: rgba(255, 255, 255, 0.849);
+                               }
+                               .price{
+                                color: var(--color-font-orange1);
+                                font-weight: 600;
+                                font-size: 18px;
+                               }
+                               p{
+                                color: rgb(209, 208, 208);
+                                font-size: 13px;
+                                
+                               }
+    
+                               &:hover{
+                                   transform: translateY(60%);
+                               }
+                            }
+                            
+                           
                         }
-                        
-                       
-                    }
-               
+                   
+                }
             }
 
         }

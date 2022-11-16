@@ -33,9 +33,9 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
   async function closeModal() {
 
     //when close the modal userItem component should refresh
-    await getItemsById(uid).then((data) => {
-      setItems(data)
-    })
+    // await getItemsById(uid).then((data) => {
+    //   setItems(data)
+    // })
     setOpenModal(false)
     setImage(null)
     setType('')

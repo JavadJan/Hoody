@@ -8,7 +8,7 @@ import { useEffect , useState } from 'react'
 import { useUser } from '../../../../DB/useUser'
 
 
-export const MainContent = ({coordination , items ,setItems}) => {
+export const MainContent = ({coordination }) => {
     const { user: { uid } } = useUser()
     
     
@@ -19,7 +19,7 @@ export const MainContent = ({coordination , items ,setItems}) => {
         <div className='main-profileContent'>
             <OthersItems uid={uid} coordination={coordination}/>
             {/* {items ? <UserItems id={id} items={items} /> : ""} */}
-            <UserItems uid={uid} items={items} setItems = {setItems} />
+            {/* <UserItems uid={uid} items={items} setItems = {setItems} /> */}
         </div>
     )
 }
