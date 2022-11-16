@@ -11,17 +11,20 @@ import { Items } from './Items';
 
 import io from "socket.io-client";
 import { getItemsByCategory } from '../../../../DB/getItemsByCategory'
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { DbContext } from '../../../../Context/DBContext';
+import { async } from '@firebase/util';
 const socket = io.connect("http://localhost:3001/");
 
 
 
-export const OthersItems = ({uid}) => {
+export const OthersItems = ({ uid }) => {
     const { user } = useContext(userContext);
     const [category, setICategoty] = useState(null)
     const [items, setItems] = useState(null)
     const [coordination, setCoordination] = useState({ latitude: null, longitude: null })
     const [openMap, setOpenMap] = useState(false)
-
+    const {db} = useContext(DbContext)
     const [room, setRoom] = useState('');
     const [showChat, setShowChat] = useState(false);
     const [username, setUsername] = useState("");
@@ -47,6 +50,7 @@ export const OthersItems = ({uid}) => {
     }
     async function GetItemsByCategory(e) {
         //getting location
+        console.log('value --------> ' + e.target.innerText)
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -60,15 +64,28 @@ export const OthersItems = ({uid}) => {
         console.log('coordination0000000000000', coordination)
 
         //get items by filter category
-        await getItemsByCategory(uid, e.target.innerText, coordination).then((data) => {
-          setItems(data)
-        })
-        await console.log('eeeeeeeeeeeeeeeeeeee',  items)
+
+        // await getItemsByCategory(uid, e.target.innerText, coordination).then((data) => {
+        //   setItems(data)
+        // })
+        // const unsubscribe =
+        const q = query(collection(db, "items"), where("category", "==", e.target.innerText));
+        onSnapshot(q, async (querySnapshot) => {
+            const cities = [];
+            querySnapshot.forEach((doc) => {
+                cities.push(doc.data().filter((prof) => prof.uid !== uid));
+                setItems((p)=>[{...p , ...doc.data()}])
+            });
+            
+            console.log("Current category ========>", cities.join(", "));
+        });
+
+        console.log('eeeeeeeeeeeeeeeeeeee', items)
         // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
 
         //this test worked well
         // data.filter((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))>0.41) ,
-            // data.map((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))),
+        // data.map((dt)=> Number((haversine(a, dt.coordination)/1000).toFixed(2))),
     }
 
     //home 
@@ -87,7 +104,7 @@ export const OthersItems = ({uid}) => {
 
     return (
         <div className='others-items'>
-          
+            <p>{items && items.length && items[0].category}</p>
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
@@ -127,10 +144,10 @@ export const OthersItems = ({uid}) => {
     ) : ( 
         <ChatBox socket={socket} username={username} room={room} />
       )} */}
-                
+
                 <div className="item-categories">
-                <ul>
-                      <li onClick={GetItemsByCategory}>All</li>
+                    <ul>
+                        <li onClick={GetItemsByCategory}>All</li>
                         <li onClick={GetItemsByCategory}>Costume</li>
                         <li onClick={GetItemsByCategory}>Sports</li>
                         <li onClick={GetItemsByCategory}>Appliance Home</li>
@@ -144,30 +161,30 @@ export const OthersItems = ({uid}) => {
                 <div className='items-box'>
                     {/* 1 */}
 
-                    {Items.map((item)=>{
-                         return (
+                    {Items.map((item) => {
+                        return (
                             <div className="item-card">
-                        <div className='item-img'>
-                            <img src={item.src} alt="" />
-                        </div>
+                                <div className='item-img'>
+                                    <img src={item.src} alt="" />
+                                </div>
 
-                        <div className='item-content'>
-                            <h4>{item.name}</h4>
-                            <h5>{item.price}</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i>{item.distance}
-                            </p>
-                            <p onClick={() => {
-                                console.log('clicked')
-                            }}>
-                               {item.message} <i className="fa-regular fa-comment-dots"></i>
-                            </p>
-                            {/* <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p> */}
-                        </div>
-                    </div>
-                    );
+                                <div className='item-content'>
+                                    <h4>{item.name}</h4>
+                                    <h5>{item.price}</h5>
+                                    <p>
+                                        <i className="uil uil-map-marker"></i>{item.distance}
+                                    </p>
+                                    <p onClick={() => {
+                                        console.log('clicked')
+                                    }}>
+                                        {item.message} <i className="fa-regular fa-comment-dots"></i>
+                                    </p>
+                                    {/* <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p> */}
+                                </div>
+                            </div>
+                        );
                     })}
-                
+
                     {/* 1 */}
 
 
