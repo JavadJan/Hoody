@@ -42,7 +42,8 @@
 
 }
 body{
-   background: black;
+   background: rgba(0, 0, 0, 0.851);
+//    height: 100vh;
   
 }
 
@@ -52,6 +53,8 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position:center;
+    height:100%;
+    animation: fadeInRight 1s ease forwards;
 }
 
 

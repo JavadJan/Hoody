@@ -14,23 +14,23 @@
   grid-column: 2;
   margin-right: 3px;
   margin-left: 1px;
+  background-color: white;
   /*----------header*/
   /*------------- main content*/
 }
 .dashboard .main-profile .main-profileContent {
   background-color: var(--color-white);
   position: relative;
-  margin-top: 2px;
-  padding: 5px 1rem;
   padding-right: 2px;
-  height: calc(100vh - 4.2rem);
+  min-height: calc(100vh - 4.2rem);
+  height: 100%;
   display: grid;
   grid-template-columns: 75% 25%;
   -moz-column-gap: 5px;
        column-gap: 5px;
 }
 .dashboard .main-profile .main-profileContent .others-items {
-  background-color: rgba(184, 184, 184, 0.399);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.585);
 }
 .dashboard .main-profile .main-profileContent .others-items .map {
   border-top: 1px solid #dddddd;
@@ -94,7 +94,6 @@
 }
 .dashboard .main-profile .main-profileContent .others-items .map .item-categories ul {
   border-bottom: 1px solid #2f2929;
-  display: flex;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   place-content: center;
@@ -122,8 +121,8 @@
   position: relative;
   top: 10px;
   background: transparent;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
+  display: flex;
+  flex-wrap: nowrap;
   row-gap: 10px;
 }
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card {
@@ -140,7 +139,6 @@
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card img {
   width: 100%;
   height: 100%;
-  border-radius: 15px;
   box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.129);
   transition: transform 0.5s 1.5s ease-in-out;
 }
@@ -151,6 +149,21 @@
   height: 100%;
   padding: 1rem;
   margin-top: -1rem;
+  background-color: rgb(165, 171, 157);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  text-align: center;
+}
+.dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content h4 {
+  font-family: var(--font-sub-header);
+  text-transform: uppercase;
+}
+.dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content h5 {
+  color: #1f1f1f;
+  font-family: var(--font-header);
+  text-shadow: 1px 1px 1px black;
+  font-size: 20px;
 }
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content span, .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content i {
   cursor: pointer;
@@ -162,7 +175,7 @@
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content .details {
   margin-left: 2rem;
   font-size: 12px;
-  background-color: var(--color-btn2);
+  background-color: var(--color-yellow);
   padding: 6px;
   border-radius: 5px;
   color: white;
@@ -351,15 +364,18 @@
   align-items: center;
   justify-content: center;
   color: #eeeeee;
-}
-.dashboard .sidebar-profile .sidebar-content ul li .uil-plus::after {
-  content: "add item";
-  font-size: 12px;
-  display: none;
+  transition: 900ms transform ease;
 }
 .dashboard .sidebar-profile .sidebar-content ul li:hover {
   cursor: pointer;
   transform: scale(1.1);
+  background: white;
+}
+.dashboard .sidebar-profile .sidebar-content ul li:hover span, .dashboard .sidebar-profile .sidebar-content ul li:hover i {
+  color: #2f2929;
+}
+.dashboard .sidebar-profile .sidebar-content ul li:hover i {
+  transform: rotate(180deg);
 }
 
 @media screen and (max-width: 1024px) {

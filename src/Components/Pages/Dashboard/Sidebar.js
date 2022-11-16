@@ -7,6 +7,7 @@ import { userContext } from '../../../Context/userContext'
 import { useUser } from '../../../DB/useUser';
 import {BsFillPencilFill} from 'react-icons/bs'
 import { UserItems } from './mainContent/UserItems';
+
 // import 'antd/dist/antd.css';
 
 export  const Sidebar = ({setOpenModal,setOpenModalChat,setUpdateModalOpen},{uid, items ,setItems,openItems}) => {
@@ -63,8 +64,8 @@ export  const Sidebar = ({setOpenModal,setOpenModalChat,setUpdateModalOpen},{uid
           </li>
        
           <li>
-            <i className="uil uil-plus"></i>
-            <span>show your</span>
+          <i class="uil uil-eye"></i>
+            <span>show items</span>
           </li>
           {openItems ?<UserItems uid={uid} items={items} setItems = {setItems} />:null}
           <li>

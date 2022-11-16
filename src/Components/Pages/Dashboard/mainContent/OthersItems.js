@@ -7,7 +7,7 @@ import image1 from '../../../../assets/image1.jpg'
 import { userContext } from '../../../../Context/userContext'
 import haversine from 'haversine-distance'
 import ChatBox from '../../ChatBox/ChatBox';
-
+import { Items } from './Items';
 
 import io from "socket.io-client";
 import { getItemsByCategory } from '../../../../DB/getItemsByCategory'
@@ -143,135 +143,33 @@ export const OthersItems = ({uid}) => {
 
                 <div className='items-box'>
                     {/* 1 */}
-                    <div className="item-card">
+
+                    {Items.map((item)=>{
+                         return (
+                            <div className="item-card">
                         <div className='item-img'>
-                            <img src={image1} alt="" />
+                            <img src={item.src} alt="" />
                         </div>
 
                         <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: 10$</h5>
+                            <h4>{item.name}</h4>
+                            <h5>{item.price}</h5>
                             <p>
-                                <i className="uil uil-map-marker"></i> 500 m
+                                <i className="uil uil-map-marker"></i>{item.distance}
                             </p>
                             <p onClick={() => {
                                 console.log('clicked')
                             }}>
-                                <i className="fa-regular fa-comment-dots"></i> message
+                               {item.message} <i className="fa-regular fa-comment-dots"></i>
                             </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
+                            {/* <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p> */}
                         </div>
                     </div>
+                    );
+                    })}
+                
                     {/* 1 */}
 
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: free</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: 10$</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: free</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: free</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: free</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
-
-                    <div className="item-card">
-                        <div className='item-img'>
-                            <img src={image1} alt="" />
-                        </div>
-
-                        <div className='item-content'>
-                            <h4>name</h4>
-                            <h5>Price: free</h5>
-                            <p>
-                                <i className="uil uil-map-marker"></i> 500 m
-                            </p>
-                            <p>
-                                <i className="fa-regular fa-comment-dots"></i> message
-                            </p>
-                            <p className='save'><i className="fa-regular fa-star"></i> <span className='details'>read more</span> </p>
-                        </div>
-                    </div>
 
 
                 </div>

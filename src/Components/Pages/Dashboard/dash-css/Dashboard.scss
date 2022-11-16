@@ -15,6 +15,7 @@
         grid-column: 2;        
         margin-right: 3px;
         margin-left: 1px;
+        background-color: white;
         // box-shadow: 2px 2px 6px rgb(101, 104, 104);
         
         /*----------header*/
@@ -64,15 +65,18 @@
         .main-profileContent{
             background-color: var(--color-white);
             position: relative;
-            margin-top: 2px;
-            padding:5px 1rem ;
+            // margin-top: 2px;
+            // padding:5px 1rem ;
             padding-right: 2px;
-            height: calc(100vh - 4.2rem);
+            min-height: calc(100vh - 4.2rem);
+            height: 100%;
             display: grid;
             grid-template-columns: 75% 25%;
             column-gap: 5px;
             .others-items{
-                background-color: rgba(184, 184, 184, 0.399);
+                // background-color: rgba(184, 184, 184, 0.399);
+            
+                box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.585);
                .map{
                 border-top: 1px solid #dddddd;
                 display: flex;
@@ -109,7 +113,7 @@
                         font-size: 14px;
                     }
                     .search-icon{
-                        cursor: pointer;
+                    cursor: pointer;
                       border: 2px solid rgb(216, 210, 210);
                       position: absolute;
                       top: 2px;
@@ -135,7 +139,7 @@
                     width: 100%;
                     ul{
                         border-bottom: 1px solid #2f2929;
-                        display: flex;
+                  
                        
                         display: grid;
                         grid-template-columns: repeat(8,1fr);
@@ -168,8 +172,9 @@
                     position: relative;
                     top: 10px;
                     background: transparent;
-                    display: grid;
-                    grid-template-columns: 33% 33% 33%;
+                  
+                    display: flex;
+                    flex-wrap: nowrap;
                     row-gap: 10px;
                     .item-card{
                         // border: 2px solid green;
@@ -188,9 +193,10 @@
                         img {
                             width: 100%;
                             height: 100%;
-                            border-radius:15px ;
+                            // border-radius:15px ;
                             box-shadow:1px 1px 4px 4px rgba(0, 0, 0, 0.129);
                             transition: transform .5s 1.5s ease-in-out;
+                        
                         }
 
                         .item-content{
@@ -200,7 +206,25 @@
                             height: 100%;
                             padding: 1rem;
                             margin-top: -1rem;
+                       
+                            background-color:rgb(165, 171, 157);
+                            height: max-content;
+                        text-align: center;
+
+                            h4{
+                                font-family: var(--font-sub-header);
+                                text-transform: uppercase;
+
+                            }
+                            h5{
+                                color:#1f1f1f;
+                                font-family: var(--font-header);
+                                text-shadow: 1px 1px 1px black;
+                                font-size: 20px;
+
+                            }
                             span , i  {
+
                                 cursor: pointer;
                             }
                             .save{
@@ -210,7 +234,7 @@
                             .details{
                                 margin-left: 2rem;
                                 font-size: 12px ;
-                                background-color: var(--color-btn2);
+                                background-color: var(--color-yellow);
                                 padding: 6px;
                                 border-radius: 5px;
                                 color: white;
@@ -257,7 +281,7 @@
                           opacity: 1;
                           transition: 400ms all ease;
                           border-radius: 0 0 15px 15px;
-                     transition: 400ms all ease;
+                          transition: 400ms all ease;
                            
                         
                             
@@ -455,21 +479,23 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        color: #eeeeee
+                        color: #eeeeee;
+                        transition: 900ms transform ease;
                     
                         
                     }
-                    .uil-plus{
-                       
-                        &::after{
-                            content: 'add item';
-                            font-size: 12px;
-                            display: none;
-                        }
-                         }
+                  
                          &:hover{
                             cursor: pointer;
                             transform: scale(1.1);
+                            background: white;
+                            span , i{
+                                color:#2f2929;
+                            }
+                            i{
+                                transform: rotate(180deg);
+                            }
+                          
                         }
                 }
               

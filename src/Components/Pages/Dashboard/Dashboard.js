@@ -50,7 +50,7 @@ export const Dashboard = () => {
 
 
   return (
-    <div className='dashboard'>
+    <div className='dashboard all-container'>
       <Sidebar setOpenModal={setOpenModal} setOpenModalChat={setOpenModalChat} />
       <div className='main-profile'>
         <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} setItems={setItems} />

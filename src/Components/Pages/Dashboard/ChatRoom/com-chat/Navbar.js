@@ -17,7 +17,7 @@ export const Navbar = () => {
   console.log(user)
   return user &&  (
     <div className='navbar-chat'>
-      <span className='logo'></span>
+      <span className='logo'>Hoody</span>
       <div className="user">
         {user.photoURL && <img src={user.photoURL} alt="" />}
         <span>{user.displayName ? user.displayName : displayName}</span>

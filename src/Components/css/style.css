@@ -35,7 +35,7 @@
 }
 
 body {
-  background: black;
+  background: rgba(0, 0, 0, 0.851);
 }
 
 .all-container {
@@ -44,6 +44,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  height: 100%;
+  -webkit-animation: fadeInRight 1s ease forwards;
+          animation: fadeInRight 1s ease forwards;
 }
 
 .container_signup .signup-page {
