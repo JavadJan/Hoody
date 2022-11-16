@@ -24,7 +24,7 @@ export const OthersItems = ({ uid }) => {
     const [items, setItems] = useState(null)
     const [coordination, setCoordination] = useState({ latitude: null, longitude: null })
     const [openMap, setOpenMap] = useState(false)
-    const {db} = useContext(DbContext)
+    const { db } = useContext(DbContext)
     const [room, setRoom] = useState('');
     const [showChat, setShowChat] = useState(false);
     const [username, setUsername] = useState("");
@@ -69,18 +69,19 @@ export const OthersItems = ({ uid }) => {
         //   setItems(data)
         // })
         // const unsubscribe =
+        const currentLocation = { latitude: coordination.latitude, longitude: coordination.longitude }
         const q = query(collection(db, "items"), where("category", "==", e.target.innerText));
         onSnapshot(q, async (querySnapshot) => {
-            const cities = [];
+            const dst = [];
             querySnapshot.forEach((doc) => {
-                cities.push(doc.data().filter((prof) => prof.uid !== uid));
-                setItems((p)=>[{...p , ...doc.data()}])
+                dst.push(doc.data());
             });
-            
-            console.log("Current category ========>", cities.join(", "));
+
+            console.log("Current category ========>", dst.filter((prof) => prof.uid !== uid));
+            setItems(dst.filter((prof) => prof.uid !== uid).filter((dt) => 5.2 > Number((haversine(currentLocation, dt.coordination) / 1000).toFixed(2))))
+            // console.log(items)
         });
 
-        console.log('eeeeeeeeeeeeeeeeeeee', items)
         // && Number((haversine(currentLocation, prof.coordination)/1000).toFixed(2))>1
 
         //this test worked well
@@ -104,7 +105,10 @@ export const OthersItems = ({ uid }) => {
 
     return (
         <div className='others-items'>
-            <p>{items && items.length && items[0].category}</p>
+            {items && items.map((item) => {
+                return <p>{item.category}</p>
+            })
+            }
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
