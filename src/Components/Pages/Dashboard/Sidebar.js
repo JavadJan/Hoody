@@ -68,8 +68,8 @@ export const Sidebar = ({ setOpenModal, setOpenModalChat, setUpdateModalOpen, ui
             <span>Settings</span>
           </li>
        
-          <li>
-          <i class="uil uil-eye"></i>
+          <li onClick={openModalItems}>
+          <i class="uil uil-eye" ></i>
             <span>show items</span>
           </li>
 
