@@ -218,6 +218,31 @@
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   border-radius: 0 0 15px 15px;
+  overflow: hidden;
+}
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .header-post {
+  background-color: var(--color-dark-green);
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 15px 15px 0 0;
+}
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .photo-post img {
+  opacity: 1;
+  transition: 400ms all ease;
+  border-radius: 0 0 15px 15px;
+  transition: 400ms all ease;
+}
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .details-post {
+  background: rgba(40, 31, 31, 0.532);
+  position: absolute;
+  height: 84%;
+  width: 100%;
+  bottom: 0;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-radius: 0 0 15px 15px;
   text-align: center;
   padding: 3rem 1rem;
   text-transform: capitalize;
@@ -225,19 +250,19 @@
   transform: translateY(40%);
   transition: 400ms transform linear;
 }
-.dashboard .main-profile .main-profileContent .user-items .post .details-post .time {
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .details-post .time {
   color: rgba(255, 255, 255, 0.849);
 }
-.dashboard .main-profile .main-profileContent .user-items .post .details-post .price {
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .details-post .price {
   color: var(--color-font-orange1);
   font-weight: 600;
   font-size: 18px;
 }
-.dashboard .main-profile .main-profileContent .user-items .post .details-post p {
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .details-post p {
   color: rgb(209, 208, 208);
   font-size: 13px;
 }
-.dashboard .main-profile .main-profileContent .user-items .post .details-post:hover {
+.dashboard .main-profile .main-profileContent .user-items .post .details-post .details-post:hover {
   transform: translateY(60%);
 }
 .dashboard .sidebar-profile {

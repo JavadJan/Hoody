@@ -295,11 +295,12 @@
 
             .input{
                 height: 50px;
-                background-color: rgb(15, 15, 15);
+                background-color: rgb(168, 168, 168);
                 padding: 10px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                color: white;
                 &::placeholder{
                     color: lightgrey;
                 }
@@ -312,7 +313,7 @@
                 .send{
                     display: flex;
                     gap: 10px;
-                    color: #5d5d8d;
+                    color: #ffffff;
                     font-size: 18px;
                     font-weight: bold;
                     .i{
