@@ -87,7 +87,7 @@ export const OthersItems = ({uid}) => {
 
     return (
         <div className='others-items'>
-            
+          
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
