@@ -16,7 +16,7 @@ import { getUserById } from '../../../../DB/DoesUserExist'
 import { setPersistence } from 'firebase/auth'
 import { getItemsById } from '../../../../DB/getItems'
 
-export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setItems }) => {
+export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setItems ,turnLocation}) => {
 
   const { db, storage } = useContext(DbContext)
   const [image, setImage] = useState(null)
@@ -24,7 +24,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
   const [category, setCategory] = useState(null)
   const [explain, setExplain] = useState('')
   const [price, setPrice] = useState(0)
-
+  const [progress , setProgress] = useState(null)
 
   const { user: { displayName, uid } } = useUser()
 
@@ -75,8 +75,9 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
       uploadTask.on('state_changed',
         (snapshot) => {
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
+          const press = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(press)
+          console.log('Upload is ' + press + '% done');
 
           switch (snapshot.state) {
             case 'paused':
@@ -113,9 +114,12 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
             const metadata = { ...item, linkImage: downloadURL }
             await addDoc(collection(db, 'items'), metadata)
             setImage(null)
-            setType('')
+            setType(false)
             setCategory(null)
             setExplain('')
+            setPrice(0)
+            setProgress(null)
+            console.log(image , type , category , explain , price , progress)
           });
         }
       );
@@ -146,7 +150,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
           <span className='logo'>Hoody</span>
           <span className="close" onClick={closeModal}>&times;</span>
         </div>
-
+        {progress && <progress id="file" value={progress} max="100"></progress>}
         <div id="upload-image">
           <form id='form' onSubmit={handleSaveImage}>
 
@@ -155,7 +159,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
               <div className='upload'>
 
                 <div className='upload-content'>
-                  <input className="file" type="file" accept='image/*' onChange={({ target }) => { setImage(target.files[0]) }} />
+                  <input className="file" type="file" accept='image/*' files={image} onChange={({ target }) => { setImage(target.files[0]) }} />
                   <span className='btnUpload'><UilPlus />Upload</span>
                 </div>
 
@@ -174,14 +178,14 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
                   <div className='choose-type'>
                     <span><h5 className='title'>Are you going to? </h5></span>
                     <span>
-                      <input type="radio" id='sell' value="sell" name='type' onChange={({ target }) => { setType(target.value) }} />
+                      <input type="radio" id='sell' value={type} name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="sell">Sell</label>
 
                       {/* by choosing selling radio display the price   */}
                       <input value={price} className='price' type="number" onChange={({ target }) => { setPrice(target.value) }} />
                     </span>
                     <span>
-                      <input type="radio" id='donate' value="Donate" name='type' onChange={({ target }) => { setType(target.value) }} />
+                      <input type="radio" id='donate' value={type} name='type' onChange={({ target }) => { setType(target.value) }} />
                       <label htmlFor="donate">Donate</label>
 
 
@@ -192,7 +196,7 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
                   <div className='categories'>
 
                     <label className='title' for="category">what is kind of?</label>
-                    <select id="category" onChange={({ target }) => { setCategory(target.value) }}>
+                    <select id="category" value={category} onChange={({ target }) => { setCategory(target.value) }}>
                       <option value="Costume">Costume</option>
                       <option value="Sports">Sports</option>
                       <option value="Appliance Home">Appliance Home</option>
@@ -207,12 +211,12 @@ export const Modal = ({ open, setOpenModal, setTurnLocation, coordination, setIt
                   {/* turn on your location */}
                   <div className='current-location'>
                     <h5 className='title'>Find items in your neighborhood!</h5>
-                    <input type="checkbox" className='turn-location' onChange={({ target }) => { setTurnLocation(target.checked) }} />
+                    <input type="checkbox" value={turnLocation} className='turn-location' onChange={({ target }) => { setTurnLocation(target.checked) }} />
                   </div>
 
                   <div className='explain'>
                     <h5 className="title">please explain your stock!</h5>
-                    <textarea name="" id="" cols="30" rows="8" onChange={({ target }) => { setExplain(target.value) }}></textarea>
+                    <textarea name="" id="" cols="30" rows="8" value={explain} onChange={({ target }) => { setExplain(target.value) }}></textarea>
                   </div>
 
                 </div>
