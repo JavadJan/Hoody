@@ -10,7 +10,7 @@ export const Search = () => {
   const { user } = useContext(userContext)
   const { db } = useContext(DbContext)
 
-  const searchUser = async () => {
+  const searchUser = async (username) => {
     try {
       const q = query(collection(db, 'users'), where('displayName', '==', username))
       const snapShot = await getDocs(q)

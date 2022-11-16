@@ -66,7 +66,7 @@ export const Dashboard = () => {
         <ChatRoom openModalChat={openModalChat} setOpenModalChat={setOpenModalChat} />
         {/* <UserItems openItemsModal={setOpenItems}/> */}
         {/* <Header /> */}
-        <MainContent coordination={coordination} items={items} setItems={setItems} />
+        <MainContent coordination={coordination} items={items} setItems={setItems} setOpenModalChat={setOpenModalChat}/>
       </div>
     </div>
   )

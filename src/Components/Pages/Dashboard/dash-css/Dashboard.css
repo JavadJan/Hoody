@@ -158,6 +158,9 @@
   height: max-content;
   text-align: center;
 }
+.dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content .direct {
+  cursor: pointer;
+}
 .dashboard .main-profile .main-profileContent .others-items .map .items-box .item-card .item-content h4 {
   font-family: var(--font-sub-header);
   text-transform: uppercase;

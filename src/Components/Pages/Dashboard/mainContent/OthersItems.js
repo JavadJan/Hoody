@@ -19,7 +19,7 @@ const socket = io.connect("http://localhost:3001/");
 
 
 
-export const OthersItems = ({ uid }) => {
+export const OthersItems = ({ uid ,setOpenModalChat }) => {
     const { user } = useContext(userContext);
     const [category, setICategoty] = useState(null)
     const [items, setItems] = useState(null)
@@ -48,9 +48,7 @@ export const OthersItems = ({ uid }) => {
         setOpenMap(true)
 
     }
-    function onLocation() {
-
-    }
+    
     //GetAllItems
     async function GetAllItems(params) {
         await getDocs(collection(db, 'items')).then((data) => {
@@ -123,7 +121,7 @@ export const OthersItems = ({ uid }) => {
             <div className='map'>
                 <div className='location'>
                     <div className='your-location'>
-                        <i className="fas fa-location" onClick={onLocation}></i>
+                        <i className="fas fa-location"></i>
                     </div>
                     <div className='flash-down'>
                         <i className="uil uil-angle-down"></i>
@@ -176,7 +174,7 @@ export const OthersItems = ({ uid }) => {
                 <div className='items-box'>
                     {items && items.map((item, i) => {
                         return (
-                            <CardItems item={item} key={i} />
+                            <CardItems item={item} key={i} setOpenModalChat={setOpenModalChat} />
                         );
                     })}
                 </div>
