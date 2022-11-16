@@ -7,6 +7,7 @@ import { userContext } from '../../../Context/userContext'
 import { useUser } from '../../../DB/useUser';
 import { BsFillPencilFill } from 'react-icons/bs'
 import { UserItems } from './mainContent/UserItems';
+import Default from './dash-css/Default.png'
 
 // import 'antd/dist/antd.css';
 
@@ -41,7 +42,7 @@ export const Sidebar = ({ setOpenModal, setOpenModalChat, setUpdateModalOpen, ui
 
         <div className='user-pic'>
           <div>
-            <img src={user.photoURL} alt="" />
+            <img src={user.photoURL ? user.photoURL : Default} alt="" />
             <BsFillPencilFill className='edit'></BsFillPencilFill>
           </div>
           <div className="infoUser">
