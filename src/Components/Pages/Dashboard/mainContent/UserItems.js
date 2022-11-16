@@ -13,6 +13,7 @@ export const UserItems = ({ uid ,items ,  setItems }) => {
 
   // turn location 
   useEffect(() => {
+  
     if (turnLocation) {
       if (navigator.geolocation) {
         console.log('take loc', 'checkbox get to', turnLocation)
@@ -36,7 +37,7 @@ export const UserItems = ({ uid ,items ,  setItems }) => {
             await setItems(data)
         })
     }, [uid])
-  
+
   return (
     <div className='user-items'>
       <UpdateModal updateModalOpen={updateModalOpen} setUpdateModalOpen = {setUpdateModalOpen} coordination={coordination} updateItem = {updateItem} setCoordination={setCoordination} setTurnLocation/>

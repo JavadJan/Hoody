@@ -10,6 +10,7 @@ import { Modal } from './Modals/Modal'
 import { useEffect } from 'react'
 import { useUser } from '../../../DB/useUser'
 import { ChatRoom } from './ChatRoom/pages'
+import { UserItems } from './mainContent/UserItems'
 
 
 
@@ -24,6 +25,7 @@ export const Dashboard = () => {
   const [items, setItems] = useState(null)
   const [openModalChat, setOpenModalChat] = useState(false)
 
+  const[openItems,setOpenItems]=useState(false)
 
 
   //get current location 
@@ -53,7 +55,7 @@ export const Dashboard = () => {
       <div className='main-profile'>
         <Modal open={openModal} setOpenModal={setOpenModal} turnLocation={turnLocation} setTurnLocation={setTurnLocation} coordination={coordination} setItems={setItems} />
         <ChatRoom openModalChat={openModalChat} setOpenModalChat={setOpenModalChat} />
-
+        {/* <UserItems openItemsModal={setOpenItems}/> */}
         {/* <Header /> */}
         <MainContent coordination={coordination} items={items} setItems={setItems} />
       </div>

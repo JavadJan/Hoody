@@ -130,6 +130,7 @@ export const OthersItems = ({uid}) => {
                 
                 <div className="item-categories">
                 <ul>
+                      <li onClick={GetItemsByCategory}>All</li>
                         <li onClick={GetItemsByCategory}>Costume</li>
                         <li onClick={GetItemsByCategory}>Sports</li>
                         <li onClick={GetItemsByCategory}>Appliance Home</li>

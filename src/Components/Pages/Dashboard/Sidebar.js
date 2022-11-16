@@ -6,15 +6,18 @@ import { DbContext } from '../../../Context/DBContext';
 import { userContext } from '../../../Context/userContext'
 import { useUser } from '../../../DB/useUser';
 import {BsFillPencilFill} from 'react-icons/bs'
+import { UserItems } from './mainContent/UserItems';
 // import 'antd/dist/antd.css';
 
-export  const Sidebar = ({setOpenModal,setOpenModalChat}) => {
+export  const Sidebar = ({setOpenModal,setOpenModalChat,setUpdateModalOpen},{uid, items ,setItems,openItems}) => {
 
   const {user} =  useContext(userContext)
   // console.log('user.photoURL' ,user.photoURL )
   const { user: { displayName, userId, id } } = useUser()
   const navigate = useNavigate()
   const { auth} = useContext(DbContext)
+
+
 
   function showModal() {
     setOpenModal(true)
@@ -23,7 +26,7 @@ export  const Sidebar = ({setOpenModal,setOpenModalChat}) => {
   function openChat() {
     setOpenModalChat(true)
   }
-  
+
   return (
     
     <div className='sidebar-profile'>
@@ -43,27 +46,37 @@ export  const Sidebar = ({setOpenModal,setOpenModalChat}) => {
           
         </div>
         <ul>
-          <li>
-            <i className="uil uil-chat" onClick={openChat}>
+          <li  onClick={openChat}>
+            <i className="uil uil-chat">
             </i>
+            <span>Message</span>
           </li>
-          <li>
-            <i className="uil uil-plus" onClick={showModal}>
-            
+          <li  onClick={showModal}>
+            <i className="uil uil-plus">
+         
             </i>
+            <span>Add Item</span>
           </li>
           <li>
             <i className="uil uil-setting"></i>
+            <span>Settings</span>
           </li>
+       
+          <li>
+            <i className="uil uil-plus"></i>
+            <span>show your</span>
+          </li>
+          {openItems ?<UserItems uid={uid} items={items} setItems = {setItems} />:null}
           <li>
            {auth && <i className="uil uil-signout" onClick={() => {signOut(auth)
              navigate('/login')
         }}>
             </i>}
+            <span>Logout</span>
             {/* <i class="uil uil-signin">
             </i> */}
           </li>
-          <li></li>
+         
         </ul>
       </div>
     </div>
