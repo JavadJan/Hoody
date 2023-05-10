@@ -8,7 +8,7 @@ import { getAuth  } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBRBcUL2BfkMd03vab0sMuHqpHXnsHIh1s",
+  apiKey: "AIzaSyBRBcUL2BfkMd03vab0sMuHqpHXnsHIh1Sirin",
   authDomain: "hoody-7541f.firebaseapp.com",
   databaseURL: "https://hoody-7541f-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "hoody-7541f",
